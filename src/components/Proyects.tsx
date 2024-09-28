@@ -56,7 +56,16 @@ export default function Component() {
   )
 }
 
-function ProjectCard({ imageSrc, title, description, badges, liveLink, codeLink }) {
+interface ProjectCardProps {
+  imageSrc: string;
+  title: string;
+  description: string;
+  badges: string[];
+  liveLink: string;
+  codeLink: string;
+}
+
+function ProjectCard({ imageSrc, title, description, badges, liveLink, codeLink }: ProjectCardProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpand = () => {
@@ -105,7 +114,9 @@ function ProjectCard({ imageSrc, title, description, badges, liveLink, codeLink 
     );
   }
 
-function EyeIcon(props) {
+import { SVGProps } from 'react';
+
+function EyeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -126,7 +137,7 @@ function EyeIcon(props) {
 }
 
 
-function GithubIcon(props) {
+function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

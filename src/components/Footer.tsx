@@ -36,7 +36,7 @@ export default function Component() {
     )
   }
   
-  function GitlabIcon(props) {
+  function GitlabIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -56,7 +56,7 @@ export default function Component() {
   }
   
   
-  function LinkedinIcon(props) {
+  function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -78,7 +78,7 @@ export default function Component() {
   }
   
   
-  function MailIcon(props) {
+  function MailIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -99,7 +99,7 @@ export default function Component() {
   }
   
   
-  function PhoneIcon(props) {
+  function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}

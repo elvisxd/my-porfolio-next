@@ -1,22 +1,21 @@
 
 'use client'
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Link from "next/link"
 import { Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import Meavatar from '@/assets/me3.jpg'
-import { useRef, useState } from 'react';
+
 
 export default function Header() {
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const sheetRef = useRef(null);
-
-  const handleNavigation = (e, targetId) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
-      setIsSheetOpen(false); // Cierra el Sheet después del desplazamiento
+      const sheetElement = document.querySelector('[data-state="open"]');
+      if (sheetElement) {
+        sheetElement.dispatchEvent(new Event('close'));
+      }
     }
   };
 
@@ -79,7 +78,7 @@ export default function Header() {
   )
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -100,7 +99,7 @@ function MenuIcon(props) {
   )
 }
 
-function CodeIcon(props) {
+function CodeIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}

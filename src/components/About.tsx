@@ -4,10 +4,10 @@ import meavatar from '@/assets/me1.jpg'
 import { Badge } from "@/components/ui/badge"
 
 export default function Component() {
-    function TextWithBadge({ text }) {
+    function TextWithBadge({ text }: { text: string }) {
         return (
           <div className="flex items-center gap-2">
-            <Badge variant="secondary">{text}</Badge>
+            <Badge variant="secondary">{text as string}</Badge>
           </div>
         );
       }
@@ -20,12 +20,12 @@ export default function Component() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Meet Elvis Pino</h2>
             <div className="grid gap-4 text-muted-foreground">
               <p>
-                I'm a passionate full-stack developer with a strong background in JavaScript, React, and Node.js. I have a
+                I&apos;m a passionate full-stack developer with a strong background in JavaScript, React, and Node.js. I have a
                 keen eye for design and a love for creating intuitive and user-friendly applications.
               </p>
               <p>
-                With several years of experience under my belt, I've honed my skills in building scalable and maintainable
-                web applications. I'm always eager to learn new technologies and techniques to stay ahead of the curve.
+                With several years of experience under my belt, I&apos;ve honed my skills in building scalable and maintainable
+                web applications. I&apos;m always eager to learn new technologies and techniques to stay ahead of the curve.
               </p>
             </div>
             <div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 text-sm font-medium">

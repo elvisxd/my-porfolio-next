@@ -30,7 +30,7 @@ export default function Component() {
               <p className="mb-4 text-sm text-muted-foreground">May 2019 - August 2020</p>
               <div className="prose text-muted-foreground">
                 <ul>
-                  <li>Assisted in the development and maintenance of the company's website.</li>
+                  <li>Assisted in the development and maintenance of the company&apos;s website.</li>
                   <li>Learned and applied modern web development technologies and best practices.</li>
                   <li>Participated in daily stand-up meetings and sprint planning sessions.</li>
                   <li>Gained experience in project management and client communication.</li>
