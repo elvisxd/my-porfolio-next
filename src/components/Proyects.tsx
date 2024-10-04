@@ -7,6 +7,7 @@ import qrimg from '@/assets/qr-generator.png'
 import weatherimg from '@/assets/weatherApp.png'
 import financeimg from '@/assets/financepro.png'
 import { Badge } from "@/components/ui/badge"
+import imgIA from '@/assets/gemini-chat-app.png'
 import Image from 'next/image';
 
 export default function Component() {
@@ -26,6 +27,14 @@ export default function Component() {
         badges={['PHP','Css', 'Mysql']}
         liveLink="https://www.calot.com.ar/"
         codeLink="#"
+      />
+      <ProjectCard 
+      imageSrc={imgIA.src}
+      title='Gemini Chat App'
+      description='A free and open-source chat app built using React and Tailwind CSS. This app allows users to create and join chat rooms, send messages, and view chat history. It also features a user authentication system, allowing users to sign up and log in to their accounts. The app is designed to be highly customizable, with options for changing the color scheme, font size, and other visual elements. It is also responsive, meaning it can be used on different devices and screen sizes.'
+      badges={['Next JS','React', 'Tailwindcss', 'Vercel']}
+      liveLink="https://gemini-chat-app-three.vercel.app/"
+      codeLink="#"
       />
       <ProjectCard
         imageSrc={qrimg.src}

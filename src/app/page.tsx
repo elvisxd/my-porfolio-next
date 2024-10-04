@@ -4,6 +4,7 @@ import Proyects from '@components/Proyects';
 import Woe from '@components/WorkExperience';
 import Studies from '@components/Studies';
 import Footer from '@components/Footer';
+import React from 'react';
 
 export default function Home() {
   return (
