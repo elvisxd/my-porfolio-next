@@ -1,5 +1,5 @@
 # My-Portfolio
-live preview https://my-porfolio-next-v1-1rf836cjq-elvisxds-projects.vercel.app/
+live preview https://my-porfolio-next.vercel.app/
 ## technologies 💻
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
