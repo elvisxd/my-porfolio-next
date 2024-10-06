@@ -31,14 +31,14 @@ export default function Component() {
             <div className="rounded-lg border bg-background p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
               <div className="flex items-center gap-4">
                 
-                <div className="rounded-md bg-secondary p-3 text-secondary-foreground">
-                  <AwardIcon className="h-6 w-6" />
+                <div className="rounded-md bg-primary p-3 text-secondary-foreground">
+                  <AwardIcon className="h-6 w-6 text-white" />
                 </div>
                 
                 <h3 className="text-lg font-semibold">Graduated Systems Engineer</h3>
 
               </div>
-              <Link href="https://portalunimar.unimar.edu.ve/home">
+              <Link target="_blank" href="https://portalunimar.unimar.edu.ve/home">
               <p className="mt-2 text-sm text-muted-foreground">
                 Graduated with a degree in Systems Engineering from the Unimar, Venezuela.
               </p>
@@ -53,7 +53,7 @@ export default function Component() {
                 <h3 className="text-lg font-semibold">Front - End Design Specialization</h3>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
-                <Link href="https://www.coursera.org/professional-certificates/meta-front-end-developer?">
+                <Link target="_blank" href="https://www.coursera.org/professional-certificates/meta-front-end-developer?">
                Current working on it. Specialization course on Coursera.
                <LinkIcon className="w-3 h-3 " />
                </Link>
@@ -61,13 +61,13 @@ export default function Component() {
             </div>
             <div className="rounded-lg border bg-background p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
               <div className="flex items-center gap-4">
-                <div className="rounded-md bg-card p-3 text-card-foreground">
-                  <CodeIcon className="h-6 w-6" />
+                <div className="rounded-md  p-3 text-card-foreground bg-black">
+                  <CodeIcon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold">Full-Stack Web Development Udemy</h3>
+                <h3 className="text-lg font-semibold">Meta Advanced React Certificate</h3>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
-                <Link href="https://www.udemy.com/course/the-complete-web-development-bootcamp/?couponCode=OF83024F">
+                <Link target="_blank" href="https://www.coursera.org/account/accomplishments/verify/9UXAD93Z6TDJ">
                  Full-Stack Web Development course on Udemy.
                 <LinkIcon className="w-3 h-3 " />
                 </Link>
@@ -75,13 +75,13 @@ export default function Component() {
             </div>
             <div className="rounded-lg border bg-background p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
               <div className="flex items-center gap-4">
-                <div className="rounded-md bg-accent p-3 text-accent-foreground">
-                  <PuzzleIcon className="h-6 w-6" />
+                <div className="rounded-md bg-black p-3 text-accent-foreground">
+                  <PuzzleIcon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold">Meta React Certificate</h3>
+                <h3 className="text-lg font-semibold">Meta React Basics Certificate</h3>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
-              <Link href="https://www.coursera.org/account/accomplishments/verify/W852TWECIXYB">
+              <Link target="_blank" href="https://www.coursera.org/account/accomplishments/verify/W852TWECIXYB">
                 Earned the Meta React Certificate from Coursera.
                 <LinkIcon className="w-3 h-3 " />
                 </Link>

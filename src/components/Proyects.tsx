@@ -82,7 +82,7 @@ function ProjectCard({ imageSrc, title, description, badges, liveLink, codeLink 
     };
     
     return (
-      <div className="relative overflow-hidden rounded-lg group">
+      <div className="relative overflow-hidden rounded-lg group shadow">
         <Image
           src={imageSrc}
           alt={title}
