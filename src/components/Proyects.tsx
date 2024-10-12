@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import calotimg from '@/assets/calot.png'
 import qrimg from '@/assets/qr-generator.png'
 import weatherimg from '@/assets/weatherApp.png'
-import financeimg from '@/assets/financepro.png'
+import financeimg from '@/assets/financepro-landing-page.png'
 import { Badge } from "@/components/ui/badge"
 import imgIA from '@/assets/gemini-chat-app.png'
 import Image from 'next/image';
@@ -19,7 +19,14 @@ export default function Component() {
           </div>
           </div>
     <section className="grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:p-6 lg:ml-20 lg:mr-20">
-
+    <ProjectCard
+        imageSrc={financeimg.src}
+        title="FinancePro - Beta Version"
+        description="FinancePro is a financial management platform that helps users track their income, expenses, and investments. With a user-friendly interface and powerful features, FinancePro makes it easy to manage your finances and achieve your financial goals. The platform offers tools for budgeting, expense tracking, investment analysis, and more. Whether you're a beginner or an experienced investor, FinancePro has everything you need to take control of your finances."
+        badges={['Next JS','React JS','Postgressql', 'Tailwindcss', 'Vercel']}
+        liveLink="https://financepro-iota.vercel.app/"
+        codeLink="#"
+      />
     <ProjectCard
         imageSrc={calotimg.src}
         title="Calot"
@@ -52,14 +59,7 @@ export default function Component() {
         liveLink="https://weather-app-one-sepia-34.vercel.app/"
         codeLink="https://github.com/elvisxd/weather-app"
       />
-       <ProjectCard
-        imageSrc={financeimg.src}
-        title="FinancePro - Current working on it"
-        description="FinancePro is a financial management platform that helps users track their income, expenses, and investments. With a user-friendly interface and powerful features, FinancePro makes it easy to manage your finances and achieve your financial goals. The platform offers tools for budgeting, expense tracking, investment analysis, and more. Whether you're a beginner or an experienced investor, FinancePro has everything you need to take control of your finances."
-        badges={['Next JS', 'Tailwindcss', 'Vercel']}
-        liveLink="#"
-        codeLink="#"
-      />
+
     </section>
     </div>
   )

@@ -88,6 +88,21 @@ export default function Component() {
               </p>
             </div>
 
+            <div className="rounded-lg border bg-background p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="rounded-md bg-black p-3 text-accent-foreground">
+                  <PuzzleIcon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">Introduction to Back-End Development</h3>
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+              <Link target="_blank" href="https://www.coursera.org/account/accomplishments/verify/FYCE14Q2I9Y3">
+                Earned the Introduction to Back-End Development Certificate from Coursera.
+                <LinkIcon className="w-3 h-3 " />
+                </Link>
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
