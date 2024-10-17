@@ -1,119 +1,57 @@
+'use client'
 
-export default function Component() {
-    return (
-      <footer className="bg-muted py-6 text-muted-foreground">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-4 sm:grid-cols-[1fr_auto] items-center">
-            <div className="grid gap-2">
-              <h3 className="text-lg font-bold">Elvis Pino</h3>
-              <div className="flex flex-col sm:flex-row gap-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <MailIcon className="w-4 h-4" />
-                  <a href="mailto:elvisreyxd@gmail.com">elvisreyxd@gmail.com</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <PhoneIcon className="w-4 h-4" />
-                  <a href="#">+1 (407) 437-9559</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <GitlabIcon className="w-4 h-4" />
-                  <a href="https://github.com/elvisxd/elvisxd" target="_blank" rel="noopener noreferrer">
-                    GitHub
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <LinkedinIcon className="w-4 h-4" />
-                  <a href="https://www.linkedin.com/in/elvis-pino-b358b2127/" target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="text-xs text-right">&copy; 2024 Elvis Pino. All rights reserved.</div>
+import React from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Mail, Phone, Github, Linkedin } from 'lucide-react'
+
+const contactInfo = [
+  { icon: Mail, text: 'elvisreyxd@gmail.com', href: 'mailto:elvisreyxd@gmail.com' },
+  { icon: Phone, text: '+1 (407) 437-9559', href: 'tel:+14074379559' },
+  { icon: Github, text: 'GitHub', href: 'https://github.com/elvisxd/elvisxd' },
+  { icon: Linkedin, text: 'LinkedIn', href: 'https://www.linkedin.com/in/elvis-pino-b358b2127/' },
+]
+
+export default function Footer() {
+  return (
+    <motion.footer 
+      className="bg-muted py-8 text-muted-foreground"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid gap-8 sm:grid-cols-2 items-start">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold">Elvis Pino</h3>
+            <p className="text-sm max-w-xs">Full-stack developer passionate about creating intuitive and efficient web applications.</p>
+          </div>
+          <div className="grid gap-4 text-sm">
+            {contactInfo.map((item, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <item.icon className="w-5 h-5" />
+                <Link 
+                  href={item.href}
+                  target={item.icon !== Phone && item.icon !== Mail ? "_blank" : undefined}
+                  rel={item.icon !== Phone && item.icon !== Mail ? "noopener noreferrer" : undefined}
+                  className="hover:text-primary transition-colors duration-200"
+                >
+                  {item.text}
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </footer>
-    )
-  }
-  
-  function GitlabIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.1 3.26a.42.42 0 0 0-.1-.18.38.38 0 0 0-.26-.08.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18L2 13.29a.74.74 0 0 0 .27.83L12 21l9.69-6.88a.71.71 0 0 0 .31-.83Z" />
-      </svg>
-    )
-  }
-  
-  
-  function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect width="4" height="12" x="2" y="9" />
-        <circle cx="4" cy="4" r="2" />
-      </svg>
-    )
-  }
-  
-  
-  function MailIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    )
-  }
-  
-  
-  function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-      <svg
-        {...props}
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-      </svg>
-    )
-  }
+        <div className="mt-8 pt-8 border-t border-muted-foreground/20 text-center text-sm">
+          &copy; {new Date().getFullYear()} Elvis Pino. All rights reserved.
+        </div>
+      </div>
+    </motion.footer>
+  )
+}
