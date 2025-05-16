@@ -131,9 +131,7 @@ export default function AboutMe({
             </Card>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">
-                Habilidades técnicas
-              </h2>
+              <h2 className="text-2xl font-semibold mb-4">Technical Skills</h2>
 
               {orderedCategories.map((category) => (
                 <SkillCategory
