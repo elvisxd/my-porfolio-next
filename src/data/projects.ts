@@ -4,7 +4,7 @@ import imageCalot from "@/assets/calot.png";
 import imageGeminiChat from "@/assets/gemini-chat-app.png";
 import imageQrGenerator from "@/assets/qr-generator.png";
 import imageWeatherApp from "@/assets/weatherApp.png";
-import imageEcommerceWeb from "@/assets/eccomerceweb.png";
+import imageEcommerceWeb from "@/assets/eccomerce.png";
 
 export const projects: Project[] = [
   {
