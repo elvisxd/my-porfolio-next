@@ -23,7 +23,7 @@ export const projects: Project[] = [
       { name: "Vercel Blob", color: "#000000" },
       { name: "Tailwind CSS", color: "#06B6D4" },
     ],
-    liveLink: "https://my-porfolio-next-v1.vercel.app/",
+    liveLink: "https://my-ecommerce-k0zn44dvp-elvisxds-projects.vercel.app/",
     codeLink: "#",
     status: "Completed",
     featured: true,
