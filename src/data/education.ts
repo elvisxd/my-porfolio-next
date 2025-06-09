@@ -1,12 +1,13 @@
+import type { Education } from "@/types/education";
 import {
   BookOpen,
   Brush,
   Code,
-  PuzzleIcon,
   GraduationCap,
+  PuzzleIcon,
   School,
+  Smartphone,
 } from "lucide-react";
-import type { Education } from "@/types/education";
 
 export const educationItems: Education[] = [
   {
@@ -38,6 +39,26 @@ export const educationItems: Education[] = [
       "Software Development",
       "Database Management",
       "System Architecture",
+    ],
+  },
+  {
+    id: "react-native-expo",
+    title: "React Native Expo: Native Applications for iOS and Android",
+    institution: "DevTalles",
+    description:
+      "Completion Certificate for React Native Expo development course covering native applications for iOS and Android platforms.",
+    type: "Certificate",
+    icon: Smartphone,
+    startDate: "2025-05-01",
+    endDate: "2025-06-09",
+    link: "https://cursos.devtalles.com/certificates/cgwvjogaxy",
+    credential: "cgwvjogaxy",
+    skills: [
+      "React Native",
+      "Expo",
+      "iOS Development",
+      "Android Development",
+      "Mobile Apps",
     ],
   },
   {

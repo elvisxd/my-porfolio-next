@@ -8,7 +8,14 @@ export const skills: Skill[] = [
     category: "Frontend",
     color: "#F7DF1E",
   },
+
   { name: "React", level: "Expert", category: "Frontend", color: "#61DAFB" },
+  {
+    name: "React Native",
+    level: "Advanced",
+    category: "Frontend",
+    color: "#61DAFB",
+  },
   {
     name: "TypeScript",
     level: "Expert",
