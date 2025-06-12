@@ -6,6 +6,7 @@ import {
   GraduationCap,
   PuzzleIcon,
   School,
+  Server,
   Smartphone,
 } from "lucide-react";
 
@@ -39,6 +40,28 @@ export const educationItems: Education[] = [
       "Software Development",
       "Database Management",
       "System Architecture",
+    ],
+  },
+  {
+    id: "nestjs-devtalles",
+    title: "NestJS: Backend Development with PostgreSQL and WebSockets",
+    institution: "DevTalles",
+    description:
+      "Comprehensive course covering NestJS framework development, PostgreSQL database integration, Docker containerization, ORM implementation, and real-time communication with WebSockets.",
+    type: "Certificate",
+    icon: Server,
+    startDate: "2025-04-01",
+    endDate: "2025-06-12",
+    link: "https://cursos.devtalles.com/certificates/2cyepaaiut",
+    credential: "2cyepaaiut",
+    skills: [
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+      "ORM",
+      "WebSockets",
+      "TypeScript",
+      "Backend Development",
     ],
   },
   {

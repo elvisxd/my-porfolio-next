@@ -1,12 +1,34 @@
-import type { Project } from "@/types/project";
-import imageFinancepro from "@/assets/financepro-landing-page.png";
 import imageCalot from "@/assets/calot.png";
+import imageEcommerceWeb from "@/assets/eccomerce.png";
+import imageFinancepro from "@/assets/financepro-landing-page.png";
 import imageGeminiChat from "@/assets/gemini-chat-app.png";
+import imageNestjsApi from "@/assets/NestJS-API-Railway-Deployment.png";
 import imageQrGenerator from "@/assets/qr-generator.png";
 import imageWeatherApp from "@/assets/weatherApp.png";
-import imageEcommerceWeb from "@/assets/eccomerce.png";
+import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
+  {
+    id: "nestjs-api",
+    title: "NestJS REST API",
+    description:
+      "A robust and scalable REST API built with NestJS and PostgreSQL. This API features comprehensive CRUD operations, authentication, data validation, and follows best practices for enterprise-level applications. The application is deployed on Railway with PostgreSQL database integration, offering high performance and reliability. Built with TypeScript for type safety and includes automated testing, API documentation with Swagger, and proper error handling.",
+    shortDescription:
+      "A scalable REST API built with NestJS, PostgreSQL, and deployed on Railway.",
+    imageSrc: imageNestjsApi.src as unknown as string,
+    technologies: [
+      { name: "NestJS", color: "#E0234E" },
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "PostgreSQL", color: "#336791" },
+      { name: "Railway", color: "#0B0D0E" },
+      { name: "Swagger", color: "#85EA2D" },
+    ],
+    liveLink: "https://restapi-production-ac90.up.railway.app/",
+    codeLink: "#",
+    status: "Completed",
+    featured: true,
+    createdAt: "2025-06-12",
+  },
   {
     id: "ecommerce-store",
     title: "Modern E-Commerce Store",

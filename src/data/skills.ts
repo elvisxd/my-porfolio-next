@@ -8,7 +8,6 @@ export const skills: Skill[] = [
     category: "Frontend",
     color: "#F7DF1E",
   },
-
   { name: "React", level: "Expert", category: "Frontend", color: "#61DAFB" },
   {
     name: "React Native",
@@ -24,6 +23,12 @@ export const skills: Skill[] = [
   },
   { name: "HTML", level: "Expert", category: "Frontend", color: "#E34F26" },
   { name: "CSS", level: "Advanced", category: "Frontend", color: "#1572B6" },
+  {
+    name: "Tailwind CSS",
+    level: "Advanced",
+    category: "Frontend",
+    color: "#06B6D4",
+  },
   {
     name: "Vue",
     level: "Intermediate",
@@ -41,6 +46,18 @@ export const skills: Skill[] = [
   // Backend
   { name: "Node.js", level: "Advanced", category: "Backend", color: "#339933" },
   {
+    name: "NestJS",
+    level: "Advanced",
+    category: "Backend",
+    color: "#E0234E",
+  },
+  {
+    name: "Express.js",
+    level: "Advanced",
+    category: "Backend",
+    color: "#000000",
+  },
+  {
     name: "GraphQL",
     level: "Intermediate",
     category: "Backend",
@@ -51,6 +68,12 @@ export const skills: Skill[] = [
     level: "Intermediate",
     category: "Backend",
     color: "#3776AB",
+  },
+  {
+    name: "PHP",
+    level: "Intermediate",
+    category: "Backend",
+    color: "#777BB4",
   },
 
   // Database
@@ -67,6 +90,18 @@ export const skills: Skill[] = [
     category: "Database",
     color: "#336791",
   },
+  {
+    name: "MySQL",
+    level: "Advanced",
+    category: "Database",
+    color: "#4479A1",
+  },
+  {
+    name: "Supabase",
+    level: "Intermediate",
+    category: "Database",
+    color: "#3ECF8E",
+  },
 
   // DevOps
   { name: "AWS", level: "Intermediate", category: "DevOps", color: "#FF9900" },
@@ -75,6 +110,18 @@ export const skills: Skill[] = [
     level: "Intermediate",
     category: "DevOps",
     color: "#2496ED",
+  },
+  {
+    name: "Railway",
+    level: "Intermediate",
+    category: "DevOps",
+    color: "#0B0D0E",
+  },
+  {
+    name: "Vercel",
+    level: "Advanced",
+    category: "DevOps",
+    color: "#000000",
   },
 
   // Tools
@@ -91,6 +138,12 @@ export const skills: Skill[] = [
     level: "Intermediate",
     category: "Tools",
     color: "#000000",
+  },
+  {
+    name: "Swagger",
+    level: "Intermediate",
+    category: "Tools",
+    color: "#85EA2D",
   },
 ];
 
