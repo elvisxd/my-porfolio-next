@@ -1,3 +1,4 @@
+import imageApp1 from "@/assets/appphoto2.png";
 import imageCalot from "@/assets/calot.png";
 import imageEcommerceWeb from "@/assets/eccomerce.png";
 import imageFinancepro from "@/assets/financepro-landing-page.png";
@@ -8,6 +9,30 @@ import imageWeatherApp from "@/assets/weatherApp.png";
 import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
+  {
+    id: "mobile-app-nestjs",
+    title: "Mobile App - NestJS Backend",
+    description:
+      "A comprehensive mobile application built with React Native and Expo, featuring a robust NestJS backend. The app includes Google Sign-In authentication through Firebase, real-time data synchronization with Supabase, and a modern user interface. Built with TypeScript for type safety and Axios for HTTP requests, this application demonstrates full-stack mobile development with enterprise-level architecture. The project utilizes Android Studio for development and testing, with proper pod management for iOS compatibility.",
+    shortDescription:
+      "A full-stack mobile app with React Native, NestJS backend, and Firebase authentication.",
+    imageSrc: imageApp1.src as unknown as string,
+    technologies: [
+      { name: "React Native", color: "#61DAFB" },
+      { name: "Expo", color: "#000020" },
+      { name: "NestJS", color: "#E0234E" },
+      { name: "Supabase", color: "#3ECF8E" },
+      { name: "Firebase", color: "#FFCA28" },
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "Axios", color: "#5A29E4" },
+      { name: "Android Studio", color: "#3DDC84" },
+    ],
+    liveLink: "#",
+    codeLink: "#",
+    status: "In Progress",
+    featured: true,
+    createdAt: "2025-07-01",
+  },
   {
     id: "nestjs-api",
     title: "NestJS REST API",

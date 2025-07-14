@@ -1,11 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,8 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Eye, Github, ChevronDown, ChevronUp, Calendar } from "lucide-react";
 import type { Project } from "@/types/project";
+import { AnimatePresence, motion } from "framer-motion";
+import { Calendar, ChevronDown, ChevronUp, Eye, Github, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 interface ProjectCardProps {
   project: Project;
@@ -23,9 +23,18 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   // Format date
@@ -45,7 +54,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="h-full"
     >
       <Card className="overflow-hidden h-full flex flex-col">
-        <div className="relative aspect-video overflow-hidden group">
+        <div
+          className="relative aspect-video overflow-hidden group cursor-pointer"
+          onClick={openModal}
+        >
           <Image
             src={project.imageSrc || "/placeholder.svg"}
             alt={project.title}
@@ -53,6 +65,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Eye className="h-8 w-8 text-white" />
+            </div>
+          </div>
           {project.status && (
             <div className="absolute top-2 right-2">
               <Badge
@@ -168,6 +185,54 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         </CardFooter>
       </Card>
+
+      {/* Image Preview Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="relative max-w-4xl max-h-[90vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-auto">
+                <Image
+                  src={project.imageSrc || "/placeholder.svg"}
+                  alt={`${project.title} - Preview`}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-contain rounded-lg"
+                />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-4 right-4 bg-black bg-opacity-50 hover:bg-opacity-70 text-white"
+                  onClick={closeModal}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="mt-4 text-center">
+                <h3 className="text-white text-lg font-semibold">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 text-sm mt-1">
+                  {project.shortDescription}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
