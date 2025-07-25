@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SkillCategory } from "@/components/skill-category";
 import { skills, skillCategories } from "@/data/skills";
 import type { AboutMeProps } from "@/types/skills";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
 import meImage from "@/assets/me1.jpg";
 
 export default function AboutMe({
@@ -84,6 +84,18 @@ export default function AboutMe({
               <Button variant="outline" size="icon" asChild>
                 <a href="mailto:elvisreyxd@gmail.com" aria-label="Email Me">
                   <Mail className="h-5 w-5" />
+                </a>
+              </Button>
+
+              <Button variant="outline" asChild>
+                <a
+                  href="/cv/Elvis-Pino-CV.pdf"
+                  download="Elvis-Pino-CV.pdf"
+                  aria-label="Download CV"
+                  className="flex items-center gap-2"
+                >
+                  <Download className="h-4 w-4" />
+                  Download CV
                 </a>
               </Button>
             </div>

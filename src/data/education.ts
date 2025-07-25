@@ -12,6 +12,27 @@ import {
 
 export const educationItems: Education[] = [
   {
+    id: "dotnet-backend-devtalles",
+    title: ".NET Backend: .NET Core, SQL Server and JWT Security",
+    institution: "DevTalles",
+    description:
+      "Intensive course covering .NET Core backend development, SQL Server database management, and JWT security implementation for secure API authentication.",
+    type: "Certificate",
+    icon: Server,
+    startDate: "2025-06-01",
+    endDate: "2025-07-22",
+    link: "https://cursos.devtalles.com/certificates/bhe9ladrfd",
+    credential: "bhe9ladrfd",
+    skills: [
+      ".NET Core",
+      "SQL Server",
+      "JWT Security",
+      "API Authentication",
+      "Backend Development",
+      "C#",
+    ],
+  },
+  {
     id: "computer-science-bachelor",
     title: "Bachelor of Computer Science",
     institution: "Maria Auxiliadora II",

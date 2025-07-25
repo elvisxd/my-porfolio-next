@@ -11,7 +11,7 @@ export const skills: Skill[] = [
   { name: "React", level: "Expert", category: "Frontend", color: "#61DAFB" },
   {
     name: "React Native",
-    level: "Advanced",
+    level: "Expert",
     category: "Frontend",
     color: "#61DAFB",
   },
@@ -47,7 +47,7 @@ export const skills: Skill[] = [
   { name: "Node.js", level: "Advanced", category: "Backend", color: "#339933" },
   {
     name: "NestJS",
-    level: "Advanced",
+    level: "Expert",
     category: "Backend",
     color: "#E0234E",
   },
@@ -59,7 +59,7 @@ export const skills: Skill[] = [
   },
   {
     name: "GraphQL",
-    level: "Intermediate",
+    level: "Advanced",
     category: "Backend",
     color: "#E10098",
   },
@@ -71,9 +71,21 @@ export const skills: Skill[] = [
   },
   {
     name: "PHP",
-    level: "Intermediate",
+    level: "Advanced",
     category: "Backend",
     color: "#777BB4",
+  },
+  {
+    name: "C#",
+    level: "Expert",
+    category: "Backend",
+    color: "#239120",
+  },
+  {
+    name: "Java",
+    level: "Expert",
+    category: "Backend",
+    color: "#ED8B00",
   },
 
   // Database
@@ -102,9 +114,39 @@ export const skills: Skill[] = [
     category: "Database",
     color: "#3ECF8E",
   },
+  {
+    name: "SQL Server",
+    level: "Advanced",
+    category: "Database",
+    color: "#CC2927",
+  },
+  {
+    name: "Azure SQL",
+    level: "Advanced",
+    category: "Database",
+    color: "#0078D4",
+  },
+  {
+    name: "Entity Framework",
+    level: "Advanced",
+    category: "Database",
+    color: "#512BD4",
+  },
 
   // DevOps
   { name: "AWS", level: "Intermediate", category: "DevOps", color: "#FF9900" },
+  {
+    name: "Azure",
+    level: "Advanced",
+    category: "DevOps",
+    color: "#0078D4",
+  },
+  {
+    name: "Azure DevOps",
+    level: "Intermediate",
+    category: "DevOps",
+    color: "#0078D4",
+  },
   {
     name: "Docker",
     level: "Intermediate",
