@@ -5,13 +5,18 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { BackToTop } from "@/components/back-to-top";
-import { NewsletterForm } from "@/components/newsletter-form";
-import { contactInfo, footerSections } from "@/data/contact";
+
+import { contactInfo, getFooterSections } from "@/data/contact";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { FooterProps } from "@/types/footer";
 import { Mail, Phone } from "lucide-react";
 
 export default function Footer({ className = "" }: FooterProps) {
+  const { t, language } = useTranslation();
   const currentYear = new Date().getFullYear();
+
+  // Get translated footer sections based on current language
+  const footerSections = getFooterSections(language);
 
   return (
     <>
@@ -23,13 +28,12 @@ export default function Footer({ className = "" }: FooterProps) {
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {/* About section */}
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Left side - About section */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-foreground">Elvis Pino</h3>
-              <p className="text-sm max-w-xs">
-                Full-stack developer passionate about creating intuitive and
-                efficient web applications with modern technologies.
+              <p className="text-sm max-w-md leading-relaxed">
+                {t("about.description1")}
               </p>
               <div className="flex space-x-3">
                 {contactInfo
@@ -60,58 +64,56 @@ export default function Footer({ className = "" }: FooterProps) {
               </div>
             </div>
 
-            {/* Navigation sections */}
-            {footerSections.map((section) => (
-              <div key={section.id} className="space-y-4">
-                <h3 className="text-base font-semibold text-foreground">
-                  {section.title}
-                </h3>
-                <ul className="space-y-2">
-                  {section.links.map((link) => (
-                    <li key={link.id}>
-                      <Link
-                        href={link.href}
-                        target={link.isExternal ? "_blank" : undefined}
-                        rel={
-                          link.isExternal ? "noopener noreferrer" : undefined
-                        }
-                        className="text-sm hover:text-primary transition-colors duration-200"
-                      >
-                        {link.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-
-            {/* Contact section */}
-            <div className="space-y-4">
-              <h3 className="text-base font-semibold text-foreground">
-                Contact
-              </h3>
-              <ul className="space-y-2">
-                {contactInfo
-                  .filter((item) => item.icon === Mail || item.icon === Phone)
-                  .map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <li key={item.id}>
+            {/* Right side - Navigation and Contact */}
+            <div className="grid gap-8 sm:grid-cols-2">
+              {/* Navigation section */}
+              {footerSections.map((section) => (
+                <div key={section.id} className="space-y-4">
+                  <h3 className="text-base font-semibold text-foreground">
+                    {section.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {section.links.map((link) => (
+                      <li key={link.id}>
                         <Link
-                          href={item.href}
-                          className="text-sm flex items-center gap-2 hover:text-primary transition-colors duration-200"
+                          href={link.href}
+                          target={link.isExternal ? "_blank" : undefined}
+                          rel={
+                            link.isExternal ? "noopener noreferrer" : undefined
+                          }
+                          className="text-sm hover:text-primary transition-colors duration-200"
                         >
-                          <Icon className="h-4 w-4" />
-                          <span>{item.text}</span>
+                          {link.text}
                         </Link>
                       </li>
-                    );
-                  })}
-              </ul>
+                    ))}
+                  </ul>
+                </div>
+              ))}
 
-              {/* Newsletter form */}
-              <div className="pt-4">
-                <NewsletterForm />
+              {/* Contact section */}
+              <div className="space-y-4">
+                <h3 className="text-base font-semibold text-foreground">
+                  {t("footer.contactMe")}
+                </h3>
+                <ul className="space-y-2">
+                  {contactInfo
+                    .filter((item) => item.icon === Mail || item.icon === Phone)
+                    .map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={item.id}>
+                          <Link
+                            href={item.href}
+                            className="text-sm flex items-center gap-2 hover:text-primary transition-colors duration-200"
+                          >
+                            <Icon className="h-4 w-4" />
+                            <span>{item.text}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                </ul>
               </div>
             </div>
           </div>
@@ -120,7 +122,7 @@ export default function Footer({ className = "" }: FooterProps) {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-center md:text-left">
-              &copy; {currentYear} Elvis Pino. All rights reserved.
+              &copy; {currentYear} Elvis Pino. {t("footer.allRightsReserved")}
             </p>
             <div className="flex items-center gap-4 text-sm">
               <Link

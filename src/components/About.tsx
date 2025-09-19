@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SkillCategory } from "@/components/skill-category";
-import { skills, skillCategories } from "@/data/skills";
+import { skills, getSkillCategories } from "@/data/skills";
 import type { AboutMeProps } from "@/types/skills";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import meImage from "@/assets/me1.jpg";
 
@@ -13,6 +14,11 @@ export default function AboutMe({
   className = "",
   id = "about",
 }: AboutMeProps) {
+  const { t, language } = useTranslation();
+
+  // Get translated skill categories based on current language
+  const skillCategories = getSkillCategories(language);
+
   // Agrupar habilidades por categoría
   const skillsByCategory = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -89,13 +95,21 @@ export default function AboutMe({
 
               <Button variant="outline" asChild>
                 <a
-                  href="/cv/Elvis-Pino-CV.pdf"
-                  download="Elvis-Pino-CV.pdf"
+                  href={
+                    language === "es"
+                      ? "/cv/Elvis-Pino-CV-ES.pdf"
+                      : "/cv/Elvis-Pino-CV.pdf"
+                  }
+                  download={
+                    language === "es"
+                      ? "Elvis-Pino-CV-ES.pdf"
+                      : "Elvis-Pino-CV.pdf"
+                  }
                   aria-label="Download CV"
                   className="flex items-center gap-2"
                 >
                   <Download className="h-4 w-4" />
-                  Download CV
+                  {t("about.downloadCV")}
                 </a>
               </Button>
             </div>
@@ -117,33 +131,28 @@ export default function AboutMe({
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                Full-stack Developer
+                {t("about.fullstackDeveloper")}
               </motion.p>
             </div>
 
             <Card>
               <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">About me</h2>
+                <h2 className="text-2xl font-semibold mb-4">
+                  {t("about.title")}
+                </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  I&apos;m a passionate full-stack developer with solid
-                  experience in JavaScript, React, and Node.js. With a keen eye
-                  for design and a love for creating intuitive user experiences,
-                  I specialize in building scalable and maintainable web
-                  applications. My journey in technology is driven by an
-                  insatiable curiosity and a commitment to staying at the
-                  forefront of emerging technologies.
+                  {t("about.description1")}
                 </p>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  When I&apos;m not coding, you can find me exploring new hiking
-                  trails, experimenting with new recipes in the kitchen, or
-                  immersing myself in a good book about software architecture
-                  and design patterns.
+                  {t("about.description2")}
                 </p>
               </CardContent>
             </Card>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Technical Skills</h2>
+              <h2 className="text-2xl font-semibold mb-4">
+                {t("about.technicalSkills")}
+              </h2>
 
               {orderedCategories.map((category) => (
                 <SkillCategory

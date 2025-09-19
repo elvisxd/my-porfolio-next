@@ -189,11 +189,46 @@ export const skills: Skill[] = [
   },
 ];
 
-export const skillCategories: { [key: string]: string } = {
-  Frontend: "User Interface Technologies",
-  Backend: "Server and API Development",
-  Database: "Databases and Storage",
-  DevOps: "Infrastructure and Deployment",
-  Tools: "Development Tools",
-  Languages: "Programming Languages",
+type Language = "en" | "es";
+
+const skillCategoriesData: { [key: string]: Record<Language, string> } = {
+  Frontend: {
+    en: "User Interface Technologies",
+    es: "Tecnologías de Interfaz de Usuario",
+  },
+  Backend: {
+    en: "Server and API Development",
+    es: "Desarrollo de Servidor y APIs",
+  },
+  Database: {
+    en: "Databases and Storage",
+    es: "Bases de Datos y Almacenamiento",
+  },
+  DevOps: {
+    en: "Infrastructure and Deployment",
+    es: "Infraestructura y Despliegue",
+  },
+  Tools: {
+    en: "Development Tools",
+    es: "Herramientas de Desarrollo",
+  },
+  Languages: {
+    en: "Programming Languages",
+    es: "Lenguajes de Programación",
+  },
 };
+
+// Helper function to get skill categories with current language
+export const getSkillCategories = (
+  language: Language = "en"
+): { [key: string]: string } => {
+  const result: { [key: string]: string } = {};
+  for (const [key, value] of Object.entries(skillCategoriesData)) {
+    result[key] = value[language];
+  }
+  return result;
+};
+
+// Export skill categories with default English language for backward compatibility
+export const skillCategories: { [key: string]: string } =
+  getSkillCategories("en");

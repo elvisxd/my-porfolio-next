@@ -10,13 +10,26 @@ import {
   Smartphone,
 } from "lucide-react";
 
-export const educationItems: Education[] = [
+type Language = "en" | "es";
+
+interface TranslatableEducation
+  extends Omit<Education, "title" | "description"> {
+  title: Record<Language, string>;
+  description: Record<Language, string>;
+}
+
+const educationData: TranslatableEducation[] = [
   {
     id: "dotnet-backend-devtalles",
-    title: ".NET Backend: .NET Core, SQL Server and JWT Security",
+    title: {
+      en: ".NET Backend: .NET Core, SQL Server and JWT Security",
+      es: "Backend .NET: .NET Core, SQL Server y Seguridad JWT",
+    },
     institution: "DevTalles",
-    description:
-      "Intensive course covering .NET Core backend development, SQL Server database management, and JWT security implementation for secure API authentication.",
+    description: {
+      en: "Intensive course covering .NET Core backend development, SQL Server database management, and JWT security implementation for secure API authentication.",
+      es: "Curso intensivo cubriendo desarrollo backend con .NET Core, gestión de bases de datos SQL Server, e implementación de seguridad JWT para autenticación segura de APIs.",
+    },
     type: "Certificate",
     icon: Server,
     startDate: "2025-06-01",
@@ -34,11 +47,16 @@ export const educationItems: Education[] = [
   },
   {
     id: "computer-science-bachelor",
-    title: "Bachelor of Computer Science",
+    title: {
+      en: "Bachelor of Computer Science",
+      es: "Licenciatura en Ciencias de la Computación",
+    },
     institution: "Maria Auxiliadora II",
     location: "Venezuela",
-    description:
-      "Graduated with a degree in Computer Science, focusing on programming fundamentals, algorithms, and data structures.",
+    description: {
+      en: "Graduated with a degree in Computer Science, focusing on programming fundamentals, algorithms, and data structures.",
+      es: "Graduado con un título en Ciencias de la Computación, enfocándose en fundamentos de programación, algoritmos y estructuras de datos.",
+    },
     type: "Degree",
     icon: School,
     startDate: "2008-09-01",
@@ -47,11 +65,16 @@ export const educationItems: Education[] = [
   },
   {
     id: "systems-engineering",
-    title: "Systems Engineering",
+    title: {
+      en: "Systems Engineering",
+      es: "Ingeniería de Sistemas",
+    },
     institution: "Unimar",
     location: "Venezuela",
-    description:
-      "Graduated with a degree in Systems Engineering, with emphasis on software development, database management, and system architecture.",
+    description: {
+      en: "Graduated with a degree in Systems Engineering, with emphasis on software development, database management, and system architecture.",
+      es: "Graduado con un título en Ingeniería de Sistemas, con énfasis en desarrollo de software, gestión de bases de datos y arquitectura de sistemas.",
+    },
     type: "Degree",
     icon: GraduationCap,
     startDate: "2012-09-01",
@@ -65,10 +88,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "nestjs-devtalles",
-    title: "NestJS: Backend Development with PostgreSQL and WebSockets",
+    title: {
+      en: "NestJS: Backend Development with PostgreSQL and WebSockets",
+      es: "NestJS: Desarrollo Backend con PostgreSQL y WebSockets",
+    },
     institution: "DevTalles",
-    description:
-      "Comprehensive course covering NestJS framework development, PostgreSQL database integration, Docker containerization, ORM implementation, and real-time communication with WebSockets.",
+    description: {
+      en: "Comprehensive course covering NestJS framework development, PostgreSQL database integration, Docker containerization, ORM implementation, and real-time communication with WebSockets.",
+      es: "Curso integral cubriendo desarrollo del framework NestJS, integración de bases de datos PostgreSQL, containerización con Docker, implementación de ORM y comunicación en tiempo real con WebSockets.",
+    },
     type: "Certificate",
     icon: Server,
     startDate: "2025-04-01",
@@ -87,10 +115,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "react-native-expo",
-    title: "React Native Expo: Native Applications for iOS and Android",
+    title: {
+      en: "React Native Expo: Native Applications for iOS and Android",
+      es: "React Native Expo: Aplicaciones Nativas para iOS y Android",
+    },
     institution: "DevTalles",
-    description:
-      "Completion Certificate for React Native Expo development course covering native applications for iOS and Android platforms.",
+    description: {
+      en: "Completion Certificate for React Native Expo development course covering native applications for iOS and Android platforms.",
+      es: "Certificado de finalización del curso de desarrollo React Native Expo cubriendo aplicaciones nativas para plataformas iOS y Android.",
+    },
     type: "Certificate",
     icon: Smartphone,
     startDate: "2025-05-01",
@@ -107,10 +140,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "frontend-specialization",
-    title: "Front-End Design Specialization",
+    title: {
+      en: "Front-End Design Specialization",
+      es: "Especialización en Diseño Front-End",
+    },
     institution: "Coursera (Meta)",
-    description:
-      "Comprehensive specialization covering modern front-end development practices, responsive design, and user experience principles.",
+    description: {
+      en: "Comprehensive specialization covering modern front-end development practices, responsive design, and user experience principles.",
+      es: "Especialización integral cubriendo prácticas modernas de desarrollo front-end, diseño responsivo y principios de experiencia de usuario.",
+    },
     type: "Specialization",
     icon: Brush,
     startDate: "2023-01-15",
@@ -126,10 +164,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "advanced-react",
-    title: "Meta Advanced React Certificate",
+    title: {
+      en: "Meta Advanced React Certificate",
+      es: "Certificado Avanzado de React de Meta",
+    },
     institution: "Coursera",
-    description:
-      "Advanced course covering React hooks, context API, performance optimization, and testing strategies for complex applications.",
+    description: {
+      en: "Advanced course covering React hooks, context API, performance optimization, and testing strategies for complex applications.",
+      es: "Curso avanzado cubriendo React hooks, context API, optimización de rendimiento y estrategias de testing para aplicaciones complejas.",
+    },
     type: "Certificate",
     icon: Code,
     startDate: "2022-09-10",
@@ -145,10 +188,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "react-basics",
-    title: "Meta React Basics Certificate",
+    title: {
+      en: "Meta React Basics Certificate",
+      es: "Certificado de Fundamentos de React de Meta",
+    },
     institution: "Coursera",
-    description:
-      "Foundational course covering React fundamentals, component architecture, state management, and props.",
+    description: {
+      en: "Foundational course covering React fundamentals, components, props, state management, and basic application development.",
+      es: "Curso fundamental cubriendo fundamentos de React, componentes, props, gestión de estado y desarrollo básico de aplicaciones.",
+    },
     type: "Certificate",
     icon: PuzzleIcon,
     startDate: "2022-07-05",
@@ -163,10 +211,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "backend-intro",
-    title: "Introduction to Back-End Development",
+    title: {
+      en: "Introduction to Back-End Development",
+      es: "Introducción al Desarrollo Back-End",
+    },
     institution: "Coursera (Meta)",
-    description:
-      "Introductory course covering server-side programming, API development, and database integration.",
+    description: {
+      en: "Introductory course covering server-side programming, API development, and database integration.",
+      es: "Curso introductorio cubriendo programación del lado del servidor, desarrollo de APIs e integración de bases de datos.",
+    },
     type: "Certificate",
     icon: Code,
     startDate: "2022-05-15",
@@ -177,10 +230,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "javascript-algorithms",
-    title: "JavaScript Algorithms and Data Structures",
+    title: {
+      en: "JavaScript Algorithms and Data Structures",
+      es: "Algoritmos y Estructuras de Datos en JavaScript",
+    },
     institution: "freeCodeCamp",
-    description:
-      "Comprehensive course on JavaScript algorithms and data structures, covering fundamental programming concepts and problem-solving techniques.",
+    description: {
+      en: "Comprehensive certification covering JavaScript programming fundamentals, algorithms, and data structure implementations.",
+      es: "Certificación integral cubriendo fundamentos de programación JavaScript, algoritmos e implementaciones de estructuras de datos.",
+    },
     type: "Certificate",
     icon: BookOpen,
     startDate: "2021-11-01",
@@ -190,10 +248,15 @@ export const educationItems: Education[] = [
   },
   {
     id: "responsive-web-design",
-    title: "Responsive Web Design",
+    title: {
+      en: "Responsive Web Design",
+      es: "Diseño Web Responsivo",
+    },
     institution: "freeCodeCamp",
-    description:
-      "Course focused on building responsive websites with HTML, CSS, and accessibility best practices.",
+    description: {
+      en: "Course focused on building responsive websites with HTML, CSS, and accessibility best practices.",
+      es: "Curso enfocado en construir sitios web responsivos con HTML, CSS y mejores prácticas de accesibilidad.",
+    },
     type: "Certificate",
     icon: Brush,
     startDate: "2021-08-10",
@@ -203,10 +266,22 @@ export const educationItems: Education[] = [
   },
 ];
 
+// Helper function to get education items with current language
+export const getEducationItems = (language: Language = "en"): Education[] => {
+  return educationData.map((item) => ({
+    ...item,
+    title: item.title[language],
+    description: item.description[language],
+  }));
+};
+
+// Export education items with default English language for backward compatibility
+export const educationItems: Education[] = getEducationItems("en");
+
 export const getEducationTypes = (): string[] => {
   const typesSet = new Set<string>();
 
-  educationItems.forEach((item) => {
+  educationData.forEach((item) => {
     typesSet.add(item.type);
   });
 

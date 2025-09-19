@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { Education } from "@/types/education";
 
 interface EducationTimelineProps {
@@ -44,6 +45,7 @@ interface TimelineItemProps {
 
 function TimelineItem({ item, index }: TimelineItemProps) {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
   const Icon = item.icon;
 
   // Format dates
@@ -53,7 +55,7 @@ function TimelineItem({ item, index }: TimelineItemProps) {
   });
 
   const endDate = item.inProgress
-    ? "Present"
+    ? t("common.present")
     : item.endDate
     ? new Date(item.endDate).toLocaleDateString("en-US", {
         year: "numeric",
@@ -80,7 +82,9 @@ function TimelineItem({ item, index }: TimelineItemProps) {
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <h3 className="text-lg font-semibold">{item.title}</h3>
           <Badge variant="outline">{item.type}</Badge>
-          {item.inProgress && <Badge variant="secondary">In Progress</Badge>}
+          {item.inProgress && (
+            <Badge variant="secondary">{t("common.inProgress")}</Badge>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-3">
@@ -115,7 +119,7 @@ function TimelineItem({ item, index }: TimelineItemProps) {
                 onClick={() => setExpanded(!expanded)}
                 className="mt-2 h-auto p-0 text-primary"
               >
-                {expanded ? "Show less" : "Show more"}
+                {expanded ? t("common.showLess") : t("common.showMore")}
               </Button>
             )}
 
@@ -137,7 +141,7 @@ function TimelineItem({ item, index }: TimelineItemProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-sm font-medium text-primary hover:underline"
                 >
-                  View Certificate
+                  {t("common.viewCertificate")}
                   <ExternalLink className="ml-1 h-3 w-3" />
                 </a>
               </div>

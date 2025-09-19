@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { WorkExperience } from "@/types/experience";
 import Image from "next/image";
 
@@ -16,6 +17,7 @@ interface ExperienceCardProps {
 }
 
 export function ExperienceCard({ experience, isEven }: ExperienceCardProps) {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
@@ -66,7 +68,7 @@ export function ExperienceCard({ experience, isEven }: ExperienceCardProps) {
           )}
           {experience.current && (
             <Badge variant="default" className="text-xs">
-              Current
+              {t("common.current")}
             </Badge>
           )}
         </div>
@@ -122,11 +124,11 @@ export function ExperienceCard({ experience, isEven }: ExperienceCardProps) {
         >
           {isExpanded ? (
             <>
-              Show Less <ChevronUp size={16} />
+              {t("common.showLess")} <ChevronUp size={16} />
             </>
           ) : (
             <>
-              Show More <ChevronDown size={16} />
+              {t("common.showMore")} <ChevronDown size={16} />
             </>
           )}
         </Button>

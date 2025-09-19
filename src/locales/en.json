@@ -1,0 +1,100 @@
+{
+  "header": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "studies": "Studies & Certificates",
+    "softwareEngineer": "Software Engineer"
+  },
+  "about": {
+    "title": "About me",
+    "fullstackDeveloper": "Full-stack Developer",
+    "description1": "I'm a passionate full-stack developer with solid experience in JavaScript, React, and Node.js. With a keen eye for design and a love for creating intuitive user experiences, I specialize in building scalable and maintainable web applications. My journey in technology is driven by an insatiable curiosity and a commitment to staying at the forefront of emerging technologies.",
+    "description2": "When I'm not coding, you can find me exploring new hiking trails, experimenting with new recipes in the kitchen, or immersing myself in a good book about software architecture and design patterns.",
+    "technicalSkills": "Technical Skills",
+    "downloadCV": "Download CV"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "professionalJourney": "My Professional Journey",
+    "description": "Explore my career path and the valuable experiences I've gained along the way.",
+    "present": "Present",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies"
+  },
+  "projects": {
+    "title": "Projects",
+    "myWork": "My Work",
+    "description": "Explore a selection of my projects, showcasing my skills and experience in web development.",
+    "searchPlaceholder": "Search projects...",
+    "showFilters": "Show Filters",
+    "hideFilters": "Hide Filters",
+    "clearFilters": "Clear Filters",
+    "clearAllFilters": "Clear all filters",
+    "noProjectsFound": "No projects found",
+    "noProjectsDescription": "Try adjusting your search or filter criteria to find projects.",
+    "liveDemo": "Live Demo",
+    "viewCode": "View Code",
+    "noDemo": "No Demo",
+    "privateCode": "Private Code",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "beta": "Beta"
+    }
+  },
+  "education": {
+    "title": "Studies & Certificates",
+    "educationalJourney": "My Educational Journey",
+    "description": "Explore the various studies and certificates I've completed to enhance my expertise in software development and design.",
+    "all": "All",
+    "grid": "Grid",
+    "timeline": "Timeline",
+    "degree": "Degree",
+    "certificate": "Certificate",
+    "specialization": "Specialization",
+    "inProgress": "In Progress",
+    "skills": "Skills learned"
+  },
+  "hero": {
+    "welcome": "Welcome to My Portfolio",
+    "description": "I'm Elvis Pino, a Full-Stack Developer passionate about creating modern web experiences with cutting-edge technologies.",
+    "exploreWork": "Explore My Work",
+    "getInTouch": "Get In Touch",
+    "scrollToExplore": "Scroll to explore"
+  },
+  "footer": {
+    "builtWith": "Built with",
+    "by": "by",
+    "allRightsReserved": "All rights reserved.",
+    "contactMe": "Contact Me",
+    "followMe": "Follow Me"
+  },
+  "skillCategories": {
+    "frontend": "User Interface Technologies",
+    "backend": "Server and API Development",
+    "database": "Databases and Storage",
+    "devops": "Infrastructure and Deployment",
+    "tools": "Development Tools",
+    "languages": "Programming Languages"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "current": "Current",
+    "present": "Present",
+    "inProgress": "In Progress",
+    "viewCertificate": "View Certificate"
+  }
+}

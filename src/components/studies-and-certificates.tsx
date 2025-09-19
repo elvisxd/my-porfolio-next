@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EducationCard } from "@/components/education-card";
 import { EducationTimeline } from "@/components/education-timeline";
-import { educationItems, getEducationTypes } from "@/data/education";
+import { getEducationItems, getEducationTypes } from "@/data/education";
+import { useTranslation } from "@/hooks/useTranslation";
 import { ViewIcon as ViewGrid, Clock } from "lucide-react";
 import type { StudiesProps } from "@/types/education";
 
@@ -14,9 +15,12 @@ export default function StudiesAndCertificates({
   className = "",
   id = "Studies",
 }: StudiesProps) {
+  const { t, language } = useTranslation();
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "timeline">("grid");
 
+  // Get translated education items based on current language
+  const educationItems = getEducationItems(language);
   const educationTypes = getEducationTypes();
 
   const filteredItems = selectedType
@@ -51,14 +55,13 @@ export default function StudiesAndCertificates({
           className="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
-            Studies & Certificates
+            {t("education.title")}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            My Educational Journey
+            {t("education.educationalJourney")}
           </h2>
           <p className="max-w-[900px] text-muted-foreground text-sm sm:text-base">
-            Explore the various studies and certificates I&apos;ve completed to
-            enhance my expertise in software development and design.
+            {t("education.description")}
           </p>
         </motion.div>
 
@@ -69,7 +72,7 @@ export default function StudiesAndCertificates({
               size="sm"
               onClick={() => setSelectedType(null)}
             >
-              All
+              {t("education.all")}
             </Button>
             {educationTypes.map((type) => (
               <Button
@@ -91,7 +94,7 @@ export default function StudiesAndCertificates({
               className="flex items-center gap-2"
             >
               <ViewGrid className="h-4 w-4" />
-              Grid
+              {t("education.grid")}
             </Button>
             <Button
               variant={viewMode === "timeline" ? "default" : "outline"}
@@ -100,7 +103,7 @@ export default function StudiesAndCertificates({
               className="flex items-center gap-2"
             >
               <Clock className="h-4 w-4" />
-              Timeline
+              {t("education.timeline")}
             </Button>
           </div>
         </div>

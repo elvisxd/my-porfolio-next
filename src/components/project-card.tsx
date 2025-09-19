@@ -15,6 +15,7 @@ import { Calendar, ChevronDown, ChevronUp, Eye, Github, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ProjectCardProps {
   project: Project;
@@ -24,6 +25,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -122,11 +124,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           >
             {isExpanded ? (
               <>
-                Show less <ChevronUp className="ml-1 h-4 w-4" />
+                {t("projects.showLess")} <ChevronUp className="ml-1 h-4 w-4" />
               </>
             ) : (
               <>
-                Show more <ChevronDown className="ml-1 h-4 w-4" />
+                {t("projects.showMore")}{" "}
+                <ChevronDown className="ml-1 h-4 w-4" />
               </>
             )}
           </Button>
@@ -157,13 +160,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 rel="noopener noreferrer"
               >
                 <Eye className="mr-2 h-4 w-4" />
-                Live Demo
+                {t("projects.liveDemo")}
               </Link>
             </Button>
           ) : (
             <Button variant="outline" size="sm" disabled>
               <Eye className="mr-2 h-4 w-4" />
-              No Demo
+              {t("projects.noDemo")}
             </Button>
           )}
           {project.codeLink && project.codeLink !== "#" ? (
@@ -174,13 +177,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 rel="noopener noreferrer"
               >
                 <Github className="mr-2 h-4 w-4" />
-                View Code
+                {t("projects.viewCode")}
               </Link>
             </Button>
           ) : (
             <Button variant="outline" size="sm" disabled>
               <Github className="mr-2 h-4 w-4" />
-              Private Code
+              {t("projects.privateCode")}
             </Button>
           )}
         </CardFooter>

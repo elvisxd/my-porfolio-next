@@ -13,19 +13,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSelector } from "@/components/language-selector";
 import { useActiveSection } from "@/hooks/use-active-section";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { NavItem, HeaderProps } from "@/types/navigation";
 import { Menu, Code, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export default function Header({ className = "" }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   const navItems: NavItem[] = [
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#Studies", label: "Studies & Certificates" },
+    { href: "#about", label: t("header.about") },
+    { href: "#experience", label: t("header.experience") },
+    { href: "#projects", label: t("header.projects") },
+    { href: "#Studies", label: t("header.studies") },
   ];
 
   const sectionIds = navItems.map((item) => item.href.slice(1));
@@ -80,7 +83,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <div className="grid gap-1">
             <h1 className="text-xl font-bold md:text-2xl">Elvis Pino</h1>
             <p className="text-muted-foreground text-sm md:text-base">
-              Software Engineer
+              {t("header.softwareEngineer")}
             </p>
           </div>
         </motion.div>
@@ -120,6 +123,7 @@ export default function Header({ className = "" }: HeaderProps) {
           })}
 
           <div className="flex items-center ml-4 space-x-1">
+            <LanguageSelector />
             <ThemeToggle />
 
             <Button variant="ghost" size="icon" asChild>
@@ -147,6 +151,7 @@ export default function Header({ className = "" }: HeaderProps) {
         </nav>
 
         <div className="flex items-center md:hidden">
+          <LanguageSelector />
           <ThemeToggle />
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -158,7 +163,9 @@ export default function Header({ className = "" }: HeaderProps) {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[350px]">
               <SheetTitle className="text-xl">Elvis Pino</SheetTitle>
-              <SheetDescription>Software Engineer</SheetDescription>
+              <SheetDescription>
+                {t("header.softwareEngineer")}
+              </SheetDescription>
 
               <div className="grid gap-4 py-6">
                 {navItems.map((item) => {

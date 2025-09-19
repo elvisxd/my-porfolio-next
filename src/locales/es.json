@@ -1,0 +1,100 @@
+{
+  "header": {
+    "about": "Acerca de",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "studies": "Estudios y Certificados",
+    "softwareEngineer": "Ingeniero de Software"
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "fullstackDeveloper": "Desarrollador Full-stack",
+    "description1": "Soy un desarrollador full-stack apasionado con experiencia sólida en JavaScript, React y Node.js. Con un buen ojo para el diseño y amor por crear experiencias de usuario intuitivas, me especializo en construir aplicaciones web escalables y mantenibles. Mi trayectoria en tecnología está impulsada por una curiosidad insaciable y un compromiso de mantenerme a la vanguardia de las tecnologías emergentes.",
+    "description2": "Cuando no estoy programando, me puedes encontrar explorando nuevos senderos de montaña, experimentando con nuevas recetas en la cocina, o sumergiéndome en un buen libro sobre arquitectura de software y patrones de diseño.",
+    "technicalSkills": "Habilidades Técnicas",
+    "downloadCV": "Descargar CV"
+  },
+  "experience": {
+    "title": "Experiencia Laboral",
+    "professionalJourney": "Mi Trayectoria Profesional",
+    "description": "Explora mi trayectoria profesional y las valiosas experiencias que he ganado en el camino.",
+    "present": "Presente",
+    "responsibilities": "Responsabilidades",
+    "technologies": "Tecnologías"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "myWork": "Mi Trabajo",
+    "description": "Explora una selección de mis proyectos, mostrando mis habilidades y experiencia en desarrollo web.",
+    "searchPlaceholder": "Buscar proyectos...",
+    "showFilters": "Mostrar Filtros",
+    "hideFilters": "Ocultar Filtros",
+    "clearFilters": "Limpiar Filtros",
+    "clearAllFilters": "Limpiar todos los filtros",
+    "noProjectsFound": "No se encontraron proyectos",
+    "noProjectsDescription": "Intenta ajustar tu búsqueda o criterios de filtro para encontrar proyectos.",
+    "liveDemo": "Demo en Vivo",
+    "viewCode": "Ver Código",
+    "noDemo": "Sin Demo",
+    "privateCode": "Código Privado",
+    "showMore": "Ver más",
+    "showLess": "Ver menos",
+    "status": {
+      "completed": "Completado",
+      "inProgress": "En Progreso",
+      "beta": "Beta"
+    }
+  },
+  "education": {
+    "title": "Estudios y Certificados",
+    "educationalJourney": "Mi Trayectoria Educativa",
+    "description": "Explora los diversos estudios y certificados que he completado para mejorar mi experiencia en desarrollo de software y diseño.",
+    "all": "Todos",
+    "grid": "Cuadrícula",
+    "timeline": "Línea de Tiempo",
+    "degree": "Título",
+    "certificate": "Certificado",
+    "specialization": "Especialización",
+    "inProgress": "En Progreso",
+    "skills": "Habilidades aprendidas"
+  },
+  "hero": {
+    "welcome": "Bienvenido a Mi Portafolio",
+    "description": "Soy Elvis Pino, un Desarrollador Full-Stack apasionado por crear experiencias web modernas con tecnologías de vanguardia.",
+    "exploreWork": "Explorar Mi Trabajo",
+    "getInTouch": "Contactar",
+    "scrollToExplore": "Desplázate para explorar"
+  },
+  "footer": {
+    "builtWith": "Construido con",
+    "by": "por",
+    "allRightsReserved": "Todos los derechos reservados.",
+    "contactMe": "Contáctame",
+    "followMe": "Sígueme"
+  },
+  "skillCategories": {
+    "frontend": "Tecnologías de Interfaz de Usuario",
+    "backend": "Desarrollo de Servidor y API",
+    "database": "Bases de Datos y Almacenamiento",
+    "devops": "Infraestructura y Despliegue",
+    "tools": "Herramientas de Desarrollo",
+    "languages": "Lenguajes de Programación"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "showMore": "Mostrar Más",
+    "showLess": "Mostrar Menos",
+    "expand": "Expandir",
+    "collapse": "Contraer",
+    "current": "Actual",
+    "present": "Presente",
+    "inProgress": "En Progreso",
+    "viewCertificate": "Ver Certificado"
+  }
+}

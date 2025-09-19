@@ -4,13 +4,19 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ExperienceCard } from "@/components/experience-card";
 import { TimelineNode } from "@/components/timeline-node";
-import { experiences } from "@/data/experiences";
+import { getExperiences } from "@/data/experiences";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { WorkExperienceProps } from "@/types/experience";
 
 export default function WorkExperience({
   className = "",
   id = "experience",
 }: WorkExperienceProps) {
+  const { t, language } = useTranslation();
+
+  // Get translated experiences based on current language
+  const experiences = getExperiences(language);
+
   // Sort experiences by date (most recent first)
   const sortedExperiences = [...experiences].sort((a, b) => {
     const dateA = a.current
@@ -39,14 +45,13 @@ export default function WorkExperience({
           className="flex flex-col items-center justify-center space-y-4 text-center"
         >
           <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
-            Work Experience
+            {t("experience.title")}
           </Badge>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            My Professional Journey
+            {t("experience.professionalJourney")}
           </h2>
           <p className="max-w-[900px] text-muted-foreground text-sm sm:text-base">
-            Explore my career path and the valuable experiences I&apos;ve gained
-            along the way.
+            {t("experience.description")}
           </p>
         </motion.div>
 

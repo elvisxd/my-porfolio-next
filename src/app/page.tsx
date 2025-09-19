@@ -7,6 +7,7 @@ import Projects from "@/components/Proyects";
 import WorkExperience from "@/components/WorkExperience";
 import StudiesAndCertificates from "@/components/studies-and-certificates";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/hooks/useTranslation";
 import { motion, useAnimation } from "framer-motion";
 import {
   AnimatedBackground,
@@ -15,6 +16,8 @@ import {
 
 /// Hero section with welcome message
 function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="min-h-[90vh] flex flex-col items-center justify-center text-center px-4 py-20">
       <motion.div
@@ -24,11 +27,10 @@ function HeroSection() {
         className="max-w-3xl mx-auto"
       >
         <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-          Welcome to My Portfolio
+          {t("hero.welcome")}
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-          I&apos;m Elvis Pino, a Full-Stack Developer passionate about creating
-          modern web experiences with cutting-edge technologies.
+          {t("hero.description")}
         </p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -40,13 +42,13 @@ function HeroSection() {
             href="#about"
             className="px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-colors"
           >
-            Explore My Work
+            {t("hero.exploreWork")}
           </a>
           <a
-            href="#contact"
+            href="mailto:elvisreyxd@gmail.com"
             className="px-6 py-3 bg-secondary text-secondary-foreground rounded-md font-medium hover:bg-secondary/90 transition-colors"
           >
-            Get In Touch
+            {t("hero.getInTouch")}
           </a>
         </motion.div>
       </motion.div>
@@ -58,7 +60,7 @@ function HeroSection() {
       >
         <div className="flex flex-col items-center">
           <p className="text-sm text-muted-foreground mb-2">
-            Scroll to explore
+            {t("hero.scrollToExplore")}
           </p>
           <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center p-1">
             <motion.div

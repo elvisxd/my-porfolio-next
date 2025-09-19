@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SkillBadge } from "@/components/skill-badge";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { Skill } from "@/types/skills";
 
 interface SkillCategoryProps {
@@ -20,6 +21,7 @@ export function SkillCategory({
   skills,
   initiallyExpanded = false,
 }: SkillCategoryProps) {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
   const [showAll, setShowAll] = useState(false);
 
@@ -58,7 +60,8 @@ export function SkillCategory({
             <ChevronDown className="h-4 w-4" />
           )}
           <span className="sr-only">
-            {isExpanded ? "Collapse" : "Expand"} {title} skills
+            {isExpanded ? t("common.collapse") : t("common.expand")} {title}{" "}
+            skills
           </span>
         </Button>
       </div>
@@ -90,11 +93,13 @@ export function SkillCategory({
               >
                 {showAll ? (
                   <>
-                    Show Less <ChevronUp className="ml-2 h-4 w-4" />
+                    {t("common.showLess")}{" "}
+                    <ChevronUp className="ml-2 h-4 w-4" />
                   </>
                 ) : (
                   <>
-                    Show More <ChevronDown className="ml-2 h-4 w-4" />
+                    {t("common.showMore")}{" "}
+                    <ChevronDown className="ml-2 h-4 w-4" />
                   </>
                 )}
               </Button>

@@ -1,10 +1,24 @@
 import type { WorkExperience } from "@/types/experience";
 import { v4 as uuidv4 } from "uuid";
 
-export const experiences: WorkExperience[] = [
+type Language = "en" | "es";
+
+interface TranslatableWorkExperience
+  extends Omit<WorkExperience, "title" | "responsibilities"> {
+  title: Record<Language, string>;
+  responsibilities: {
+    id: string;
+    text: Record<Language, string>;
+  }[];
+}
+
+const experiencesData: TranslatableWorkExperience[] = [
   {
     id: uuidv4(),
-    title: "Founder & Full-Stack Developer",
+    title: {
+      en: "Founder & Full-Stack Developer",
+      es: "Fundador & Desarrollador Full-Stack",
+    },
     company: "Nesty C.A",
     location: "Remote",
     period: "June 2023 - Present",
@@ -13,23 +27,38 @@ export const experiences: WorkExperience[] = [
     responsibilities: [
       {
         id: uuidv4(),
-        text: "Founded and lead a technology company specializing in automation services, web development, mobile apps, and API development.",
+        text: {
+          en: "Founded and lead a technology company specializing in automation services, web development, mobile apps, and API development.",
+          es: "Fundé y lidero una empresa tecnológica especializada en servicios de automatización, desarrollo web, aplicaciones móviles y desarrollo de APIs.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Design and develop comprehensive digital solutions including responsive web applications, mobile apps, and robust APIs.",
+        text: {
+          en: "Design and develop comprehensive digital solutions including responsive web applications, mobile apps, and robust APIs.",
+          es: "Diseño y desarrollo soluciones digitales integrales incluyendo aplicaciones web responsivas, aplicaciones móviles y APIs robustas.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Implement automation solutions using AI models and microservices architecture to optimize business processes.",
+        text: {
+          en: "Implement automation solutions using AI models and microservices architecture to optimize business processes.",
+          es: "Implemento soluciones de automatización usando modelos de IA y arquitectura de microservicios para optimizar procesos de negocio.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Manage client relationships, project requirements, and deliver end-to-end solutions from concept to deployment.",
+        text: {
+          en: "Manage client relationships, project requirements, and deliver end-to-end solutions from concept to deployment.",
+          es: "Gestiono relaciones con clientes, requisitos de proyectos y entrego soluciones completas desde el concepto hasta el despliegue.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Architect scalable systems using modern frameworks and ensure high-quality, maintainable code standards.",
+        text: {
+          en: "Architect scalable systems using modern frameworks and ensure high-quality, maintainable code standards.",
+          es: "Arquitecto sistemas escalables usando frameworks modernos y aseguro estándares de código de alta calidad y mantenible.",
+        },
       },
     ],
     technologies: [
@@ -45,7 +74,10 @@ export const experiences: WorkExperience[] = [
   },
   {
     id: uuidv4(),
-    title: "Full-Stack Developer",
+    title: {
+      en: "Full-Stack Developer",
+      es: "Desarrollador Full-Stack",
+    },
     company: "Freelance",
     location: "Remote",
     period: "September 2022 - Present",
@@ -54,27 +86,45 @@ export const experiences: WorkExperience[] = [
     responsibilities: [
       {
         id: uuidv4(),
-        text: "Develop and deploy modern web applications using React, Next.js, TypeScript, and Tailwind CSS.",
+        text: {
+          en: "Develop and deploy modern web applications using React, Next.js, TypeScript, and Tailwind CSS.",
+          es: "Desarrollo y despliego aplicaciones web modernas usando React, Next.js, TypeScript y Tailwind CSS.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Implement responsive designs and ensure cross-browser compatibility for client websites.",
+        text: {
+          en: "Implement responsive designs and ensure cross-browser compatibility for client websites.",
+          es: "Implemento diseños responsivos y aseguro compatibilidad entre navegadores para sitios web de clientes.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Create RESTful APIs and integrate third-party services to enhance application functionality.",
+        text: {
+          en: "Create RESTful APIs and integrate third-party services to enhance application functionality.",
+          es: "Creo APIs RESTful e integro servicios de terceros para mejorar la funcionalidad de las aplicaciones.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Optimize website performance and implement SEO best practices to improve client visibility.",
+        text: {
+          en: "Optimize website performance and implement SEO best practices to improve client visibility.",
+          es: "Optimizo el rendimiento de sitios web e implemento mejores prácticas de SEO para mejorar la visibilidad del cliente.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Collaborate directly with clients to gather requirements and deliver solutions that meet their business needs.",
+        text: {
+          en: "Collaborate directly with clients to gather requirements and deliver solutions that meet their business needs.",
+          es: "Colaboro directamente con clientes para recopilar requisitos y entregar soluciones que satisfagan sus necesidades de negocio.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Maintain and update existing websites, implementing new features and fixing bugs as needed.",
+        text: {
+          en: "Maintain and update existing websites, implementing new features and fixing bugs as needed.",
+          es: "Mantengo y actualizo sitios web existentes, implementando nuevas características y corrigiendo errores según sea necesario.",
+        },
       },
     ],
     technologies: [
@@ -90,7 +140,10 @@ export const experiences: WorkExperience[] = [
   },
   {
     id: uuidv4(),
-    title: "Freelancer, Web Development",
+    title: {
+      en: "Freelancer, Web Development",
+      es: "Freelancer, Desarrollo Web",
+    },
     company: "Own Company",
     location: "Remote",
     period: "May 2019 - August 2020",
@@ -99,19 +152,31 @@ export const experiences: WorkExperience[] = [
     responsibilities: [
       {
         id: uuidv4(),
-        text: "Assisted in the development and maintenance of the company's website.",
+        text: {
+          en: "Assisted in the development and maintenance of the company's website.",
+          es: "Asistí en el desarrollo y mantenimiento del sitio web de la empresa.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Learned and applied modern web development technologies and best practices.",
+        text: {
+          en: "Learned and applied modern web development technologies and best practices.",
+          es: "Aprendí y apliqué tecnologías modernas de desarrollo web y mejores prácticas.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Participated in daily stand-up meetings and sprint planning sessions.",
+        text: {
+          en: "Participated in daily stand-up meetings and sprint planning sessions.",
+          es: "Participé en reuniones diarias de stand-up y sesiones de planificación de sprints.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Gained experience in project management and client communication.",
+        text: {
+          en: "Gained experience in project management and client communication.",
+          es: "Gané experiencia en gestión de proyectos y comunicación con clientes.",
+        },
       },
     ],
     technologies: [
@@ -124,7 +189,10 @@ export const experiences: WorkExperience[] = [
   },
   {
     id: uuidv4(),
-    title: "Software Engineer",
+    title: {
+      en: "Software Engineer",
+      es: "Ingeniero de Software",
+    },
     company: "IT Driver",
     location: "Remote",
     period: "June 2017 - 2019",
@@ -133,19 +201,31 @@ export const experiences: WorkExperience[] = [
     responsibilities: [
       {
         id: uuidv4(),
-        text: "Developed and maintained web applications using PHP, CSS, and MySQL.",
+        text: {
+          en: "Developed and maintained web applications using PHP, CSS, and MySQL.",
+          es: "Desarrollé y mantuve aplicaciones web usando PHP, CSS y MySQL.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Collaborated with cross-functional teams to design and implement new features.",
+        text: {
+          en: "Collaborated with cross-functional teams to design and implement new features.",
+          es: "Colaboré con equipos multifuncionales para diseñar e implementar nuevas características.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Participated in code reviews and pair programming to ensure code quality.",
+        text: {
+          en: "Participated in code reviews and pair programming to ensure code quality.",
+          es: "Participé en revisiones de código y programación en pareja para asegurar la calidad del código.",
+        },
       },
       {
         id: uuidv4(),
-        text: "Implemented automated testing and continuous integration/deployment workflows.",
+        text: {
+          en: "Implemented automated testing and continuous integration/deployment workflows.",
+          es: "Implementé pruebas automatizadas y flujos de trabajo de integración/despliegue continuo.",
+        },
       },
     ],
     technologies: [
@@ -157,3 +237,18 @@ export const experiences: WorkExperience[] = [
     ],
   },
 ];
+
+// Helper function to get experiences with current language
+export const getExperiences = (language: Language = "en"): WorkExperience[] => {
+  return experiencesData.map((experience) => ({
+    ...experience,
+    title: experience.title[language],
+    responsibilities: experience.responsibilities.map((responsibility) => ({
+      ...responsibility,
+      text: responsibility.text[language],
+    })),
+  }));
+};
+
+// Export experiences with default English language for backward compatibility
+export const experiences: WorkExperience[] = getExperiences("en");

@@ -51,25 +51,61 @@ export const contactInfo: ContactInfo[] = [
   },
 ];
 
-export const footerSections: FooterSection[] = [
+type Language = "en" | "es";
+
+interface TranslatableFooterSection {
+  id: string;
+  title: Record<Language, string>;
+  links: {
+    id: string;
+    text: Record<Language, string>;
+    href: string;
+    isExternal?: boolean;
+  }[];
+}
+
+const footerSectionsData: TranslatableFooterSection[] = [
   {
     id: "navigation",
-    title: "Navigation",
+    title: {
+      en: "Navigation",
+      es: "Navegación",
+    },
     links: [
-      { id: "home", text: "Home", href: "#" },
-      { id: "about", text: "About", href: "#about" },
-      { id: "experience", text: "Experience", href: "#experience" },
-      { id: "projects", text: "Projects", href: "#projects" },
-      { id: "studies", text: "Studies", href: "#Studies" },
-    ],
-  },
-  {
-    id: "resources",
-    title: "Resources",
-    links: [
-      { id: "resume", text: "Resume", href: "/resume.pdf", isExternal: true },
-      { id: "blog", text: "Blog", href: "/blog" },
-      { id: "portfolio", text: "Portfolio", href: "#projects" },
+      { id: "home", text: { en: "Home", es: "Inicio" }, href: "#" },
+      { id: "about", text: { en: "About", es: "Acerca" }, href: "#about" },
+      {
+        id: "experience",
+        text: { en: "Experience", es: "Experiencia" },
+        href: "#experience",
+      },
+      {
+        id: "projects",
+        text: { en: "Projects", es: "Proyectos" },
+        href: "#projects",
+      },
+      {
+        id: "studies",
+        text: { en: "Studies", es: "Estudios" },
+        href: "#Studies",
+      },
     ],
   },
 ];
+
+// Helper function to get footer sections with current language
+export const getFooterSections = (
+  language: Language = "en"
+): FooterSection[] => {
+  return footerSectionsData.map((section) => ({
+    ...section,
+    title: section.title[language],
+    links: section.links.map((link) => ({
+      ...link,
+      text: link.text[language],
+    })),
+  }));
+};
+
+// Export footer sections with default English language for backward compatibility
+export const footerSections: FooterSection[] = getFooterSections("en");
