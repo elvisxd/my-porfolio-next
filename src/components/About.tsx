@@ -8,7 +8,7 @@ import { skills, getSkillCategories } from "@/data/skills";
 import type { AboutMeProps } from "@/types/skills";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
-import meImage from "@/assets/me1.jpg";
+import meImage from "@/assets/mephoto.png";
 
 export default function AboutMe({
   className = "",
@@ -78,7 +78,7 @@ export default function AboutMe({
 
               <Button variant="outline" size="icon" asChild>
                 <a
-                  href="https://linkedin.com/in/elvispino"
+                  href="https://www.linkedin.com/in/elvis-pino-b358b2127/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
