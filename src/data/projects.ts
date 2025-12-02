@@ -1,4 +1,4 @@
-import imageApp1 from "@/assets/appphoto2.png";
+import imageApp1 from "@/assets/foto-app-ios.png";
 import imageCalot from "@/assets/calot.png";
 import imageEcommerceWeb from "@/assets/eccomerce.png";
 import imageFinancepro from "@/assets/financepro-landing-page.png";
@@ -43,9 +43,9 @@ const projectsData: TranslatableProject[] = [
       { name: "Axios", color: "#5A29E4" },
       { name: "Android Studio", color: "#3DDC84" },
     ],
-    liveLink: "#",
+    liveLink: "https://apps.apple.com/kz/app/go190-store/id6748661767",
     codeLink: "#",
-    status: "In Progress",
+    status: "Completed",
     featured: true,
     createdAt: "2025-07-01",
   },
