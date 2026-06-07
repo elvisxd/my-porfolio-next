@@ -23,7 +23,7 @@ export function TimelineNode({ experience, index }: TimelineNodeProps) {
   ).toFixed(1);
 
   return (
-    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10 absolute left-0 sm:left-1/2 transform -translate-x-1/2">
+    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10 absolute left-4 sm:left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}

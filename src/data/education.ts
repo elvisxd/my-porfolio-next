@@ -20,6 +20,29 @@ interface TranslatableEducation
 
 const educationData: TranslatableEducation[] = [
   {
+    id: "vibe-coding-devtalles",
+    title: {
+      en: "Vibe Coding: Responsibly",
+      es: "Vibe Coding: De forma responsable",
+    },
+    institution: "DevTalles",
+    description: {
+      en: "Certificate of completion for the Vibe Coding course, focusing on responsible AI-assisted coding practices.",
+      es: "Certificado de finalización del curso Vibe Coding, enfocado en prácticas responsables de codificación asistida por IA.",
+    },
+    type: "Certificate",
+    icon: Code,
+    startDate: "2026-06-01",
+    endDate: "2026-06-07",
+    link: "https://cursos.devtalles.com/certificates/ntcx9jd3qr",
+    credential: "ntcx9jd3qr",
+    skills: [
+      "AI-Assisted Coding",
+      "Vibe Coding",
+      "Best Practices",
+    ],
+  },
+  {
     id: "dotnet-backend-devtalles",
     title: {
       en: ".NET Backend: .NET Core, SQL Server and JWT Security",

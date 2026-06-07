@@ -24,7 +24,7 @@ export function ExperienceCard({ experience, isEven }: ExperienceCardProps) {
 
   return (
     <Card
-      className={`w-full sm:w-5/12 transition-all duration-300 hover:shadow-lg ${
+      className={`w-[calc(100%-3rem)] ml-12 sm:w-5/12 sm:ml-0 transition-all duration-300 hover:shadow-lg ${
         isEven ? "sm:mr-auto" : "sm:ml-auto"
       }`}
     >

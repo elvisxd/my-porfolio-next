@@ -23,21 +23,20 @@ export default function StudiesAndCertificates({
   const educationItems = getEducationItems(language);
   const educationTypes = getEducationTypes();
 
-  const filteredItems = selectedType
-    ? educationItems.filter((item) => item.type === selectedType)
+  const filteredItems =
+    selectedType ?
+      educationItems.filter((item) => item.type === selectedType)
     : educationItems;
 
   // Sort items by date (most recent first)
   const sortedItems = [...filteredItems].sort((a, b) => {
-    const dateA = a.inProgress
-      ? new Date()
-      : a.endDate
-      ? new Date(a.endDate)
+    const dateA =
+      a.inProgress ? new Date()
+      : a.endDate ? new Date(a.endDate)
       : new Date(a.startDate);
-    const dateB = b.inProgress
-      ? new Date()
-      : b.endDate
-      ? new Date(b.endDate)
+    const dateB =
+      b.inProgress ? new Date()
+      : b.endDate ? new Date(b.endDate)
       : new Date(b.startDate);
     return dateB.getTime() - dateA.getTime();
   });
@@ -47,7 +46,7 @@ export default function StudiesAndCertificates({
       id={id}
       className={`w-full py-4 md:py-4 lg:py-4 bg-gradient-to-br from-background via-muted/50 to-background ${className}`}
     >
-      <div className="container px-4 md:px-6">
+      <div className="w-full px-1 sm:px-2 md:px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,15 +107,13 @@ export default function StudiesAndCertificates({
           </div>
         </div>
 
-        {viewMode === "grid" ? (
+        {viewMode === "grid" ?
           <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
             {sortedItems.map((item, index) => (
               <EducationCard key={item.id} education={item} index={index} />
             ))}
           </div>
-        ) : (
-          <EducationTimeline items={sortedItems} />
-        )}
+        : <EducationTimeline items={sortedItems} />}
       </div>
     </section>
   );

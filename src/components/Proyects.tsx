@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ export default function Projects({
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
   // Get translated projects based on current language
-  const projects = getProjects(language);
+  const projects = useMemo(() => getProjects(language), [language]);
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -37,15 +37,15 @@ export default function Projects({
           project.title.toLowerCase().includes(term) ||
           project.description.toLowerCase().includes(term) ||
           project.technologies.some((tech) =>
-            tech.name.toLowerCase().includes(term)
-          )
+            tech.name.toLowerCase().includes(term),
+          ),
       );
     }
 
     // Filter by selected technology
     if (selectedTech) {
       result = result.filter((project) =>
-        project.technologies.some((tech) => tech.name === selectedTech)
+        project.technologies.some((tech) => tech.name === selectedTech),
       );
     }
 
@@ -66,7 +66,7 @@ export default function Projects({
       id={id}
       className={`w-full py-2 md:py-2 lg:py-2 bg-gradient-to-br from-background via-muted/50 to-background ${className}`}
     >
-      <div className="container px-4 md:px-6">
+      <div className="w-full px-1 sm:px-2 md:px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,9 +113,9 @@ export default function Projects({
               className="flex items-center gap-2"
             >
               <Filter className="h-4 w-4" />
-              {showFilters
-                ? t("projects.hideFilters")
-                : t("projects.showFilters")}
+              {showFilters ?
+                t("projects.hideFilters")
+              : t("projects.showFilters")}
             </Button>
 
             {(selectedTech || searchTerm) && (
@@ -157,7 +157,7 @@ export default function Projects({
           )}
         </AnimatePresence>
 
-        {filteredProjects.length === 0 ? (
+        {filteredProjects.length === 0 ?
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -173,13 +173,12 @@ export default function Projects({
               {t("projects.clearAllFilters")}
             </Button>
           </motion.div>
-        ) : (
-          <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
+        : <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
-        )}
+        }
       </div>
     </section>
   );
