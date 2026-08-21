@@ -38,33 +38,37 @@
   }
 
   /* Dark: deep blue-black ground, brighter amber so it holds on dark */
+  /* Dark is the design's home ground, so it gets more separation than a naive
+     inversion would give: the base drops deeper, surfaces lift further off it,
+     and borders sit high enough to actually read as edges. */
   .dark {
-    --background: 220 24% 7%;
-    --foreground: 215 25% 93%;
+    --background: 222 28% 5%;
+    --foreground: 213 28% 95%;
 
-    --card: 220 20% 10%;
-    --card-foreground: 215 25% 93%;
-    --popover: 220 20% 10%;
-    --popover-foreground: 215 25% 93%;
+    --card: 220 22% 9%;
+    --card-foreground: 213 28% 95%;
+    --popover: 220 22% 9%;
+    --popover-foreground: 213 28% 95%;
 
-    --primary: 36 79% 57%;
-    --primary-foreground: 220 24% 7%;
+    /* Amber runs hotter here — it is the one saturated thing on a dark page */
+    --primary: 37 92% 62%;
+    --primary-foreground: 222 28% 5%;
 
-    --secondary: 220 16% 14%;
-    --secondary-foreground: 215 20% 88%;
+    --secondary: 220 18% 13%;
+    --secondary-foreground: 213 22% 90%;
 
-    --muted: 220 16% 14%;
-    --muted-foreground: 218 12% 62%;
+    --muted: 220 18% 12%;
+    --muted-foreground: 216 14% 68%;
 
-    --accent: 34 40% 13%;
-    --accent-foreground: 36 79% 62%;
+    --accent: 35 52% 15%;
+    --accent-foreground: 37 92% 68%;
 
-    --destructive: 0 62% 52%;
-    --destructive-foreground: 215 25% 93%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 213 28% 95%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 36 79% 57%;
+    --border: 219 16% 24%;
+    --input: 219 16% 24%;
+    --ring: 37 92% 62%;
   }
 }
 
@@ -239,5 +243,86 @@
   /* Mono metadata is the most likely thing to overflow on a narrow screen */
   .font-mono {
     overflow-wrap: anywhere;
+  }
+}
+
+@layer utilities {
+  /* The instrument grid from the hero, as a reusable ground.
+     It is deliberately NOT applied to every section: used everywhere it stops
+     reading as an accent and starts competing with the text. Sections that open
+     a block carry it; dense reading sections stay plain. */
+  .grid-ground {
+    position: relative;
+    isolation: isolate;
+  }
+  .grid-ground::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: linear-gradient(
+        hsl(var(--primary) / 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      #000 40%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      #000 40%,
+      transparent 100%
+    );
+  }
+  /* Dark carries a touch more of the pattern, since it has more room to */
+  .dark .grid-ground::before {
+    background-image: linear-gradient(
+        hsl(var(--primary) / 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, hsl(var(--primary) / 0.07) 1px, transparent 1px);
+  }
+
+  /* A hairline that fades at both ends, for section seams that should feel
+     drawn rather than boxed in */
+  .seam {
+    border-top: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--border)) 12%,
+      hsl(var(--border)) 88%,
+      transparent
+    );
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+}
+
+@layer utilities {
+  /* Section eyebrow: the amber rule from the hero's principle line, reused as
+     the marker that opens every section. One device, used consistently. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: var(--step-eyebrow);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: hsl(var(--primary));
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.6rem;
+    height: 2px;
+    background: hsl(var(--primary));
+    flex: none;
   }
 }

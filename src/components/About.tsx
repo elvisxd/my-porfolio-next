@@ -24,7 +24,7 @@ export default function About() {
     <section id="about" className="scroll-mt-20 border-b border-border">
       <div className="gutter section-y mx-auto max-w-6xl">
         <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
-          <p className="label-mono text-primary">{t("about.eyebrow")}</p>
+          <p className="eyebrow">{t("about.eyebrow")}</p>
           <h2 className="h-section mt-2.5">
             {t("about.title")}
           </h2>

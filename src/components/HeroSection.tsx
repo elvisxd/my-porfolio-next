@@ -16,24 +16,9 @@ export default function HeroSection() {
 
 
   return (
-    <section className="relative overflow-hidden border-b border-border bg-background">
-      {/* Instrument grid — the faint measured ground the whole site sits on */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.55] dark:opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--primary)/0.055) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)/0.055) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse 78% 62% at 50% 34%, #000 45%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 78% 62% at 50% 34%, #000 45%, transparent 100%)",
-        }}
-      />
-
+    <section className="grid-ground relative overflow-hidden border-b border-border bg-background">
       <div className="gutter relative mx-auto max-w-6xl pb-[clamp(3rem,2.2rem+4vw,5rem)] pt-[clamp(5rem,3.5rem+7vw,9rem)]">
-        <p className="label-mono text-primary" style={{ fontSize: "var(--step-eyebrow)" }}>
+        <p className="eyebrow">
           {t("hero.eyebrow")}
         </p>
 

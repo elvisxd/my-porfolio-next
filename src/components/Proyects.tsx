@@ -19,10 +19,10 @@ export default function Projects() {
   const rest = projects.filter((p) => !FEATURED_IDS.includes(p.id));
 
   return (
-    <section id="projects" className="scroll-mt-20 border-b border-border">
+    <section id="projects" className="grid-ground scroll-mt-20 border-b border-border">
       <div className="gutter section-y mx-auto max-w-6xl">
         <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
-          <p className="label-mono text-primary">{t("projects.eyebrow")}</p>
+          <p className="eyebrow">{t("projects.eyebrow")}</p>
           <h2 className="h-section mt-2.5">
             {t("projects.title")}
           </h2>
