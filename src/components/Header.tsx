@@ -1,235 +1,61 @@
 "use client";
 
-import type React from "react";
-import { useState, useEffect } from "react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetTitle,
-  SheetDescription,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSelector } from "@/components/language-selector";
-import { useActiveSection } from "@/hooks/use-active-section";
 import { useTranslation } from "@/hooks/useTranslation";
-import type { NavItem, HeaderProps } from "@/types/navigation";
-import { Menu, Code, Github, Linkedin, ExternalLink } from "lucide-react";
 
-export default function Header({ className = "" }: HeaderProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const NAV = [
+  { href: "#about", key: "header.about" },
+  { href: "#experience", key: "header.experience" },
+  { href: "#projects", key: "header.projects" },
+  { href: "#Studies", key: "header.studies" },
+] as const;
+
+export default function Header() {
   const { t } = useTranslation();
-
-  const navItems: NavItem[] = [
-    { href: "#about", label: t("header.about") },
-    { href: "#experience", label: t("header.experience") },
-    { href: "#projects", label: t("header.projects") },
-    { href: "#Studies", label: t("header.studies") },
-  ];
-
-  const sectionIds = navItems.map((item) => item.href.slice(1));
-  const activeSection = useActiveSection(sectionIds);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
-  ) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
-
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`sticky top-0 z-50 w-full backdrop-blur-sm px-4 py-3 md:px-6 md:py-4 lg:px-8 lg:py-5 transition-all duration-300 ${
-        scrolled ? "bg-background/90 shadow-md" : "bg-background/50"
-      } ${className}`}
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors ${
+        scrolled
+          ? "border-border bg-background/88 backdrop-blur"
+          : "border-transparent bg-transparent"
+      }`}
     >
-      <div className="container mx-auto flex items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex items-center gap-4"
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3">
+        <a
+          href="#"
+          className="font-display text-[15px] font-bold tracking-[-0.01em] transition-colors hover:text-primary"
         >
-          <Code className="w-6 h-6 text-primary" />
-          <Avatar className="h-10 w-10 border-2 border-primary/20 transition-all duration-300 hover:border-primary">
-            <AvatarImage
-              src="/assets/me3.jpg"
-              alt="Elvis Pino"
-              className="object-cover"
-            />
-            <AvatarFallback>EP</AvatarFallback>
-          </Avatar>
-          <div className="grid gap-1">
-            <h1 className="text-xl font-bold md:text-2xl">Elvis Pino</h1>
-            <p className="text-muted-foreground text-sm md:text-base">
-              {t("header.softwareEngineer")}
-            </p>
-          </div>
-        </motion.div>
+          Elvis Pino
+        </a>
 
-        <nav className="hidden md:flex items-center space-x-1">
-          {navItems.map((item, index) => {
-            const isActive = activeSection === item.href.slice(1);
-            return (
-              <motion.div
-                key={item.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * (index + 1) }}
-                className="relative"
-              >
-                <a
-                  href={item.href}
-                  onClick={(e) => handleNavigation(e, item.href.slice(1))}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative ${
-                    isActive ? "text-primary" : "hover:text-primary/80"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {item.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </a>
-              </motion.div>
-            );
-          })}
-
-          <div className="flex items-center ml-4 space-x-1">
-            <LanguageSelector />
-            <ThemeToggle />
-
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href="https://github.com/elvisxd"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href="https://linkedin.com/in/elvis-pino-b358b2127"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
-          </div>
+        <nav className="hidden items-center gap-6 sm:flex">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary"
+            >
+              {t(item.key)}
+            </a>
+          ))}
         </nav>
 
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center gap-1">
           <LanguageSelector />
           <ThemeToggle />
-
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="ml-2">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[350px]">
-              <SheetTitle className="text-xl">Elvis Pino</SheetTitle>
-              <SheetDescription>
-                {t("header.softwareEngineer")}
-              </SheetDescription>
-
-              <div className="grid gap-4 py-6">
-                {navItems.map((item) => {
-                  const isActive = activeSection === item.href.slice(1);
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={(e) => handleNavigation(e, item.href.slice(1))}
-                      className={`flex items-center py-2 text-lg font-medium transition-colors duration-200 ${
-                        isActive ? "text-primary" : "hover:text-primary/80"
-                      }`}
-                      aria-current={isActive ? "page" : undefined}
-                    >
-                      {item.label}
-                      {isActive && (
-                        <motion.span
-                          layoutId="activeMobileSection"
-                          className="ml-2 h-1.5 w-1.5 rounded-full bg-primary"
-                        />
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
-
-              <div className="flex space-x-4 mt-auto pt-4 border-t">
-                <Button variant="outline" size="icon" asChild>
-                  <a
-                    href="https://github.com/elvisxd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub Profile"
-                  >
-                    <Github className="h-5 w-5" />
-                  </a>
-                </Button>
-
-                <Button variant="outline" size="icon" asChild>
-                  <a
-                    href="https://linkedin.com/in/elvispino"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn Profile"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                </Button>
-
-                <Button variant="outline" size="icon" asChild>
-                  <a
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Download Resume"
-                  >
-                    <ExternalLink className="h-5 w-5" />
-                  </a>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

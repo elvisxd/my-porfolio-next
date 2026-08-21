@@ -12,8 +12,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['var(--font-heading)', ...fontFamily.sans],
-        body: ['var(--font-body)', ...fontFamily.sans]
+        heading: ['var(--font-display)', ...fontFamily.sans],
+        display: ['var(--font-display)', ...fontFamily.sans],
+        body: ['var(--font-body)', ...fontFamily.sans],
+        sans: ['var(--font-body)', ...fontFamily.sans],
+        mono: ['var(--font-mono)', ...fontFamily.mono]
       },
       colors: {
         border: 'hsl(var(--border))',

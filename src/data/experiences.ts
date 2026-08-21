@@ -4,9 +4,10 @@ type Language = "en" | "es";
 
 interface TranslatableWorkExperience extends Omit<
   WorkExperience,
-  "title" | "responsibilities"
+  "title" | "responsibilities" | "period"
 > {
   title: Record<Language, string>;
+  period: Record<Language, string>;
   responsibilities: {
     id: string;
     text: Record<Language, string>;
@@ -22,7 +23,7 @@ const experiencesData: TranslatableWorkExperience[] = [
     },
     company: "Nesty C.A",
     location: "Remote",
-    period: "June 2023 - Present",
+    period: { en: "June 2023 — Present", es: "Junio 2023 — Actualidad" },
     startDate: "2023-06-01",
     current: true,
     responsibilities: [
@@ -74,6 +75,46 @@ const experiencesData: TranslatableWorkExperience[] = [
     ],
   },
   {
+    id: "walmart",
+    title: {
+      en: "Internal Applications Developer",
+      es: "Desarrollador de Aplicaciones Internas",
+    },
+    company: "Walmart Inc.",
+    location: "Cocoa, FL",
+    period: { en: "2022 — Present", es: "2022 — Actualidad" },
+    startDate: "2022-01-01",
+    current: true,
+    responsibilities: [
+      {
+        id: "walmart-resp-1",
+        text: {
+          en: "Build and maintain internal web applications used by store staff for daily operations.",
+          es: "Desarrollo y mantengo aplicaciones web internas utilizadas por el personal de tienda para operaciones diarias.",
+        },
+      },
+      {
+        id: "walmart-resp-2",
+        text: {
+          en: "Streamline internal processes through custom web solutions, reducing manual steps in recurring tasks.",
+          es: "Optimizo procesos internos mediante soluciones web a medida, reduciendo pasos manuales en tareas recurrentes.",
+        },
+      },
+      {
+        id: "walmart-resp-3",
+        text: {
+          en: "Provide technical support and continuous improvement for tools in active use, prioritizing stability and usability.",
+          es: "Doy soporte técnico y mejora continua a las herramientas en uso, priorizando estabilidad y facilidad de uso.",
+        },
+      },
+    ],
+    technologies: [
+      { name: "PHP", color: "#777BB4" },
+      { name: "MySQL", color: "#4479A1" },
+      { name: "JavaScript", color: "#F7DF1E" },
+    ],
+  },
+  {
     id: "nesty-resp-3",
     title: {
       en: "Full-Stack Developer",
@@ -81,7 +122,7 @@ const experiencesData: TranslatableWorkExperience[] = [
     },
     company: "Freelance",
     location: "Remote",
-    period: "September 2022 - Present",
+    period: { en: "Sept 2022 — Present", es: "Sept 2022 — Actualidad" },
     startDate: "2022-09-01",
     current: true,
     responsibilities: [
@@ -147,7 +188,7 @@ const experiencesData: TranslatableWorkExperience[] = [
     },
     company: "Own Company",
     location: "Remote",
-    period: "May 2019 - August 2020",
+    period: { en: "May 2019 — Aug 2020", es: "Mayo 2019 — Ago 2020" },
     startDate: "2019-05-01",
     endDate: "2020-08-31",
     responsibilities: [
@@ -196,7 +237,7 @@ const experiencesData: TranslatableWorkExperience[] = [
     },
     company: "IT Driver",
     location: "Remote",
-    period: "June 2017 - 2019",
+    period: { en: "June 2017 — 2019", es: "Junio 2017 — 2019" },
     startDate: "2017-06-01",
     endDate: "2019-12-31",
     responsibilities: [
@@ -244,6 +285,7 @@ export const getExperiences = (language: Language = "en"): WorkExperience[] => {
   return experiencesData.map((experience) => ({
     ...experience,
     title: experience.title[language],
+    period: experience.period[language],
     responsibilities: experience.responsibilities.map((responsibility) => ({
       ...responsibility,
       text: responsibility.text[language],

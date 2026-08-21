@@ -3,49 +3,68 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light: warm paper ground, deep ink text, amber accent.
+     Values are HSL triplets consumed by tailwind.config.ts. */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 40 20% 99%;
+    --foreground: 220 25% 8%;
+
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 25% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --popover-foreground: 220 25% 8%;
+
+    /* Amber — the single accent, used sparingly */
+    --primary: 33 92% 35%;
+    --primary-foreground: 40 30% 99%;
+
+    --secondary: 40 14% 95%;
+    --secondary-foreground: 220 20% 14%;
+
+    --muted: 40 14% 95%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 33 88% 94%;
+    --accent-foreground: 33 92% 26%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 40 30% 99%;
+
+    --border: 40 12% 88%;
+    --input: 40 12% 88%;
+    --ring: 33 92% 35%;
+
+    --radius: 0.375rem;
   }
 
+  /* Dark: deep blue-black ground, brighter amber so it holds on dark */
   .dark {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --background: 220 24% 7%;
+    --foreground: 215 25% 93%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 215 25% 93%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 215 25% 93%;
+
+    --primary: 36 79% 57%;
+    --primary-foreground: 220 24% 7%;
+
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 215 20% 88%;
+
+    --muted: 220 16% 14%;
+    --muted-foreground: 218 12% 62%;
+
+    --accent: 34 40% 13%;
+    --accent-foreground: 36 79% 62%;
+
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 215 25% 93%;
+
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 36 79% 57%;
   }
 }
 
@@ -55,61 +74,59 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Digits line up in columns wherever they carry meaning */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Keyboard focus stays visible across both themes */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+@layer utilities {
+  /* Mono label: the recurring metadata voice of the site */
+  .label-mono {
+    @apply font-mono uppercase tracking-[0.16em] text-muted-foreground;
+    font-size: 0.6875rem;
+  }
+  .rule-dotted {
+    border-top: 1px dotted hsl(var(--border));
+  }
 }
 
-/* Section animations */
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-section.section-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Custom scrollbar */
+/* Scrollbar tuned to the palette in both themes */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: hsl(var(--muted));
 }
-
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: hsl(var(--border));
   border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  background: hsl(var(--muted-foreground) / 0.55);
 }
 
-/* Ensure container consistency */
-.container {
-  @apply mx-auto px-4 sm:px-6 lg:px-8;
-  max-width: 1280px; /* 7xl tailwind size */
-}
-
-/* Canvas background */
-canvas {
-  image-rendering: pixelated;
-}
-
-/* Gradient text */
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60;
-}
-
-/* Glass effect */
-.glass {
-  @apply bg-background/80 backdrop-blur-sm border border-border/50;
-}

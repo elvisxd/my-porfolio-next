@@ -1,49 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
-// import Header from "@/components/Header";
+import Header from "@/components/Header";
 import AboutMe from "@/components/About";
 import Projects from "@/components/Proyects";
 import WorkExperience from "@/components/WorkExperience";
 import StudiesAndCertificates from "@/components/studies-and-certificates";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
-import { useAnimation } from "framer-motion";
-
-// Intersection observer for section animations
-function SectionObserver() {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            controls.start("visible");
-            entry.target.classList.add("section-visible");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    document.querySelectorAll("section").forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [controls]);
-
-  return null;
-}
 
 export default function Home() {
   return (
     <>
-      <SectionObserver />
-
+      <Header />
       <div className="relative z-10 flex flex-col min-h-screen">
         <main className="flex-grow flex flex-col items-stretch w-full">
           {/* Hero Section */}

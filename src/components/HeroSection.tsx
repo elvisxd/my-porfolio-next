@@ -1,125 +1,121 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { ArrowDown, ArrowUpRight, Download, Mail } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 
-const TOTAL_FRAMES = 40;
-const FRAME_DURATION = 50; // ~10fps
+/** Figures come from the trading platform described in the work section. */
+const STATS = [
+  { value: "10", unit: "", key: "hero.statYears" },
+  { value: "283", unit: "k", key: "hero.statLines" },
+  { value: "5", unit: "", key: "hero.statEngines" },
+  { value: "+1.29", unit: "%", key: "hero.statEdge" },
+] as const;
 
 export default function HeroSection() {
   const { t } = useTranslation();
-  const imgRef = useRef<HTMLImageElement>(null);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // Pre-cargar todas las imágenes
-  useEffect(() => {
-    const preloadImages = async () => {
-      const imagePromises: Promise<void>[] = [];
-
-      for (let i = 1; i <= TOTAL_FRAMES; i++) {
-        const frameNumber = i.toString().padStart(3, "0");
-        const src = `/assets/frames/ezgif-frame-${frameNumber}.jpg`;
-
-        const promise = new Promise<void>((resolve) => {
-          const img = new window.Image();
-          img.decoding = "async";
-          img.fetchPriority = i <= 10 ? "high" : "low";
-          img.onload = () => {
-            img
-              .decode()
-              .then(() => resolve())
-              .catch(() => resolve());
-          };
-          img.onerror = () => resolve();
-          img.src = src;
-        });
-
-        imagePromises.push(promise);
-      }
-
-      await Promise.all(imagePromises);
-      setImagesLoaded(true);
-    };
-
-    preloadImages();
-  }, []);
-
-  // Animación una sola vez, se detiene en el último frame
-  useEffect(() => {
-    if (!imagesLoaded) return;
-
-    let frameIndex = 1;
-    const interval = setInterval(() => {
-      if (imgRef.current) {
-        imgRef.current.src = getFrameSrc(frameIndex);
-      }
-      if (frameIndex >= TOTAL_FRAMES) {
-        clearInterval(interval);
-        return;
-      }
-      frameIndex += 1;
-    }, FRAME_DURATION);
-
-    return () => clearInterval(interval);
-  }, [imagesLoaded]);
-
-  const getFrameSrc = (frame: number): string => {
-    const frameNumber = frame.toString().padStart(3, "0");
-    return `/assets/frames/ezgif-frame-${frameNumber}.jpg`;
-  };
 
   return (
-    <section className="w-full flex flex-col lg:block lg:relative lg:min-h-[90vh] overflow-hidden">
-      {/* Frame — mobile: bloque arriba, desktop: fondo absoluto */}
-      <div className="w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:absolute lg:inset-0 lg:-z-10">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          ref={imgRef}
-          src={getFrameSrc(1)}
-          alt="Hero background"
-          className="w-full h-full object-cover"
-          style={{
-            backfaceVisibility: "hidden",
-            transform: "translateZ(0)",
-          }}
-        />
-      </div>
+    <section className="relative overflow-hidden border-b border-border bg-background">
+      {/* Instrument grid — the faint measured ground the whole site sits on */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.55] dark:opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary)/0.055) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)/0.055) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          maskImage:
+            "radial-gradient(ellipse 78% 62% at 50% 34%, #000 45%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 78% 62% at 50% 34%, #000 45%, transparent 100%)",
+        }}
+      />
 
-      {/* Texto — mobile: debajo del frame, desktop: overlay izquierda */}
-      <div className="relative z-10 w-full px-4 py-8 lg:min-h-[90vh] lg:flex lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full max-w-sm text-left"
+      <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-24 sm:pt-28 lg:pb-20 lg:pt-32">
+        <p className="label-mono text-primary">
+          {t("hero.eyebrow")}
+        </p>
+
+        <h1
+          className="mt-5 font-display text-[2.6rem] font-bold leading-[1.02] tracking-[-0.028em] text-foreground sm:text-6xl lg:text-7xl"
         >
-          <h1 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 drop-shadow leading-snug">
-            &ldquo;{t("hero.welcome")}&rdquo;
-          </h1>
-          <p className="text-base md:text-lg text-gray-700 mb-8">
-            {t("hero.description")}
-          </p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4"
+          {t("hero.name")}
+        </h1>
+
+        <p
+          className="mt-7 max-w-[34ch] font-display text-xl font-semibold leading-[1.28] tracking-[-0.012em] text-foreground sm:text-2xl sm:max-w-[38ch]"
+          style={{ textWrap: "balance" } as React.CSSProperties}
+        >
+          {t("hero.headline")}
+        </p>
+
+        <p
+          className="mt-5 max-w-[64ch] text-[15px] leading-relaxed text-muted-foreground sm:text-base"
+        >
+          {t("hero.description")}
+        </p>
+
+        {/* The design principle, set apart as a quoted rule */}
+        <p
+          className="mt-6 border-l-2 border-primary pl-4 font-mono text-[13px] leading-relaxed text-foreground/85"
+        >
+          {t("hero.principle")}
+        </p>
+
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-foreground/88"
           >
-            <a
-              href="#about"
-              className="px-6 py-3 bg-gray-900 text-white rounded-md font-medium hover:bg-gray-800 transition-colors text-center shadow-lg"
-            >
-              {t("hero.exploreWork")}
-            </a>
-            <a
-              href="mailto:elvisreyxd@gmail.com"
-              className="px-6 py-3 bg-white/60 text-gray-900 border border-gray-300 rounded-md font-medium hover:bg-white/80 transition-colors text-center backdrop-blur-sm"
-            >
-              {t("hero.getInTouch")}
-            </a>
-          </motion.div>
-        </motion.div>
+            {t("hero.exploreWork")}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <a
+            href="mailto:elvisreyxd@gmail.com"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            <Mail className="h-4 w-4" />
+            {t("hero.getInTouch")}
+          </a>
+          <a
+            href="/Elvis-Pino-CV.pdf"
+            download
+            className="inline-flex items-center gap-2 px-1.5 py-2.5 text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+          >
+            <Download className="h-4 w-4" />
+            {t("hero.downloadCv")}
+          </a>
+        </div>
+
+        <p className="mt-7 font-mono text-xs text-muted-foreground">
+          {t("hero.location")}
+        </p>
+
+        {/* Metrics band — the same figures the CV leads with */}
+        <dl
+          className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-4"
+        >
+          {STATS.map((s) => (
+            <div key={s.key} className="bg-card px-4 py-4">
+              <dd className="tabular font-mono text-2xl font-bold tracking-tight text-primary">
+                {s.value}
+                <span className="text-lg">{s.unit}</span>
+              </dd>
+              <dt className="mt-1 font-mono text-[10.5px] uppercase leading-snug tracking-[0.09em] text-muted-foreground">
+                {t(s.key)}
+              </dt>
+            </div>
+          ))}
+        </dl>
+
+        <a
+          href="#about"
+          className="mt-12 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-primary"
+        >
+          <ArrowDown className="h-3.5 w-3.5" />
+          {t("hero.scrollToExplore")}
+        </a>
       </div>
     </section>
   );
