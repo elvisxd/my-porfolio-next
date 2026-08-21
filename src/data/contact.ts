@@ -32,7 +32,7 @@ export const contactInfo: ContactInfo[] = [
     id: "linkedin",
     icon: Linkedin,
     text: "LinkedIn",
-    href: "https://www.linkedin.com/in/elvis-pino-b358b2127/",
+    href: "https://www.linkedin.com/in/elvis-pino-dev/",
     isExternal: true,
   },
   {

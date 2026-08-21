@@ -44,7 +44,7 @@ export default function About() {
               <a href="https://github.com/elvisxd" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-primary">
                 <Github className="h-[18px] w-[18px]" />
               </a>
-              <a href="https://www.linkedin.com/in/elvis-pino-b358b2127/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-primary">
+              <a href="https://www.linkedin.com/in/elvis-pino-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-primary">
                 <Linkedin className="h-[18px] w-[18px]" />
               </a>
               <a href="mailto:elvisreyxd@gmail.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-primary">

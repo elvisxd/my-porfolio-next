@@ -32,7 +32,7 @@ export default function Footer() {
             +1 (407) 437-9559
           </a>
           <a
-            href="https://www.linkedin.com/in/elvis-pino-b358b2127/"
+            href="https://www.linkedin.com/in/elvis-pino-dev/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-[13px] text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
