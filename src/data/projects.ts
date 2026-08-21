@@ -19,6 +19,36 @@ interface TranslatableProject
 
 const projectsData: TranslatableProject[] = [
   {
+    id: "trading-platform",
+    title: {
+      en: "Algorithmic Trading Platform — Applied AI",
+      es: "Plataforma de Trading Algorítmico — IA Aplicada",
+    },
+    description: {
+      en: "Independently built and operated research and execution system, and my most complete work in applied AI, data engineering and real-time systems. It integrates Google Gemini through a custom REST client with timeout control, temperature tuning and token budgeting, running five specialized prompts across three services with graceful degradation — when the model fails, the product keeps operating without the AI layer. I wrote backtest scripts that measure whether each criterion sent in the prompt carries real predictive information, and removed the ones that did not. After measuring ~25 technical signals, I established the core architecture: the LLM does not predict, it explains numbers already computed in code. The predictive layer is a weighted voting ensemble over 5 features with a net consensus threshold and a 72-hour horizon, validated with permutation testing, Bonferroni correction and out-of-sample splits. The system persists every model reading and verifies its accuracy against real price data every 10 minutes.",
+      es: "Sistema propio de investigación y ejecución que construyo y opero de forma independiente, y mi trabajo más completo en IA aplicada, ingeniería de datos y sistemas en tiempo real. Integra Google Gemini mediante un cliente REST propio con control de timeout, temperatura y presupuesto de tokens, ejecutando cinco prompts especializados en tres servicios con degradación elegante: si el modelo falla, el producto sigue operando sin la capa de IA. Escribí scripts de backtest que miden si cada criterio enviado en el prompt aporta información predictiva real, y eliminé los que no aportaban. Tras medir ~25 señales técnicas, establecí la arquitectura central: el LLM no predice, explica números ya calculados en código. La capa predictiva es un ensemble de votación ponderada sobre 5 features con umbral de consenso neto y horizonte de 72 horas, validado con test de permutación, corrección de Bonferroni y partición out-of-sample. El sistema persiste cada lectura del modelo y verifica su acierto contra precios reales cada 10 minutos.",
+    },
+    shortDescription: {
+      en: "283k lines of TypeScript. LLM integration, a validated predictive ensemble (+1.29% edge out-of-sample) and AI observability in production.",
+      es: "283k líneas de TypeScript. Integración de LLM, ensemble predictivo validado (+1.29% edge out-of-sample) y observabilidad de IA en producción.",
+    },
+    imageSrc: "/assets/trading-platform.png",
+    technologies: [
+      { name: "Next.js 15", color: "#000000" },
+      { name: "React 19", color: "#61DAFB" },
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "PostgreSQL", color: "#336791" },
+      { name: "Redis", color: "#DC382D" },
+      { name: "Google Gemini API", color: "#8E75B2" },
+      { name: "Railway", color: "#0B0D0E" },
+    ],
+    liveLink: "",
+    codeLink: "",
+    status: "In Progress",
+    featured: true,
+    createdAt: "2026-04-22",
+  },
+  {
     id: "mobile-app-nestjs",
     title: {
       en: "Mobile App - NestJS Backend",
@@ -162,16 +192,16 @@ const projectsData: TranslatableProject[] = [
   {
     id: "gemini-chat",
     title: {
-      en: "Gemini Chat App",
-      es: "App de Chat Gemini",
+      en: "Chat UI",
+      es: "Interfaz de Chat",
     },
     description: {
       en: "A free and open-source chat app built using React and Tailwind CSS. This app allows users to create and join chat rooms, send messages, and view chat history. It also features a user authentication system, allowing users to sign up and log in to their accounts. The app is designed to be highly customizable, with options for changing the color scheme, font size, and other visual elements. It is also responsive, meaning it can be used on different devices and screen sizes.",
       es: "Una aplicación de chat gratuita y de código abierto construida con React y Tailwind CSS. Esta aplicación permite a los usuarios crear y unirse a salas de chat, enviar mensajes y ver el historial de chat. También cuenta con un sistema de autenticación de usuarios, permitiendo a los usuarios registrarse e iniciar sesión en sus cuentas. La aplicación está diseñada para ser altamente personalizable, con opciones para cambiar el esquema de colores, tamaño de fuente y otros elementos visuales. También es responsiva, lo que significa que puede usarse en diferentes dispositivos y tamaños de pantalla.",
     },
     shortDescription: {
-      en: "An open-source chat application with room creation, messaging, and user authentication.",
-      es: "Una aplicación de chat de código abierto con creación de salas, mensajería y autenticación de usuarios.",
+      en: "A chat interface with room creation, messaging, authentication and theming.",
+      es: "Una interfaz de chat con creación de salas, mensajería, autenticación y personalización de tema.",
     },
     imageSrc: imageGeminiChat.src as unknown as string,
     technologies: [

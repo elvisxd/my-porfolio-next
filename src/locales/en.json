@@ -8,22 +8,32 @@
   },
   "about": {
     "title": "About me",
-    "fullstackDeveloper": "Full-stack Developer",
-    "description1": "I'm a passionate full-stack developer with solid experience in JavaScript, React, and Node.js. With a keen eye for design and a love for creating intuitive user experiences, I specialize in building scalable and maintainable web applications. My journey in technology is driven by an insatiable curiosity and a commitment to staying at the forefront of emerging technologies.",
-    "description2": "When I'm not coding, you can find me exploring new hiking trails, experimenting with new recipes in the kitchen, or immersing myself in a good book about software architecture and design patterns.",
+    "fullstackDeveloper": "Senior Full-Stack Engineer · Applied AI",
+    "description1": "I'm a full-stack engineer with 10 years of experience and the founder of Nesty C.A., a technical consultancy focused on automation, web and mobile development, and API integration. I work across TypeScript, React/Next.js, .NET/C# and NestJS, and I've shipped more than nine applications to production — including one published on the Apple App Store.",
+    "description2": "My current focus is applied AI: integrating language models into systems that run in production, designing prompts with constraints validated against real data, and building predictive models that hold up out-of-sample. I care about the part most demos skip — measuring whether the thing actually works, and being willing to remove what doesn't.",
+    "description3": "Before this, I spent years automating business processes with UiPath RPA. The throughline hasn't changed: making software do the repetitive work reliably. The tools moved from rule engines to language models.",
     "technicalSkills": "Technical Skills",
-    "downloadCV": "Download CV"
+    "downloadCV": "Download CV",
+    "eyebrow": "Profile",
+    "groupAi": "AI & Data",
+    "groupFrontend": "Frontend",
+    "groupBackend": "Backend",
+    "groupData": "Data",
+    "groupCloud": "Cloud & DevOps",
+    "groupTools": "Tools"
   },
   "experience": {
-    "title": "Work Experience",
+    "title": "Experience",
     "professionalJourney": "My Professional Journey",
     "description": "Explore my career path and the valuable experiences I've gained along the way.",
     "present": "Present",
     "responsibilities": "Responsibilities",
-    "technologies": "Technologies"
+    "technologies": "Technologies",
+    "eyebrow": "Career",
+    "current": "Current"
   },
   "projects": {
-    "title": "Projects",
+    "title": "Selected work",
     "myWork": "My Work",
     "description": "Explore a selection of my projects, showcasing my skills and experience in web development.",
     "searchPlaceholder": "Search projects...",
@@ -34,7 +44,7 @@
     "noProjectsFound": "No projects found",
     "noProjectsDescription": "Try adjusting your search or filter criteria to find projects.",
     "liveDemo": "Live Demo",
-    "viewCode": "View Code",
+    "viewCode": "View code",
     "noDemo": "No Demo",
     "privateCode": "Private Code",
     "showMore": "Show more",
@@ -43,10 +53,17 @@
       "completed": "Completed",
       "inProgress": "In Progress",
       "beta": "Beta"
-    }
+    },
+    "eyebrow": "Work",
+    "more": "More projects",
+    "viewLive": "View live",
+    "demo": "Demo",
+    "code": "Code",
+    "privateSystem": "Private system",
+    "walkthrough": "Available to walk through on request"
   },
   "education": {
-    "title": "Studies & Certificates",
+    "title": "Education & certifications",
     "educationalJourney": "My Educational Journey",
     "description": "Explore the various studies and certificates I've completed to enhance my expertise in software development and design.",
     "all": "All",
@@ -55,22 +72,38 @@
     "degree": "Degree",
     "certificate": "Certificate",
     "specialization": "Specialization",
-    "inProgress": "In Progress",
-    "skills": "Skills learned"
+    "inProgress": "Present",
+    "skills": "Skills learned",
+    "eyebrow": "Background",
+    "degrees": "Degrees",
+    "certificates": "Certifications",
+    "verify": "Verify"
   },
   "hero": {
-    "welcome": "First, solve the problem. Then, write the code.",
-    "description": "I'm Elvis Pino, a Full-Stack Developer passionate about creating modern web experiences with cutting-edge technologies.",
-    "exploreWork": "Explore My Work",
-    "getInTouch": "Get In Touch",
-    "scrollToExplore": "Scroll to explore"
+    "eyebrow": "Senior Full-Stack Engineer · Applied AI",
+    "name": "Elvis R. Pino",
+    "headline": "I build systems where AI is a production component, not a demo.",
+    "description": "10 years of full-stack engineering across TypeScript, React/Next.js, .NET and NestJS. I integrate language models over REST, design prompts with empirically validated constraints, and ship predictive models with out-of-sample validation.",
+    "principle": "The model explains. Deterministic code decides.",
+    "exploreWork": "View selected work",
+    "getInTouch": "Get in touch",
+    "downloadCv": "Download CV",
+    "location": "Orlando, Florida · Open to relocation & remote",
+    "scrollToExplore": "Scroll to explore",
+    "statLines": "lines of TypeScript",
+    "statEngines": "signal engines",
+    "statEdge": "edge, out-of-sample",
+    "statYears": "years of experience",
+    "welcome": "First, solve the problem. Then, write the code."
   },
   "footer": {
-    "builtWith": "Built with",
+    "builtWith": "Next.js · TypeScript · Tailwind",
     "by": "by",
     "allRightsReserved": "All rights reserved.",
     "contactMe": "Contact Me",
-    "followMe": "Follow Me"
+    "followMe": "Follow Me",
+    "available": "Open to senior full-stack and applied AI roles.",
+    "availableDetail": "Based in Orlando, Florida — open to relocation and remote work. The fastest way to reach me is email."
   },
   "skillCategories": {
     "frontend": "User Interface Technologies",

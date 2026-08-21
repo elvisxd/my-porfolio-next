@@ -1,176 +1,97 @@
 "use client";
+
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { SkillCategory } from "@/components/skill-category";
-import { skills, getSkillCategories } from "@/data/skills";
-import type { AboutMeProps } from "@/types/skills";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { skills } from "@/data/skills";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
-import meImage from "@/assets/mephoto.png";
+import mePhoto from "@/assets/mephoto.png";
 
-export default function AboutMe({
-  className = "",
-  id = "about",
-}: AboutMeProps) {
-  const { t, language } = useTranslation();
+/** Skill groups follow the CV's categories, including the AI row that the old
+ *  portfolio never had. Order is deliberate: the differentiator comes first. */
+const GROUPS = [
+  { key: "ai", labelKey: "about.groupAi", names: ["LLM Integration", "Prompt Engineering", "Predictive Modeling", "AI-Assisted Development", "UiPath RPA"] },
+  { key: "Frontend", labelKey: "about.groupFrontend" },
+  { key: "Backend", labelKey: "about.groupBackend" },
+  { key: "Database", labelKey: "about.groupData" },
+  { key: "DevOps", labelKey: "about.groupCloud" },
+  { key: "Tools", labelKey: "about.groupTools" },
+] as const;
 
-  // Get translated skill categories based on current language
-  const skillCategories = getSkillCategories(language);
-
-  // Agrupar habilidades por categoría
-  const skillsByCategory = skills.reduce(
-    (acc, skill) => {
-      if (!acc[skill.category]) {
-        acc[skill.category] = [];
-      }
-      acc[skill.category].push(skill);
-      return acc;
-    },
-    {} as Record<string, typeof skills>,
-  );
-
-  // Ordenar categorías para mostrar Frontend y Backend primero
-  const orderedCategories = [
-    "Frontend",
-    "Backend",
-    "Database",
-    "DevOps",
-    "Tools",
-    "Languages",
-  ].filter((cat) => skillsByCategory[cat]?.length > 0);
+export default function About() {
+  const { t } = useTranslation();
 
   return (
-    <section
-      id={id}
-      className={`w-full py-2 md:py-2 lg:py-2 bg-gradient-to-br from-background via-muted/50 to-background ${className}`}
-    >
-      <div className="w-full px-1 sm:px-2 md:px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid gap-8 lg:grid-cols-[1fr_1.5fr] lg:gap-12 items-start"
-        >
-          <div className="space-y-6">
-            <Card className="overflow-hidden">
-              <div className="relative aspect-square">
-                <Image
-                  src={meImage.src}
-                  alt="Elvis Pino"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                  className="object-cover transition-all duration-500 hover:scale-105"
-                />
-              </div>
-            </Card>
+    <section id="about" className="scroll-mt-20 border-b border-border">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
+          <p className="label-mono text-primary">{t("about.eyebrow")}</p>
+          <h2 className="h-section mt-2.5">
+            {t("about.title")}
+          </h2>
+        </header>
 
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Button variant="outline" size="icon" asChild>
-                <a
-                  href="https://github.com/elvisxd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub Profile"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button variant="outline" size="icon" asChild>
-                <a
-                  href="https://www.linkedin.com/in/elvis-pino-b358b2127/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button variant="outline" size="icon" asChild>
-                <a href="mailto:elvisreyxd@gmail.com" aria-label="Email Me">
-                  <Mail className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button variant="outline" asChild>
-                <a
-                  href={
-                    language === "es" ?
-                      "/cv/Elvis-Pino-CV-ES.pdf"
-                    : "/cv/Elvis-Pino-CV.pdf"
-                  }
-                  download={
-                    language === "es" ?
-                      "Elvis-Pino-CV-ES.pdf"
-                    : "Elvis-Pino-CV.pdf"
-                  }
-                  aria-label="Download CV"
-                  className="flex items-center gap-2"
-                >
-                  <Download className="h-4 w-4" />
-                  {t("about.downloadCV")}
-                </a>
-              </Button>
+        <div className="reveal grid gap-[clamp(2rem,1.5rem+2.5vw,3rem)] lg:grid-cols-[minmax(0,190px)_minmax(0,1fr)]">
+          <div>
+            <Image
+              src={mePhoto}
+              alt="Elvis Pino"
+              width={200}
+              height={200}
+              priority
+              className="w-40 rounded-md border border-border object-cover grayscale lg:w-full"
+            />
+            <div className="mt-5 flex gap-4">
+              <a href="https://github.com/elvisxd" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-primary">
+                <Github className="h-[18px] w-[18px]" />
+              </a>
+              <a href="https://www.linkedin.com/in/elvis-pino-b358b2127/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground transition-colors hover:text-primary">
+                <Linkedin className="h-[18px] w-[18px]" />
+              </a>
+              <a href="mailto:elvisreyxd@gmail.com" aria-label="Email" className="text-muted-foreground transition-colors hover:text-primary">
+                <Mail className="h-[18px] w-[18px]" />
+              </a>
             </div>
+            <a
+              href="/cv/Elvis-Pino-CV.pdf"
+              download
+              className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary"
+            >
+              <Download className="h-3.5 w-3.5" />
+              {t("about.downloadCV")}
+            </a>
           </div>
 
-          <div className="space-y-8">
-            <div>
-              <motion.h1
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                Elvis Pino
-              </motion.h1>
-              <motion.p
-                className="text-muted-foreground text-xl mt-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                {t("about.fullstackDeveloper")}
-              </motion.p>
+          <div>
+            <div className="flex max-w-[68ch] flex-col gap-4 text-[15px] leading-relaxed text-muted-foreground">
+              <p>{t("about.description1")}</p>
+              <p>{t("about.description2")}</p>
+              <p>{t("about.description3")}</p>
             </div>
 
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">
-                  {t("about.title")}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t("about.description1")}
-                </p>
-                <p className="text-muted-foreground leading-relaxed mt-4">
-                  {t("about.description2")}
-                </p>
-              </CardContent>
-            </Card>
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">
-                {t("about.technicalSkills")}
-              </h2>
-
-              {orderedCategories.map((category) => (
-                <SkillCategory
-                  key={category}
-                  title={category}
-                  description={skillCategories[category]}
-                  skills={skillsByCategory[category]}
-                  initiallyExpanded={
-                    category === "Frontend" || category === "Backend"
-                  }
-                />
-              ))}
-            </div>
+            <h3 className="label-mono mt-10 border-b border-border pb-2">
+              {t("about.technicalSkills")}
+            </h3>
+            <dl className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-[104px_1fr]">
+              {GROUPS.map((g) => {
+                const names =
+                  "names" in g
+                    ? g.names
+                    : skills
+                        .filter((s) => s.category === g.key)
+                        .map((s) => s.name);
+                if (!names.length) return null;
+                return (
+                  <div key={g.key} className="contents">
+                    <dt className="label-mono sm:pt-0.5">{t(g.labelKey)}</dt>
+                    <dd className="text-[15px] leading-relaxed text-muted-foreground">
+                      {names.join(", ")}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

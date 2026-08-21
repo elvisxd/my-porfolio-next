@@ -1,99 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { ExperienceCard } from "@/components/experience-card";
-import { TimelineNode } from "@/components/timeline-node";
 import { getExperiences } from "@/data/experiences";
 import { useTranslation } from "@/hooks/useTranslation";
-import type { WorkExperienceProps } from "@/types/experience";
 
-export default function WorkExperience({
-  className = "",
-  id = "experience",
-}: WorkExperienceProps) {
+/** Experience reads as a record, not a set of cards: a mono metadata rail on
+ *  the left, the role and its substance on the right. Same structure as the CV. */
+export default function WorkExperience() {
   const { t, language } = useTranslation();
-
-  // Get translated experiences based on current language
   const experiences = getExperiences(language);
 
-  // Sort experiences by date (most recent first)
-  const sortedExperiences = [...experiences].sort((a, b) => {
-    const dateA =
-      a.current ? new Date()
-      : a.endDate ? new Date(a.endDate)
-      : new Date();
-    const dateB =
-      b.current ? new Date()
-      : b.endDate ? new Date(b.endDate)
-      : new Date();
-    return dateB.getTime() - dateA.getTime();
-  });
-
   return (
-    <section
-      id={id}
-      className={`w-full py-4 md:py-4 lg:py-4 bg-gradient-to-b from-background to-muted/30 ${className}`}
-    >
-      <div className="w-full px-1 sm:px-2 md:px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center space-y-4 text-center"
-        >
-          <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
+    <section id="experience" className="scroll-mt-20 border-b border-border">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
+          <p className="label-mono text-primary">{t("experience.eyebrow")}</p>
+          <h2 className="h-section mt-2.5">
             {t("experience.title")}
-          </Badge>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            {t("experience.professionalJourney")}
           </h2>
-          <p className="max-w-[900px] text-muted-foreground text-sm sm:text-base">
-            {t("experience.description")}
-          </p>
-        </motion.div>
+        </header>
 
-        <div className="mt-16 relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 transform -translate-x-1/2">
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: "100%" }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="w-full bg-muted-foreground/20 origin-top"
-            ></motion.div>
-          </div>
-
-          {/* Timeline entries */}
-          {sortedExperiences.map((exp, index) => (
-            <motion.div
+        <div className="flex flex-col gap-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
+          {experiences.map((exp) => (
+            <article
               key={exp.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="mb-12 sm:mb-16 flex flex-col sm:flex-row items-start sm:even:flex-row-reverse relative group"
+              className="reveal grid gap-x-10 gap-y-3 sm:grid-cols-[minmax(0,128px)_minmax(0,1fr)]"
             >
-              {/* Timeline connector and icon */}
-              <TimelineNode experience={exp} index={index} />
+              <div className="font-mono text-[11px] leading-relaxed text-muted-foreground">
+                <span className="block text-foreground/75">{exp.period}</span>
+                {exp.location ? (
+                  <span className="mt-1 block">{exp.location}</span>
+                ) : null}
+                {exp.current ? (
+                  <span className="mt-2 inline-block rounded-sm bg-accent px-1.5 py-0.5 text-[10px] uppercase tracking-[0.1em] text-accent-foreground">
+                    {t("experience.current")}
+                  </span>
+                ) : null}
+              </div>
 
-              {/* Experience card */}
-              <ExperienceCard
-                experience={exp}
-                index={index}
-                isEven={index % 2 === 0}
-              />
-            </motion.div>
+              <div>
+                <h3 className="font-display text-lg font-semibold tracking-[-0.01em]">
+                  {exp.title}
+                </h3>
+                <p className="mt-0.5 text-sm font-semibold text-primary">
+                  {exp.company}
+                </p>
+
+                <ul className="mt-3 flex flex-col gap-1.5">
+                  {exp.responsibilities.map((r) => (
+                    <li
+                      key={r.id}
+                      className="relative pl-4 text-[15px] leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-[0.62em] before:h-px before:w-2 before:bg-primary"
+                    >
+                      {r.text}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="rule-dotted mt-4 pt-3 font-mono text-[11px] leading-relaxed text-muted-foreground">
+                  {exp.technologies.map((tech) => tech.name).join(" · ")}
+                </p>
+              </div>
+            </article>
           ))}
-
-          {/* Timeline end marker */}
-          <div className="absolute left-4 sm:left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="w-4 h-4 rounded-full bg-primary/30"
-            ></motion.div>
-          </div>
         </div>
       </div>
     </section>

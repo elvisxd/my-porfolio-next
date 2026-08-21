@@ -8,22 +8,32 @@
   },
   "about": {
     "title": "Acerca de mí",
-    "fullstackDeveloper": "Desarrollador Full-stack",
-    "description1": "Soy un desarrollador full-stack apasionado con experiencia sólida en JavaScript, React y Node.js. Con un buen ojo para el diseño y amor por crear experiencias de usuario intuitivas, me especializo en construir aplicaciones web escalables y mantenibles. Mi trayectoria en tecnología está impulsada por una curiosidad insaciable y un compromiso de mantenerme a la vanguardia de las tecnologías emergentes.",
-    "description2": "Cuando no estoy programando, me puedes encontrar explorando nuevos senderos de montaña, experimentando con nuevas recetas en la cocina, o sumergiéndome en un buen libro sobre arquitectura de software y patrones de diseño.",
+    "fullstackDeveloper": "Ingeniero Full-Stack Senior · IA Aplicada",
+    "description1": "Soy ingeniero full-stack con 10 años de experiencia y fundador de Nesty C.A., una consultora técnica enfocada en automatización, desarrollo web y móvil, e integración de APIs. Trabajo con TypeScript, React/Next.js, .NET/C# y NestJS, y he entregado más de nueve aplicaciones a producción, incluida una publicada en la App Store de Apple.",
+    "description2": "Mi foco actual es la IA aplicada: integrar modelos de lenguaje en sistemas que corren en producción, diseñar prompts con restricciones validadas contra datos reales, y construir modelos predictivos que se sostengan out-of-sample. Me importa la parte que la mayoría de las demos se salta: medir si aquello funciona de verdad, y estar dispuesto a eliminar lo que no.",
+    "description3": "Antes de esto pasé años automatizando procesos de negocio con UiPath RPA. El hilo conductor no ha cambiado: hacer que el software se encargue del trabajo repetitivo de forma fiable. Las herramientas pasaron de motores de reglas a modelos de lenguaje.",
     "technicalSkills": "Habilidades Técnicas",
-    "downloadCV": "Descargar CV"
+    "downloadCV": "Descargar CV",
+    "eyebrow": "Perfil",
+    "groupAi": "IA y Datos",
+    "groupFrontend": "Frontend",
+    "groupBackend": "Backend",
+    "groupData": "Datos",
+    "groupCloud": "Cloud y DevOps",
+    "groupTools": "Herramientas"
   },
   "experience": {
-    "title": "Experiencia Laboral",
+    "title": "Experiencia",
     "professionalJourney": "Mi Trayectoria Profesional",
     "description": "Explora mi trayectoria profesional y las valiosas experiencias que he ganado en el camino.",
     "present": "Presente",
     "responsibilities": "Responsabilidades",
-    "technologies": "Tecnologías"
+    "technologies": "Tecnologías",
+    "eyebrow": "Trayectoria",
+    "current": "Actual"
   },
   "projects": {
-    "title": "Proyectos",
+    "title": "Trabajo seleccionado",
     "myWork": "Mi Trabajo",
     "description": "Explora una selección de mis proyectos, mostrando mis habilidades y experiencia en desarrollo web.",
     "searchPlaceholder": "Buscar proyectos...",
@@ -34,7 +44,7 @@
     "noProjectsFound": "No se encontraron proyectos",
     "noProjectsDescription": "Intenta ajustar tu búsqueda o criterios de filtro para encontrar proyectos.",
     "liveDemo": "Demo en Vivo",
-    "viewCode": "Ver Código",
+    "viewCode": "Ver código",
     "noDemo": "Sin Demo",
     "privateCode": "Código Privado",
     "showMore": "Ver más",
@@ -43,10 +53,17 @@
       "completed": "Completado",
       "inProgress": "En Progreso",
       "beta": "Beta"
-    }
+    },
+    "eyebrow": "Trabajo",
+    "more": "Más proyectos",
+    "viewLive": "Ver en vivo",
+    "demo": "Demo",
+    "code": "Código",
+    "privateSystem": "Sistema privado",
+    "walkthrough": "Puedo explicar la arquitectura si te interesa"
   },
   "education": {
-    "title": "Estudios y Certificados",
+    "title": "Formación y certificaciones",
     "educationalJourney": "Mi Trayectoria Educativa",
     "description": "Explora los diversos estudios y certificados que he completado para mejorar mi experiencia en desarrollo de software y diseño.",
     "all": "Todos",
@@ -55,22 +72,38 @@
     "degree": "Título",
     "certificate": "Certificado",
     "specialization": "Especialización",
-    "inProgress": "En Progreso",
-    "skills": "Habilidades aprendidas"
+    "inProgress": "Actualidad",
+    "skills": "Habilidades aprendidas",
+    "eyebrow": "Formación",
+    "degrees": "Titulaciones",
+    "certificates": "Certificaciones",
+    "verify": "Verificar"
   },
   "hero": {
-    "welcome": "Primero resuelve el problema, luego escribe el código.",
-    "description": "Soy Elvis Pino, un Desarrollador Full-Stack apasionado por crear experiencias web modernas con tecnologías de vanguardia.",
-    "exploreWork": "Explorar Mi Trabajo",
+    "eyebrow": "Ingeniero Full-Stack Senior · IA Aplicada",
+    "name": "Elvis R. Pino",
+    "headline": "Construyo sistemas donde la IA es un componente de producción, no una demo.",
+    "description": "10 años de ingeniería full-stack en TypeScript, React/Next.js, .NET y NestJS. Integro modelos de lenguaje vía REST, diseño prompts con restricciones validadas empíricamente y despliego modelos predictivos con validación out-of-sample.",
+    "principle": "El modelo explica. El código determinista decide.",
+    "exploreWork": "Ver trabajo seleccionado",
     "getInTouch": "Contactar",
-    "scrollToExplore": "Desplázate para explorar"
+    "downloadCv": "Descargar CV",
+    "location": "Orlando, Florida · Abierto a reubicación y remoto",
+    "scrollToExplore": "Desplázate para explorar",
+    "statLines": "líneas de TypeScript",
+    "statEngines": "motores de señal",
+    "statEdge": "edge, out-of-sample",
+    "statYears": "años de experiencia",
+    "welcome": "Primero resuelve el problema, luego escribe el código."
   },
   "footer": {
-    "builtWith": "Construido con",
+    "builtWith": "Next.js · TypeScript · Tailwind",
     "by": "por",
     "allRightsReserved": "Todos los derechos reservados.",
     "contactMe": "Contáctame",
-    "followMe": "Sígueme"
+    "followMe": "Sígueme",
+    "available": "Abierto a roles senior full-stack e IA aplicada.",
+    "availableDetail": "En Orlando, Florida — abierto a reubicación y trabajo remoto. La vía más rápida para contactarme es el email."
   },
   "skillCategories": {
     "frontend": "Tecnologías de Interfaz de Usuario",

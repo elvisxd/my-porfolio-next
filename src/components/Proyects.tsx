@@ -1,184 +1,147 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ProjectCard } from "@/components/project-card";
-import { getProjects, getAllTechnologies } from "@/data/projects";
+import Image from "next/image";
+import { ArrowUpRight, Github, Lock } from "lucide-react";
+import { getProjects } from "@/data/projects";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Search, Filter, X } from "lucide-react";
-import type { ProjectsProps } from "@/types/project";
 
-export default function Projects({
-  className = "",
-  id = "projects",
-}: ProjectsProps) {
+/** Featured projects get room to argue for themselves; everything else is a
+ *  compact index. Volume goes in the table, evidence goes in the cards. */
+const FEATURED_IDS = ["trading-platform", "mobile-app-nestjs", "ecommerce-store"];
+
+export default function Projects() {
   const { t, language } = useTranslation();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const projects = getProjects(language);
 
-  // Get translated projects based on current language
-  const projects = useMemo(() => getProjects(language), [language]);
-  const [filteredProjects, setFilteredProjects] = useState(projects);
-  const [showFilters, setShowFilters] = useState(false);
-
-  const allTechnologies = getAllTechnologies();
-
-  useEffect(() => {
-    let result = projects;
-
-    // Filter by search term
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter(
-        (project) =>
-          project.title.toLowerCase().includes(term) ||
-          project.description.toLowerCase().includes(term) ||
-          project.technologies.some((tech) =>
-            tech.name.toLowerCase().includes(term),
-          ),
-      );
-    }
-
-    // Filter by selected technology
-    if (selectedTech) {
-      result = result.filter((project) =>
-        project.technologies.some((tech) => tech.name === selectedTech),
-      );
-    }
-
-    setFilteredProjects(result);
-  }, [searchTerm, selectedTech, projects]);
-
-  const handleTechFilter = (tech: string) => {
-    setSelectedTech(selectedTech === tech ? null : tech);
-  };
-
-  const clearFilters = () => {
-    setSearchTerm("");
-    setSelectedTech(null);
-  };
+  const featured = FEATURED_IDS.map((id) =>
+    projects.find((p) => p.id === id)
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const rest = projects.filter((p) => !FEATURED_IDS.includes(p.id));
 
   return (
-    <section
-      id={id}
-      className={`w-full py-2 md:py-2 lg:py-2 bg-gradient-to-br from-background via-muted/50 to-background ${className}`}
-    >
-      <div className="w-full px-1 sm:px-2 md:px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center space-y-4 text-center"
-        >
-          <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
+    <section id="projects" className="scroll-mt-20 border-b border-border">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
+          <p className="label-mono text-primary">{t("projects.eyebrow")}</p>
+          <h2 className="h-section mt-2.5">
             {t("projects.title")}
-          </Badge>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-            {t("projects.myWork")}
           </h2>
-          <p className="max-w-[900px] text-muted-foreground text-sm sm:text-base">
-            {t("projects.description")}
-          </p>
-        </motion.div>
+        </header>
 
-        <div className="mt-8 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <div className="relative w-full md:w-auto md:min-w-[300px]">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder={t("projects.searchPlaceholder")}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-4"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                aria-label="Clear search"
-              >
-                <X className="h-4 w-4 text-muted-foreground hover:text-foreground" />
-              </button>
-            )}
-          </div>
+        <div className="flex flex-col gap-[clamp(2.5rem,1.9rem+3vw,4rem)]">
+          {featured.map((p) => {
+            const isPrivate = !p.liveLink;
+            return (
+              <article key={p.id} className="reveal grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-center lg:gap-12">
+                {p.imageSrc ? (
+                  <div className="group/img overflow-hidden rounded-md border border-border bg-muted">
+                    <Image
+                      src={p.imageSrc}
+                      alt={p.title}
+                      width={1200}
+                      height={675}
+                      sizes="(max-width: 1024px) 100vw, 52vw"
+                      className="h-auto w-full transition-transform duration-500 ease-out group-hover/img:scale-[1.015]"
+                    />
+                  </div>
+                ) : null}
 
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2"
-            >
-              <Filter className="h-4 w-4" />
-              {showFilters ?
-                t("projects.hideFilters")
-              : t("projects.showFilters")}
-            </Button>
+                <div className="flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-display text-xl font-semibold tracking-[-0.012em]">
+                      {p.title}
+                    </h3>
+                    {isPrivate ? (
+                      <span className="inline-flex items-center gap-1 rounded-sm bg-accent px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-accent-foreground">
+                        <Lock className="h-2.5 w-2.5" />
+                        {t("projects.privateSystem")}
+                      </span>
+                    ) : null}
+                  </div>
 
-            {(selectedTech || searchTerm) && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={clearFilters}
-                className="flex items-center gap-2"
-              >
-                <X className="h-4 w-4" />
-                {t("projects.clearFilters")}
-              </Button>
-            )}
-          </div>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                    {p.shortDescription ?? p.description}
+                  </p>
+
+                  <p className="rule-dotted mt-4 pt-3 font-mono text-[11px] leading-relaxed text-muted-foreground">
+                    {p.technologies.map((tech) => tech.name).join(" · ")}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                    {p.liveLink ? (
+                      <a
+                        href={p.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                      >
+                        {t("projects.viewLive")}
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </a>
+                    ) : (
+                      <span className="text-sm text-muted-foreground">
+                        {t("projects.walkthrough")}
+                      </span>
+                    )}
+                    {p.codeLink && p.codeLink !== "#" ? (
+                      <a
+                        href={p.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                        {t("projects.viewCode")}
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
+        {/* Compact index of the remaining work */}
+        <h3 className="label-mono mt-14 border-b border-border pb-2">
+          {t("projects.more")}
+        </h3>
+        <ul className="mt-1">
+          {rest.map((p) => (
+            <li
+              key={p.id}
+              className="row-hover -mx-2 grid gap-x-6 gap-y-1 border-b border-border px-2 py-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_auto] sm:items-baseline"
             >
-              <div className="mt-4 flex flex-wrap gap-2 p-4 bg-muted/30 rounded-lg">
-                {allTechnologies.map((tech) => (
-                  <Badge
-                    key={tech}
-                    variant={selectedTech === tech ? "default" : "outline"}
-                    className="cursor-pointer"
-                    onClick={() => handleTechFilter(tech)}
+              <span className="font-display text-[15px] font-semibold">
+                {p.title}
+              </span>
+              <span className="font-mono text-[11px] leading-relaxed text-muted-foreground">
+                {p.technologies.map((tech) => tech.name).join(" · ")}
+              </span>
+              <span className="flex gap-4">
+                {p.liveLink ? (
+                  <a
+                    href={p.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-draw text-[13px] font-semibold text-muted-foreground hover:text-primary"
                   >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {filteredProjects.length === 0 ?
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-12 text-center p-8 bg-muted/30 rounded-lg"
-          >
-            <h3 className="text-xl font-semibold mb-2">
-              {t("projects.noProjectsFound")}
-            </h3>
-            <p className="text-muted-foreground">
-              {t("projects.noProjectsDescription")}
-            </p>
-            <Button variant="outline" onClick={clearFilters} className="mt-4">
-              {t("projects.clearAllFilters")}
-            </Button>
-          </motion.div>
-        : <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
-        }
+                    {t("projects.demo")}
+                  </a>
+                ) : null}
+                {p.codeLink && p.codeLink !== "#" ? (
+                  <a
+                    href={p.codeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-draw text-[13px] font-semibold text-muted-foreground hover:text-primary"
+                  >
+                    {t("projects.code")}
+                  </a>
+                ) : null}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
