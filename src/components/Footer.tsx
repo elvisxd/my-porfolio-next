@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-background">
-      <div className="mx-auto max-w-5xl px-6 py-14">
+      <div className="mx-auto max-w-6xl px-6 py-14">
         <p className="font-display text-xl font-semibold tracking-[-0.015em]">
           {t("footer.available")}
         </p>

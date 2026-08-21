@@ -22,15 +22,15 @@ export default function About() {
 
   return (
     <section id="about" className="scroll-mt-20 border-b border-border">
-      <div className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
-        <header className="mb-10">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           <p className="label-mono text-primary">{t("about.eyebrow")}</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+          <h2 className="h-section mt-2.5">
             {t("about.title")}
           </h2>
         </header>
 
-        <div className="grid gap-10 lg:grid-cols-[200px_1fr] lg:gap-12">
+        <div className="reveal grid gap-[clamp(2rem,1.5rem+2.5vw,3rem)] lg:grid-cols-[minmax(0,190px)_minmax(0,1fr)]">
           <div>
             <Image
               src={mePhoto}

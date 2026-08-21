@@ -20,28 +20,28 @@ export default function Projects() {
 
   return (
     <section id="projects" className="scroll-mt-20 border-b border-border">
-      <div className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
-        <header className="mb-10">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           <p className="label-mono text-primary">{t("projects.eyebrow")}</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+          <h2 className="h-section mt-2.5">
             {t("projects.title")}
           </h2>
         </header>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-[clamp(2.5rem,1.9rem+3vw,4rem)]">
           {featured.map((p) => {
             const isPrivate = !p.liveLink;
             return (
-              <article key={p.id} className="grid gap-6 lg:grid-cols-[1.05fr_1fr] lg:gap-9">
+              <article key={p.id} className="reveal grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-center lg:gap-12">
                 {p.imageSrc ? (
-                  <div className="overflow-hidden rounded-md border border-border bg-muted">
+                  <div className="group/img overflow-hidden rounded-md border border-border bg-muted">
                     <Image
                       src={p.imageSrc}
                       alt={p.title}
                       width={1200}
                       height={675}
                       sizes="(max-width: 1024px) 100vw, 52vw"
-                      className="h-auto w-full"
+                      className="h-auto w-full transition-transform duration-500 ease-out group-hover/img:scale-[1.015]"
                     />
                   </div>
                 ) : null}
@@ -109,7 +109,7 @@ export default function Projects() {
           {rest.map((p) => (
             <li
               key={p.id}
-              className="grid gap-x-6 gap-y-1 border-b border-border py-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_auto] sm:items-baseline"
+              className="row-hover -mx-2 grid gap-x-6 gap-y-1 border-b border-border px-2 py-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_auto] sm:items-baseline"
             >
               <span className="font-display text-[15px] font-semibold">
                 {p.title}
@@ -123,7 +123,7 @@ export default function Projects() {
                     href={p.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[13px] font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                    className="link-draw text-[13px] font-semibold text-muted-foreground hover:text-primary"
                   >
                     {t("projects.demo")}
                   </a>
@@ -133,7 +133,7 @@ export default function Projects() {
                     href={p.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[13px] font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                    className="link-draw text-[13px] font-semibold text-muted-foreground hover:text-primary"
                   >
                     {t("projects.code")}
                   </a>

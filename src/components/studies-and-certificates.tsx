@@ -20,10 +20,10 @@ export default function StudiesAndCertificates() {
 
   return (
     <section id="Studies" className="scroll-mt-20 border-b border-border">
-      <div className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
-        <header className="mb-10">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           <p className="label-mono text-primary">{t("education.eyebrow")}</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+          <h2 className="h-section mt-2.5">
             {t("education.title")}
           </h2>
         </header>
@@ -33,7 +33,7 @@ export default function StudiesAndCertificates() {
         </h3>
         <div className="mt-4 flex flex-col gap-4">
           {degrees.map((d) => (
-            <div key={d.id} className="grid gap-x-8 gap-y-1 sm:grid-cols-[128px_1fr]">
+            <div key={d.id} className="reveal grid gap-x-8 gap-y-1 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)]">
               <span className="font-mono text-[11px] text-muted-foreground">
                 {range(d.startDate, d.endDate, d.inProgress)}
               </span>
@@ -55,7 +55,7 @@ export default function StudiesAndCertificates() {
           {certs.map((c) => (
             <li
               key={c.id}
-              className="grid gap-x-8 gap-y-1 border-b border-border py-3 sm:grid-cols-[128px_1fr_auto] sm:items-baseline"
+              className="row-hover -mx-2 grid gap-x-8 gap-y-1 border-b border-border px-2 py-3 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto] sm:items-baseline"
             >
               <span className="font-mono text-[11px] text-muted-foreground">
                 {range(c.startDate, c.endDate, c.inProgress)}
@@ -72,7 +72,7 @@ export default function StudiesAndCertificates() {
                   href={c.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-1 text-[13px] font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
+                  className="group inline-flex items-center gap-1 text-[13px] font-semibold text-muted-foreground transition-colors hover:text-primary"
                 >
                   {t("education.verify")}
                   <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

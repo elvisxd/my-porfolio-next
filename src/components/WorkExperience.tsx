@@ -11,19 +11,19 @@ export default function WorkExperience() {
 
   return (
     <section id="experience" className="scroll-mt-20 border-b border-border">
-      <div className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
-        <header className="mb-10">
+      <div className="gutter section-y mx-auto max-w-6xl">
+        <header className="mb-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           <p className="label-mono text-primary">{t("experience.eyebrow")}</p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+          <h2 className="h-section mt-2.5">
             {t("experience.title")}
           </h2>
         </header>
 
-        <div className="flex flex-col gap-9">
+        <div className="flex flex-col gap-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           {experiences.map((exp) => (
             <article
               key={exp.id}
-              className="grid gap-x-8 gap-y-3 sm:grid-cols-[128px_1fr]"
+              className="reveal grid gap-x-10 gap-y-3 sm:grid-cols-[minmax(0,128px)_minmax(0,1fr)]"
             >
               <div className="font-mono text-[11px] leading-relaxed text-muted-foreground">
                 <span className="block text-foreground/75">{exp.period}</span>

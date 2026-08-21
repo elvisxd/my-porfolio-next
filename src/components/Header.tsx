@@ -31,7 +31,7 @@ export default function Header() {
           : "border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <a
           href="#"
           className="font-display text-[15px] font-bold tracking-[-0.01em] transition-colors hover:text-primary"

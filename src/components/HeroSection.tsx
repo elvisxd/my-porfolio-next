@@ -32,38 +32,38 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-24 sm:pt-28 lg:pb-20 lg:pt-32">
-        <p className="label-mono text-primary">
+      <div className="gutter relative mx-auto max-w-6xl pb-[clamp(3rem,2.2rem+4vw,5rem)] pt-[clamp(5rem,3.5rem+7vw,9rem)]">
+        <p className="label-mono text-primary" style={{ fontSize: "var(--step-eyebrow)" }}>
           {t("hero.eyebrow")}
         </p>
 
         <h1
-          className="mt-5 font-display text-[2.6rem] font-bold leading-[1.02] tracking-[-0.028em] text-foreground sm:text-6xl lg:text-7xl"
+          className="mt-[clamp(0.9rem,0.7rem+0.8vw,1.35rem)] font-display font-bold leading-[1.0] tracking-[-0.03em] text-foreground" style={{ fontSize: "var(--step-name)" }}
         >
           {t("hero.name")}
         </h1>
 
         <p
-          className="mt-7 max-w-[34ch] font-display text-xl font-semibold leading-[1.28] tracking-[-0.012em] text-foreground sm:text-2xl sm:max-w-[38ch]"
-          style={{ textWrap: "balance" } as React.CSSProperties}
+          className="mt-[clamp(1.1rem,0.9rem+1vw,1.75rem)] max-w-[22ch] font-display font-semibold leading-[1.2] tracking-[-0.015em] text-foreground sm:max-w-[30ch] lg:max-w-[36ch]"
+          style={{ fontSize: "var(--step-headline)" }}
         >
           {t("hero.headline")}
         </p>
 
         <p
-          className="mt-5 max-w-[64ch] text-[15px] leading-relaxed text-muted-foreground sm:text-base"
+          className="mt-[clamp(0.9rem,0.75rem+0.6vw,1.25rem)] max-w-[58ch] leading-[1.62] text-muted-foreground" style={{ fontSize: "var(--step-body)" }}
         >
           {t("hero.description")}
         </p>
 
         {/* The design principle, set apart as a quoted rule */}
         <p
-          className="mt-6 border-l-2 border-primary pl-4 font-mono text-[13px] leading-relaxed text-foreground/85"
+          className="mt-[clamp(1.1rem,0.9rem+0.7vw,1.6rem)] border-l-2 border-primary py-0.5 pl-4 font-mono text-[clamp(0.76rem,0.72rem+0.2vw,0.83rem)] leading-[1.6] text-foreground/85"
         >
           {t("hero.principle")}
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-3">
+        <div className="mt-[clamp(1.6rem,1.2rem+1.6vw,2.4rem)] flex flex-wrap items-center gap-x-3 gap-y-2.5">
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-foreground/88"
@@ -88,21 +88,21 @@ export default function HeroSection() {
           </a>
         </div>
 
-        <p className="mt-7 font-mono text-xs text-muted-foreground">
+        <p className="mt-[clamp(1.3rem,1rem+1vw,1.8rem)] font-mono text-[clamp(0.7rem,0.67rem+0.14vw,0.76rem)] text-muted-foreground">
           {t("hero.location")}
         </p>
 
         {/* Metrics band — the same figures the CV leads with */}
         <dl
-          className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-4"
+          className="mt-[clamp(2.5rem,1.9rem+3vw,4rem)] grid grid-cols-2 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-4"
         >
           {STATS.map((s) => (
-            <div key={s.key} className="bg-card px-4 py-4">
-              <dd className="tabular font-mono text-2xl font-bold tracking-tight text-primary">
+            <div key={s.key} className="bg-card px-[clamp(0.85rem,0.7rem+0.6vw,1.15rem)] py-[clamp(0.8rem,0.7rem+0.4vw,1.05rem)]">
+              <dd className="tabular font-mono text-[clamp(1.3rem,1.15rem+0.7vw,1.65rem)] font-bold leading-none tracking-[-0.02em] text-primary">
                 {s.value}
                 <span className="text-lg">{s.unit}</span>
               </dd>
-              <dt className="mt-1 font-mono text-[10.5px] uppercase leading-snug tracking-[0.09em] text-muted-foreground">
+              <dt className="mt-[0.42rem] font-mono text-[clamp(0.6rem,0.58rem+0.1vw,0.66rem)] uppercase leading-[1.35] tracking-[0.09em] text-muted-foreground">
                 {t(s.key)}
               </dt>
             </div>
@@ -111,7 +111,7 @@ export default function HeroSection() {
 
         <a
           href="#about"
-          className="mt-12 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-primary"
+          className="mt-[clamp(2rem,1.5rem+2vw,3rem)] inline-flex items-center gap-2 font-mono text-[clamp(0.63rem,0.6rem+0.14vw,0.7rem)] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-primary"
         >
           <ArrowDown className="h-3.5 w-3.5" />
           {t("hero.scrollToExplore")}

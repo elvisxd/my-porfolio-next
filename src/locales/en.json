@@ -92,7 +92,7 @@
     "scrollToExplore": "Scroll to explore",
     "statLines": "lines of TypeScript",
     "statEngines": "signal engines",
-    "statEdge": "model edge, out-of-sample",
+    "statEdge": "edge, out-of-sample",
     "statYears": "years of experience",
     "welcome": "First, solve the problem. Then, write the code."
   },
