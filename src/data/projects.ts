@@ -32,7 +32,7 @@ const projectsData: TranslatableProject[] = [
       en: "283k lines of TypeScript. LLM integration, a validated predictive ensemble (+1.29% edge out-of-sample) and AI observability in production.",
       es: "283k líneas de TypeScript. Integración de LLM, ensemble predictivo validado (+1.29% edge out-of-sample) y observabilidad de IA en producción.",
     },
-    imageSrc: "/assets/trading-platform.png",
+    imageSrc: "/assets/spot-market.png",
     technologies: [
       { name: "Next.js 15", color: "#000000" },
       { name: "React 19", color: "#61DAFB" },
