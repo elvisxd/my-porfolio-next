@@ -49,6 +49,64 @@ const projectsData: TranslatableProject[] = [
     createdAt: "2026-04-22",
   },
   {
+    id: "sports-betting-research",
+    title: {
+      en: "Sports Betting Research System",
+      es: "Sistema de Investigación de Apuestas Deportivas",
+    },
+    description: {
+      en: "A measurement system for player prop markets across eight sports (CS2, MLB, WNBA, NFL, college football, soccer, tennis and League of Legends), built around a single principle: nothing is presented as playable until it survives out-of-sample data. It captures the sportsbook board automatically, cross-references every line against its own historical database from ESPN, bo3.gg and Riot APIs, then resolves and scores each pick. The statistical layer is the actual product: ROI measured by bootstrapping whole matches rather than individual picks, permutation controls that reshuffle sides while holding the Higher/Lower ratio fixed, thirds and halves validation, and Bonferroni correction across every market examined. Hypotheses are frozen with their kill criteria written down BEFORE new data arrives — four have been frozen so far and all four were discarded, including one that had passed five controls and an out-of-sample test at p=0.0073. The system currently emits zero picks by design: the only market with evidence is frozen pending confirmation.",
+      es: "Sistema de medición de mercados de estadísticas de jugador en ocho deportes (CS2, MLB, WNBA, NFL, fútbol americano universitario, fútbol, tenis y League of Legends), construido sobre un principio: nada se presenta como jugable hasta que sobrevive a datos que no lo eligieron. Captura el tablero de la casa automáticamente, cruza cada línea contra su propio histórico de ESPN, bo3.gg y las APIs de Riot, y resuelve y puntúa cada pick. La capa estadística es el producto real: ROI medido con bootstrap de PARTIDOS enteros y no de picks sueltos, controles de permutación que rebarajan los lados manteniendo fija la proporción Higher/Lower, validación por tercios y mitades, y corrección de Bonferroni sobre todos los mercados examinados. Las hipótesis se congelan con su criterio de muerte escrito ANTES de que lleguen datos nuevos: se han congelado cuatro y las cuatro se descartaron, incluida una que había pasado cinco controles y un out-of-sample con p=0.0073. Hoy el sistema emite cero picks a propósito: el único mercado con evidencia está congelado a la espera de confirmación.",
+    },
+    shortDescription: {
+      en: "Eight sports, ~10k lines of statistical engine. Its most valuable feature is refusing to show signals that have not survived out-of-sample data.",
+      es: "Ocho deportes y ~10k líneas de motor estadístico. Su mejor función es negarse a enseñar señales que no han sobrevivido al out-of-sample.",
+    },
+    imageSrc: "/assets/sports-betting.png",
+    technologies: [
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "React 19", color: "#61DAFB" },
+      { name: "Vite", color: "#646CFF" },
+      { name: "Express", color: "#000000" },
+      { name: "Redis", color: "#DC382D" },
+      { name: "Docker", color: "#2496ED" },
+      { name: "Railway", color: "#0B0D0E" },
+    ],
+    liveLink: "",
+    codeLink: "",
+    status: "In Progress",
+    featured: true,
+    createdAt: "2026-08-30",
+  },
+  {
+    id: "amazon-pinterest",
+    title: {
+      en: "Amazon Affiliate → Pinterest Pipeline",
+      es: "Afiliados de Amazon → Pinterest",
+    },
+    description: {
+      en: "A content tool that turns an Amazon affiliate link into a ready-to-publish Pinterest pin. Paste the link and the product details, and it drafts the pin title, description, board and tags, plus an image prompt for editing the photo — the fields map one to one onto Pinterest's real pin creation form. It deliberately does NOT auto-publish: Pinterest's API requires an approved OAuth app, and until that exists the bottleneck is writing the copy, not pasting it, so the tool solves the part that actually costs time. The schema already stores everything that API would ask for, so wiring it later needs no migration. Its research notes document what does not work and why — Pinterest's internal endpoints return 403 and its grid is painted by JavaScript — and a measured finding that shaped the product: the winning image pattern is specific to each niche, so a conclusion from one category cannot be transferred to another.",
+      es: "Herramienta de contenido que convierte un enlace de afiliado de Amazon en un pin de Pinterest listo para publicar. Pegas el enlace y los datos del producto, y redacta el título, la descripción, el tablero y los temas del pin, más un prompt de imagen para retocar la foto: los campos corresponden uno a uno con el formulario real de creación de pines. A propósito NO publica solo, porque la API de Pinterest exige una app aprobada con OAuth y, hasta tenerla, el cuello de botella es redactar y no pegar, así que la herramienta resuelve la parte que de verdad cuesta tiempo. El esquema ya guarda todo lo que esa API pediría, así que enchufarla después no obliga a migrar nada. Sus notas de investigación documentan lo que NO funciona y por qué —los endpoints internos de Pinterest dan 403 y su rejilla la pinta JavaScript— y un hallazgo medido que moldeó el producto: el patrón de imagen ganador es propio de cada nicho, así que la conclusión de una categoría no se puede trasladar a otra.",
+    },
+    shortDescription: {
+      en: "Turns an affiliate link into a publish-ready pin, with a measured stance on what to automate and what not to.",
+      es: "Convierte un enlace de afiliado en un pin listo para publicar, con un criterio medido sobre qué automatizar y qué no.",
+    },
+    imageSrc: "/assets/amazon-pinterest.png",
+    technologies: [
+      { name: "TypeScript", color: "#3178C6" },
+      { name: "React 19", color: "#61DAFB" },
+      { name: "Vite", color: "#646CFF" },
+      { name: "Express", color: "#000000" },
+      { name: "PostgreSQL", color: "#336791" },
+      { name: "Railway", color: "#0B0D0E" },
+    ],
+    liveLink: "",
+    codeLink: "",
+    status: "In Progress",
+    createdAt: "2026-08-13",
+  },
+  {
     id: "mobile-app-nestjs",
     title: {
       en: "Mobile App - NestJS Backend",
