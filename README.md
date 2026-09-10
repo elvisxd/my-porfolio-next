@@ -1,27 +1,125 @@
-# My-Portfolio
-live preview https://my-porfolio-next.vercel.app/
-## technologies 💻
+# Elvis Pino — Portfolio
 
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+Personal portfolio site for Elvis Pino, Senior Full-Stack Engineer (Applied AI). Single-page site built with the Next.js App Router, fully bilingual (English / Spanish) with light and dark themes.
 
-<br>
-<h3 align="center">My Portfolio</h3>
-<div align="center">                                       
-<a href="https://github.com/elvisxd/my-porfolio-next" target="_blank"><img src="portfolio-2024.png" width="400" alt=""></a>
-<br>
-<p>
-<a href="https://my-porfolio-next-v1-1rf836cjq-elvisxds-projects.vercel.app/" target="_blank">
+**Live:** <https://my-porfolio-next.vercel.app/>
 
-</a>
-<p>I'm a passionate full-stack developer with a strong background in JavaScript, React, and Node.js. I have a keen eye for design and a love for creating intuitive and user-friendly applications.
-</p>
-<p>
-With several years of experience under my belt, I've honed my skills in building scalable and maintainable web applications. I'm always eager to learn new technologies and techniques to stay ahead of the curve.</p>
-</div>                                                             
-</table>                                                                                 
-</div>
+![Portfolio screenshot](portfolio-2024.png)
+
+## Tech stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript 5 |
+| UI | React 18, Tailwind CSS 3, shadcn/ui (new-york style) on Radix primitives |
+| Motion | Framer Motion |
+| Icons | lucide-react, @heroicons/react, @radix-ui/react-icons |
+| Theming | next-themes (system / light / dark) |
+| Fonts | Sora (display), Source Sans 3 (body), JetBrains Mono — via `next/font/google` |
+| Images | next/image with sharp |
+| Hosting | Vercel |
+
+## Getting started
+
+Requires Node.js 18.17+ (Next.js 14 minimum).
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+```
+
+There are no environment variables and no backend — every piece of content is checked into the repo.
+
+### Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint (`next/core-web-vitals` + `next/typescript`) |
+
+## Project structure
+
+```text
+src/
+├─ app/
+│  ├─ layout.tsx        # Fonts, SEO metadata, LanguageProvider + ThemeProvider
+│  ├─ page.tsx          # Single page: Hero → About → Experience → Projects → Studies
+│  ├─ globals.css       # Tailwind layers + CSS design tokens
+│  └─ not-found.tsx
+├─ components/
+│  ├─ Header.tsx, HeroSection.tsx, About.tsx, WorkExperience.tsx,
+│  │  Proyects.tsx, studies-and-certificates.tsx, Footer.tsx
+│  ├─ theme-toggle.tsx, language-selector.tsx, back-to-top.tsx
+│  └─ ui/               # shadcn/ui primitives (button, card, tabs, sheet, …)
+├─ contexts/
+│  └─ LanguageContext.tsx   # Language state + `t()` lookup, persisted to localStorage
+├─ data/                # Content source of truth (projects, experiences, education, skills, contact)
+├─ hooks/
+│  ├─ useTranslation.ts     # Thin wrapper over LanguageContext
+│  └─ use-active-section.ts # IntersectionObserver for nav highlighting
+├─ locales/             # en.json / es.json — UI strings
+├─ types/               # Shared TypeScript types for the data layer
+└─ assets/              # Project screenshots imported by next/image
+```
+
+## How content works
+
+Content lives in two places, and which one you edit depends on what you're changing.
+
+**`src/data/*.ts` — the portfolio content.** Projects, jobs, education and skills are typed arrays (types in `src/types/`). Entries that need translating hold both languages inline and are resolved by a getter:
+
+```ts
+// src/data/projects.ts
+const projectsData: TranslatableProject[] = [
+  {
+    id: "trading-platform",
+    title: { en: "Algorithmic Trading Platform", es: "Plataforma de Trading Algorítmico" },
+    // …
+  },
+];
+```
+
+`src/data/contact.ts` follows the same pattern with `getFooterSections(language)`.
+
+**`src/locales/{en,es}.json` — the UI chrome.** Section headings, button labels and other static copy, grouped under `header`, `about`, `experience`, `projects`, `education`, `hero`, `footer`, `skillCategories` and `common`.
+
+### Adding a project
+
+1. Drop the screenshot in `src/assets/` (or `public/assets/` if you reference it by URL string).
+2. Append an entry to `projectsData` in [`src/data/projects.ts`](src/data/projects.ts) with `en` and `es` copy for `title`, `description` and `shortDescription`.
+3. Set `featured`, `status`, `technologies`, and `liveLink` / `codeLink` as appropriate.
+
+### Internationalization
+
+`LanguageProvider` ([`src/contexts/LanguageContext.tsx`](src/contexts/LanguageContext.tsx)) picks the language from `localStorage` (`preferred-language`), falling back to the browser locale, defaulting to English. Both translation files are bundled statically — there is no route-based i18n and no `/es` URL. Components read strings through `useTranslation()`:
+
+```tsx
+const { t, language, setLanguage } = useTranslation();
+t("hero.title"); // dot-path lookup; returns the key itself if missing
+```
+
+### Theming
+
+`next-themes` in `attribute="class"` mode with `defaultTheme="system"`. Colors are CSS variables defined in `src/app/globals.css` and mapped to Tailwind tokens in `tailwind.config.ts`, so `dark:` variants mostly come for free.
+
+## CV downloads
+
+The résumé PDFs are served from `public/`:
+
+- English — `public/cv/Elvis-Pino-CV.pdf`
+- Spanish — `public/cv/Elvis-Pino-CV-ES.pdf`
+
+Note: duplicate copies also exist at `public/Elvis-Pino-CV.pdf` and `public/Elvis-Pino-CV-es.pdf`. The hero button links to the root copy while the About section links to the `/cv/` copy, so **update both when the CV changes** (or consolidate on one path).
+
+## Deployment
+
+Deployed on Vercel — pushes to `master` ship to production. No build configuration beyond the defaults; `next.config.mjs` is intentionally empty.
+
+## Contact
+
+- Email — elvisreyxd@gmail.com
+- LinkedIn — <https://www.linkedin.com/in/elvis-pino-dev/>
+- GitHub — <https://github.com/elvisxd>
