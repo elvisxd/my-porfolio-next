@@ -166,6 +166,38 @@ export const skills: Skill[] = [
     color: "#000000",
   },
 
+  // AI
+  {
+    name: "Claude",
+    level: "Advanced",
+    category: "AI",
+    color: "#D97757",
+  },
+  {
+    name: "Claude Code",
+    level: "Advanced",
+    category: "AI",
+    color: "#D97757",
+  },
+  {
+    name: "Google Gemini API",
+    level: "Advanced",
+    category: "AI",
+    color: "#8E75B2",
+  },
+  {
+    name: "LLM Integration",
+    level: "Advanced",
+    category: "AI",
+    color: "#8E75B2",
+  },
+  {
+    name: "Prompt Engineering",
+    level: "Advanced",
+    category: "AI",
+    color: "#D97757",
+  },
+
   // Tools
   { name: "Git", level: "Expert", category: "Tools", color: "#F05032" },
   { name: "Jest", level: "Advanced", category: "Tools", color: "#C21325" },
@@ -211,6 +243,10 @@ const skillCategoriesData: { [key: string]: Record<Language, string> } = {
   Tools: {
     en: "Development Tools",
     es: "Herramientas de Desarrollo",
+  },
+  AI: {
+    en: "AI and Applied Models",
+    es: "IA y Modelos Aplicados",
   },
   Languages: {
     en: "Programming Languages",

@@ -9,7 +9,7 @@ import mePhoto from "@/assets/mephoto.png";
 /** Skill groups follow the CV's categories, including the AI row that the old
  *  portfolio never had. Order is deliberate: the differentiator comes first. */
 const GROUPS = [
-  { key: "ai", labelKey: "about.groupAi", names: ["LLM Integration", "Prompt Engineering", "Predictive Modeling", "AI-Assisted Development", "UiPath RPA"] },
+  { key: "ai", labelKey: "about.groupAi", names: ["LLM Integration", "Claude", "Google Gemini API", "Prompt Engineering", "Predictive Modeling", "AI-Assisted Development", "UiPath RPA"] },
   { key: "Frontend", labelKey: "about.groupFrontend" },
   { key: "Backend", labelKey: "about.groupBackend" },
   { key: "Database", labelKey: "about.groupData" },
