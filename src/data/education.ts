@@ -8,6 +8,7 @@ import {
   School,
   Server,
   Smartphone,
+  Sparkles,
 } from "lucide-react";
 
 type Language = "en" | "es";
@@ -19,6 +20,30 @@ interface TranslatableEducation
 }
 
 const educationData: TranslatableEducation[] = [
+  {
+    id: "claude-101-anthropic",
+    title: {
+      en: "Claude Academy: Claude 101",
+      es: "Claude Academy: Claude 101",
+    },
+    institution: "Anthropic",
+    description: {
+      en: "Official Anthropic certification covering the fundamentals of Claude: effective prompting, conversation design, and applying large language models to real product work.",
+      es: "Certificación oficial de Anthropic sobre los fundamentos de Claude: prompting efectivo, diseño de conversaciones y aplicación de modelos de lenguaje al trabajo real de producto.",
+    },
+    type: "Certificate",
+    icon: Sparkles,
+    startDate: "2026-09-01",
+    endDate: "2026-09-01",
+    link: "https://academy.claude.com/verify/b5e83a09912f25a9458370c28ccb4b8c",
+    credential: "b5e83a09912f25a9458370c28ccb4b8c",
+    skills: [
+      "Claude",
+      "Prompt Engineering",
+      "LLM Integration",
+      "Applied AI",
+    ],
+  },
   {
     id: "vibe-coding-devtalles",
     title: {
