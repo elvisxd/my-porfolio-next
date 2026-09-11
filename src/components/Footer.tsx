@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { Github, Linkedin } from "@/components/brand-icons";
 import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Footer() {

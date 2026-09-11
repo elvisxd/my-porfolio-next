@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, Github, Lock } from "lucide-react";
+import { ArrowUpRight, Lock } from "lucide-react";
+import { Github } from "@/components/brand-icons";
 import { getProjects } from "@/data/projects";
 import { useTranslation } from "@/hooks/useTranslation";
 

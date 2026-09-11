@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
+import { Github, Linkedin } from "@/components/brand-icons";
 import { skills } from "@/data/skills";
 import { useTranslation } from "@/hooks/useTranslation";
 import mePhoto from "@/assets/mephoto.png";
