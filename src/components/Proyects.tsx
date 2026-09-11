@@ -9,10 +9,10 @@ import { useTranslation } from "@/hooks/useTranslation";
 /** Featured projects get room to argue for themselves; everything else is a
  *  compact index. Volume goes in the table, evidence goes in the cards. */
 const FEATURED_IDS = [
+  "byte-local-ai-agent",
   "trading-platform",
   "sports-betting-research",
   "mobile-app-nestjs",
-  "ecommerce-store",
 ];
 
 export default function Projects() {

@@ -70,6 +70,12 @@ export const skills: Skill[] = [
     color: "#3776AB",
   },
   {
+    name: "FastAPI",
+    level: "Advanced",
+    category: "Backend",
+    color: "#009688",
+  },
+  {
     name: "PHP",
     level: "Advanced",
     category: "Backend",
@@ -194,6 +200,48 @@ export const skills: Skill[] = [
   {
     name: "Prompt Engineering",
     level: "Advanced",
+    category: "AI",
+    color: "#D97757",
+  },
+  {
+    name: "RAG (Retrieval-Augmented Generation)",
+    level: "Advanced",
+    category: "AI",
+    color: "#8E75B2",
+  },
+  {
+    name: "Vector Databases (pgvector)",
+    level: "Advanced",
+    category: "AI",
+    color: "#336791",
+  },
+  {
+    name: "AI Agents / Tool Calling",
+    level: "Advanced",
+    category: "AI",
+    color: "#1C3C3C",
+  },
+  {
+    name: "LangGraph",
+    level: "Advanced",
+    category: "AI",
+    color: "#1C3C3C",
+  },
+  {
+    name: "LLM Evals",
+    level: "Intermediate",
+    category: "AI",
+    color: "#8E75B2",
+  },
+  {
+    name: "Ollama / Local LLMs",
+    level: "Advanced",
+    category: "AI",
+    color: "#000000",
+  },
+  {
+    name: "MCP",
+    level: "Intermediate",
     category: "AI",
     color: "#D97757",
   },

@@ -19,6 +19,38 @@ interface TranslatableProject
 
 const projectsData: TranslatableProject[] = [
   {
+    id: "byte-local-ai-agent",
+    title: {
+      en: "Byte — Self-Hosted AI Agent",
+      es: "Byte — Agente de IA Self-Hosted",
+    },
+    description: {
+      en: "An AI agent I run on my own hardware: an open-source model that writes and executes code, searches the web and answers over my own documents, with no paid API in the loop. The agent is a LangGraph state graph (retrieve_context → agent → tools → finalize) checkpointed in Postgres, so a conversation survives a restart and a paused run resumes from its checkpoint rather than starting over. Code runs in a separate WASM sandbox (Pyodide) with a fresh interpreter per execution, and each isolation layer was verified against an unhardened Pyodide where the escape actually worked. Memory is hybrid retrieval over pgvector — HNSW vector similarity combined with lexical tsvector matching — and the chunks the agent used are stored with the answer, so every claim traces back to a document and a chunk. The security stance is the part I would defend first: retrieved documents and web results enter the prompt tagged as untrusted, and if any third-party content touched the conversation and the agent then wants to execute code, the run STOPS for human approval even when nobody asked for it. That combination is exactly how an indirect prompt injection reaches execution, and the check spans the whole conversation rather than the single run, because otherwise splitting the attack across two messages would evade it. Streaming is standard AG-UI events over SSE with resumable Last-Event-ID, one run per conversation enforced so two runs cannot corrupt the shared checkpoint thread, and 183 tests plus an eval suite guard against agent regressions. Next on the roadmap: MCP tool servers, a designed web client, and a Railway deployment with measured cost.",
+      es: "Un agente de IA que corre en mi propio hardware: un modelo open source que escribe y ejecuta código, busca en internet y responde sobre mis propios documentos, sin ninguna API paga en el circuito. El agente es un grafo de estados de LangGraph (retrieve_context → agent → tools → finalize) con checkpoint en Postgres, así que una conversación sobrevive a un reinicio y un run pausado se retoma desde su checkpoint en vez de empezar de nuevo. El código se ejecuta en un sandbox WASM aparte (Pyodide) con un intérprete nuevo por ejecución, y cada capa de aislamiento se verificó contra un Pyodide sin endurecer donde el escape sí funcionaba. La memoria es recuperación híbrida sobre pgvector —similitud de vectores con índice HNSW combinada con coincidencia léxica por tsvector— y los fragmentos que usó el agente se guardan junto a la respuesta, así que toda afirmación se rastrea hasta un documento y un chunk. La postura de seguridad es lo que defendería primero: los documentos recuperados y los resultados de la web entran al prompt marcados como no confiables, y si algún contenido de terceros tocó la conversación y el agente quiere ejecutar código, el run SE DETIENE a esperar aprobación humana aunque nadie lo haya pedido. Esa combinación es justamente por donde una inyección indirecta llega a ejecutarse, y la comprobación mira la conversación entera y no el run suelto, porque si no, partir el ataque en dos mensajes la evadiría. El streaming son eventos AG-UI estándar sobre SSE reconectables con Last-Event-ID, se fuerza un run por conversación para que dos no corrompan el hilo compartido del checkpointer, y 183 tests más una suite de evals cuidan las regresiones del agente. En la hoja de ruta: servidores de herramientas MCP, un cliente web con diseño propio y un despliegue en Railway con costo medido.",
+    },
+    shortDescription: {
+      en: "A local agent with RAG, a WASM code sandbox and evals. It halts for human approval when untrusted content and code execution meet in one conversation.",
+      es: "Un agente local con RAG, sandbox WASM para código y evals. Se detiene a pedir aprobación humana cuando contenido no confiable y ejecución de código coinciden en una conversación.",
+    },
+    imageSrc: "/assets/byte-cli.png",
+    technologies: [
+      { name: "Python", color: "#3776AB" },
+      { name: "FastAPI", color: "#009688" },
+      { name: "LangGraph", color: "#1C3C3C" },
+      { name: "Ollama", color: "#000000" },
+      { name: "PostgreSQL", color: "#336791" },
+      { name: "pgvector", color: "#336791" },
+      { name: "Pyodide / WASM", color: "#654FF0" },
+      { name: "SSE / AG-UI", color: "#E0234E" },
+      { name: "Docker", color: "#2496ED" },
+    ],
+    liveLink: "",
+    codeLink: "",
+    status: "In Progress",
+    featured: true,
+    createdAt: "2026-09-11",
+  },
+  {
     id: "trading-platform",
     title: {
       en: "Spot Trading — Accumulation Zone Alerts",
