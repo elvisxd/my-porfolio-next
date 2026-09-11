@@ -21,6 +21,31 @@ interface TranslatableEducation
 
 const educationData: TranslatableEducation[] = [
   {
+    id: "python-total-ia-udemy",
+    title: {
+      en: "Python TOTAL with AI: From Zero to Full Programmer",
+      es: "Python TOTAL con IA: de CERO a Programador Full",
+    },
+    institution: "Udemy",
+    description: {
+      en: "36.5-hour intensive course covering Python from fundamentals to advanced topics, including object-oriented programming, data handling, automation and AI-assisted development workflows.",
+      es: "Curso intensivo de 36.5 horas cubriendo Python desde fundamentos hasta temas avanzados, incluyendo programación orientada a objetos, manejo de datos, automatización y flujos de desarrollo asistidos por IA.",
+    },
+    type: "Certificate",
+    icon: Code,
+    startDate: "2026-09-11",
+    endDate: "2026-09-11",
+    link: "https://www.udemy.com/certificate/UC-3e0cbef9-ea9b-43d5-ae2a-f83952cfa377/",
+    credential: "UC-3e0cbef9-ea9b-43d5-ae2a-f83952cfa377",
+    skills: [
+      "Python",
+      "Object-Oriented Programming",
+      "Automation",
+      "Data Handling",
+      "AI-Assisted Development",
+    ],
+  },
+  {
     id: "claude-101-anthropic",
     title: {
       en: "Claude Academy: Claude 101",

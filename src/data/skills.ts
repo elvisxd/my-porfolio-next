@@ -65,7 +65,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Python",
-    level: "Intermediate",
+    level: "Advanced",
     category: "Backend",
     color: "#3776AB",
   },
