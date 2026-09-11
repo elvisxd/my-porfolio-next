@@ -47,7 +47,7 @@ export default function Projects() {
                       width={1200}
                       height={675}
                       sizes="(max-width: 1024px) 100vw, 52vw"
-                      className="h-auto w-full transition-transform duration-500 ease-out group-hover/img:scale-[1.015]"
+                      className="aspect-video h-auto w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.015]"
                     />
                   </div>
                 ) : null}
