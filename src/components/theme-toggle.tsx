@@ -9,8 +9,10 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Evitar hidratación incorrecta
+  // Evitar hidratación incorrecta: el tema real solo se conoce en el cliente,
+  // así que el primer render debe coincidir con el HTML del servidor.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

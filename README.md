@@ -10,9 +10,9 @@ Personal portfolio site for Elvis Pino, Senior Full-Stack Engineer (Applied AI).
 
 | Area | Choice |
 | --- | --- |
-| Framework | Next.js 14 (App Router) |
+| Framework | Next.js 16 (App Router, Turbopack) |
 | Language | TypeScript 5 |
-| UI | React 18, Tailwind CSS 3, shadcn/ui (new-york style) on Radix primitives |
+| UI | React 19, Tailwind CSS 3, shadcn/ui (new-york style) on Radix primitives |
 | Motion | Framer Motion |
 | Icons | lucide-react, @heroicons/react, @radix-ui/react-icons |
 | Theming | next-themes (system / light / dark) |
@@ -22,7 +22,7 @@ Personal portfolio site for Elvis Pino, Senior Full-Stack Engineer (Applied AI).
 
 ## Getting started
 
-Requires Node.js 18.17+ (Next.js 14 minimum).
+Requires Node.js 20.9+ (Next.js 16 minimum).
 
 ```bash
 npm install
@@ -38,7 +38,7 @@ There are no environment variables and no backend — every piece of content is 
 | `npm run dev` | Start the dev server |
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
-| `npm run lint` | ESLint (`next/core-web-vitals` + `next/typescript`) |
+| `npm run lint` | ESLint 9 flat config (`next/core-web-vitals` + `next/typescript`) |
 
 ## Project structure
 

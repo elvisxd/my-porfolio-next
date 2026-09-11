@@ -1,11 +1,10 @@
+import { Mail, Phone } from "lucide-react";
 import {
-  Mail,
-  Phone,
   Github,
   Linkedin,
   Twitter,
   Instagram,
-} from "lucide-react";
+} from "@/components/brand-icons";
 import type { ContactInfo, FooterSection } from "@/types/footer";
 
 export const contactInfo: ContactInfo[] = [

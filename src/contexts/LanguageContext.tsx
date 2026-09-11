@@ -27,8 +27,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
   const [mounted, setMounted] = useState(false);
 
-  // Load saved language preference after component mounts
+  // Load saved language preference after component mounts. localStorage and
+  // navigator are client-only, so the first render has to match the server
+  // HTML before the stored preference can be applied.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const savedLanguage = localStorage.getItem(
       "preferred-language"
