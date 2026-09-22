@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { Download, Mail } from "lucide-react";
 import { Github, Linkedin } from "@/components/brand-icons";
+import { TechChip } from "@/components/brand-icon";
+import { techBrand } from "@/data/brand-icons";
 import { skills } from "@/data/skills";
 import { useTranslation } from "@/hooks/useTranslation";
 import mePhoto from "@/assets/mephoto.png";
@@ -89,9 +91,23 @@ export default function About() {
                 if (!names.length) return null;
                 return (
                   <div key={g.key} className="contents">
-                    <dt className="label-mono sm:pt-0.5">{t(g.labelKey)}</dt>
-                    <dd className="text-[15px] leading-relaxed text-muted-foreground">
-                      {names.join(", ")}
+                    <dt className="label-mono sm:pt-2">{t(g.labelKey)}</dt>
+                    <dd>
+                      {/* One chip per technology: the brand's mark, grey at
+                          rest and in colour under the pointer. The colour comes
+                          from skills.ts when the skill is listed there. */}
+                      <ul className="flex flex-wrap gap-1.5">
+                        {names.map((name) => (
+                          <TechChip
+                            key={name}
+                            name={name}
+                            brand={techBrand(
+                              name,
+                              skills.find((s) => s.name === name)?.color
+                            )}
+                          />
+                        ))}
+                      </ul>
                     </dd>
                   </div>
                 );
