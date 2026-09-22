@@ -203,6 +203,122 @@
     }
   }
 
+  /* Hero entrance: the children rise in one after another on load. Time-based,
+     once, and only when motion is allowed — otherwise everything is simply
+     there, as before. */
+  @media (prefers-reduced-motion: no-preference) {
+    .rise-in > * {
+      animation: reveal-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .rise-in > :nth-child(1) { animation-delay: 0.05s; }
+    .rise-in > :nth-child(2) { animation-delay: 0.14s; }
+    .rise-in > :nth-child(3) { animation-delay: 0.23s; }
+    .rise-in > :nth-child(4) { animation-delay: 0.32s; }
+    .rise-in > :nth-child(5) { animation-delay: 0.41s; }
+    .rise-in > :nth-child(6) { animation-delay: 0.5s; }
+    .rise-in > :nth-child(7) { animation-delay: 0.58s; }
+    .rise-in > :nth-child(8) { animation-delay: 0.66s; }
+    .rise-in > :nth-child(n + 9) { animation-delay: 0.74s; }
+  }
+
+  /* The portrait: revealed bottom to top as it scrolls in, then a short amber
+     rule draws underneath. Scroll-driven like .reveal, so without support the
+     photo and the rule are just visible. */
+  .rule-draw {
+    width: 48px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .photo-wipe {
+        animation: photo-wipe linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 40%;
+      }
+      .rule-draw {
+        width: 0;
+        animation: rule-draw linear both;
+        animation-timeline: view();
+        animation-range: entry 30% cover 60%;
+      }
+    }
+  }
+  @keyframes photo-wipe {
+    from { clip-path: inset(100% 0 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes rule-draw {
+    to { width: 48px; }
+  }
+
+  /* Experience rail: a hairline down the record, an amber fill that grows with
+     the scroll, and a dot per role that lights as the role arrives. */
+  .rail-line,
+  .rail-fill {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+  }
+  .rail-line {
+    background: hsl(var(--border));
+  }
+  .rail-fill {
+    background: hsl(var(--primary));
+    transform-origin: top;
+  }
+  .rail-dot {
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: hsl(var(--primary));
+    border: 1.5px solid hsl(var(--primary));
+  }
+  @media (min-width: 640px) {
+    .rail-dot { left: -34px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .rail-fill {
+        transform: scaleY(0);
+        animation: rail-grow linear both;
+        animation-timeline: view();
+        animation-range: cover 12% cover 85%;
+      }
+      .rail-dot {
+        background: hsl(var(--card));
+        border-color: hsl(var(--border));
+        animation: dot-lit linear both;
+        animation-timeline: view();
+        animation-range: entry 40% entry 60%;
+      }
+    }
+  }
+  @keyframes rail-grow {
+    to { transform: scaleY(1); }
+  }
+  @keyframes dot-lit {
+    to {
+      background: hsl(var(--primary));
+      border-color: hsl(var(--primary));
+      box-shadow: 0 0 0 4px hsl(var(--primary) / 0.18);
+    }
+  }
+
+  /* Rows that arrive one after another: each is its own .reveal, with the
+     range nudged later down the list so the cascade reads as one gesture. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .stagger > :nth-child(2) { animation-range: entry 14% cover 32%; }
+      .stagger > :nth-child(3) { animation-range: entry 20% cover 38%; }
+      .stagger > :nth-child(4) { animation-range: entry 26% cover 44%; }
+      .stagger > :nth-child(n + 5) { animation-range: entry 30% cover 48%; }
+    }
+  }
+
   /* Link underline that draws in from the left rather than blinking on */
   .link-draw {
     background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));

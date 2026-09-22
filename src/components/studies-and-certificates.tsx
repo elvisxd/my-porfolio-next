@@ -51,11 +51,11 @@ export default function StudiesAndCertificates() {
         <h3 className="label-mono mt-11 border-b border-border pb-2">
           {t("education.certificates")}
         </h3>
-        <ul className="mt-1">
+        <ul className="stagger mt-1">
           {certs.map((c) => (
             <li
               key={c.id}
-              className="row-hover -mx-2 grid gap-x-8 gap-y-1 border-b border-border px-2 py-3 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto] sm:items-baseline"
+              className="reveal row-hover -mx-2 grid gap-x-8 gap-y-1 border-b border-border px-2 py-3 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto] sm:items-baseline"
             >
               <span className="font-mono text-[11px] text-muted-foreground">
                 {range(c.startDate, c.endDate, c.inProgress)}

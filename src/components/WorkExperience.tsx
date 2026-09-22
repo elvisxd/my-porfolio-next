@@ -19,12 +19,18 @@ export default function WorkExperience() {
           </h2>
         </header>
 
-        <div className="flex flex-col gap-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
+        {/* A rail runs down the left of the record and fills in amber as the
+            reader scrolls; each role gets a dot that lights when it arrives. */}
+        <div className="relative pl-8 sm:pl-10">
+          <span aria-hidden className="rail-line" />
+          <span aria-hidden className="rail-fill" />
+          <div className="flex flex-col gap-[clamp(1.75rem,1.3rem+2.2vw,2.75rem)]">
           {experiences.map((exp) => (
             <article
               key={exp.id}
-              className="reveal grid gap-x-10 gap-y-3 sm:grid-cols-[minmax(0,128px)_minmax(0,1fr)]"
+              className="reveal relative grid gap-x-10 gap-y-3 sm:grid-cols-[minmax(0,128px)_minmax(0,1fr)]"
             >
+              <span aria-hidden className="rail-dot" />
               <div className="font-mono text-[11px] leading-relaxed text-muted-foreground">
                 <span className="block text-foreground/75">{exp.period}</span>
                 {exp.location ? (
@@ -62,6 +68,7 @@ export default function WorkExperience() {
               </div>
             </article>
           ))}
+          </div>
         </div>
       </div>
     </section>

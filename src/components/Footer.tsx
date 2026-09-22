@@ -10,7 +10,13 @@ export default function Footer() {
   return (
     <footer className="bg-background">
       <div className="mx-auto max-w-6xl px-6 py-14">
-        <p className="font-display text-xl font-semibold tracking-[-0.015em]">
+        <p className="flex items-center gap-3 font-display text-xl font-semibold tracking-[-0.015em]">
+          {/* A live dot: the one continuous motion on the page, slow and small,
+              and it says something true. */}
+          <span aria-hidden className="relative inline-flex h-2.5 w-2.5 shrink-0">
+            <span className="absolute inset-0 rounded-full bg-emerald-600/60 motion-safe:animate-ping motion-safe:[animation-duration:1.8s] dark:bg-emerald-400/60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+          </span>
           {t("footer.available")}
         </p>
         <p className="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
