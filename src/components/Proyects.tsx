@@ -41,13 +41,17 @@ export default function Projects() {
               <article key={p.id} className="reveal grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-center lg:gap-12">
                 {p.imageSrc ? (
                   <div className="group/img overflow-hidden rounded-md border border-border bg-muted">
+                    {/* Animated SVGs keep their own ratio; anything without a
+                        declared size still gets the 16:9 box, cropped. */}
                     <Image
                       src={p.imageSrc}
                       alt={p.title}
-                      width={1200}
-                      height={675}
+                      width={p.imageWidth ?? 1200}
+                      height={p.imageHeight ?? 675}
                       sizes="(max-width: 1024px) 100vw, 52vw"
-                      className="aspect-video h-auto w-full object-cover transition-transform duration-500 ease-out group-hover/img:scale-[1.015]"
+                      className={`h-auto w-full transition-transform duration-500 ease-out group-hover/img:scale-[1.015] ${
+                        p.imageWidth ? "" : "aspect-video object-cover"
+                      }`}
                     />
                   </div>
                 ) : null}
