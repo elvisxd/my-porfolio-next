@@ -40,7 +40,10 @@ export default function Projects() {
             return (
               <article key={p.id} className="reveal grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:items-center lg:gap-12">
                 {p.imageSrc ? (
-                  <div className="group/img overflow-hidden rounded-md border border-border bg-muted">
+                  // The frame lifts and takes an amber edge under the pointer.
+                  // No zoom on the image: the SVGs inside already move, and
+                  // scaling text mid-transition blurs it.
+                  <div className="overflow-hidden rounded-md border border-border bg-muted transition-[transform,border-color,box-shadow] duration-500 ease-out hover:-translate-y-0.5 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)]">
                     {/* Animated SVGs keep their own ratio; anything without a
                         declared size still gets the 16:9 box, cropped. */}
                     <Image
@@ -49,7 +52,7 @@ export default function Projects() {
                       width={p.imageWidth ?? 1200}
                       height={p.imageHeight ?? 675}
                       sizes="(max-width: 1024px) 100vw, 52vw"
-                      className={`h-auto w-full transition-transform duration-500 ease-out group-hover/img:scale-[1.015] ${
+                      className={`h-auto w-full ${
                         p.imageWidth ? "" : "aspect-video object-cover"
                       }`}
                     />

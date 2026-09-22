@@ -33,14 +33,20 @@ export default function About() {
 
         <div className="reveal grid gap-[clamp(2rem,1.5rem+2.5vw,3rem)] lg:grid-cols-[minmax(0,190px)_minmax(0,1fr)]">
           <div>
-            <Image
-              src={mePhoto}
-              alt="Elvis Pino"
-              width={200}
-              height={200}
-              priority
-              className="w-40 rounded-md border border-border object-cover grayscale lg:w-full"
-            />
+            {/* The photo is revealed once, bottom to top, as the section scrolls
+                in; at rest it stays in grayscale and takes colour under the
+                pointer. The amber rule below it draws in right after. */}
+            <div className="photo-wipe w-40 lg:w-full">
+              <Image
+                src={mePhoto}
+                alt="Elvis Pino"
+                width={200}
+                height={200}
+                priority
+                className="w-full rounded-md border border-border object-cover grayscale transition-[filter,transform] duration-500 ease-out hover:scale-[1.02] hover:grayscale-0"
+              />
+            </div>
+            <span aria-hidden className="rule-draw mt-3 block h-0.5 bg-primary" />
             <div className="mt-5 flex gap-4">
               <a href="https://github.com/elvisxd" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground transition-colors hover:text-primary">
                 <Github className="h-[18px] w-[18px]" />

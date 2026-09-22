@@ -26,11 +26,12 @@ export function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
+      className="group"
     >
       {theme === "dark" ? (
-        <SunIcon className="h-5 w-5" />
+        <SunIcon className="h-5 w-5 transition-transform duration-500 ease-out group-hover:rotate-45" />
       ) : (
-        <MoonIcon className="h-5 w-5" />
+        <MoonIcon className="h-5 w-5 transition-transform duration-500 ease-out group-hover:-rotate-[30deg]" />
       )}
     </Button>
   );

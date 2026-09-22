@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSelector } from "@/components/language-selector";
+import { useActiveSection } from "@/hooks/use-active-section";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const NAV = [
@@ -12,9 +13,14 @@ const NAV = [
   { href: "#Studies", key: "header.studies" },
 ] as const;
 
+const SECTION_IDS = NAV.map((item) => item.href.slice(1));
+
 export default function Header() {
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(SECTION_IDS, 120);
+  const navRef = useRef<HTMLElement>(null);
+  const inkRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -22,6 +28,29 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // The underline slides to the link of the section in view instead of
+  // jumping. Measured in the DOM, not kept in state: it changes with the
+  // active section and with the viewport, and nothing else reads it.
+  useEffect(() => {
+    const place = () => {
+      const ink = inkRef.current;
+      const link = active
+        ? navRef.current?.querySelector<HTMLAnchorElement>(`a[href="#${active}"]`)
+        : null;
+      if (!ink) return;
+      if (!link) {
+        ink.style.opacity = "0";
+        return;
+      }
+      ink.style.opacity = "1";
+      ink.style.left = `${link.offsetLeft}px`;
+      ink.style.width = `${link.offsetWidth}px`;
+    };
+    place();
+    window.addEventListener("resize", place);
+    return () => window.removeEventListener("resize", place);
+  }, [active]);
 
   return (
     <header
@@ -39,16 +68,22 @@ export default function Header() {
           Elvis Pino
         </a>
 
-        <nav className="hidden items-center gap-6 sm:flex">
+        <nav ref={navRef} className="relative hidden items-center gap-6 sm:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary"
+              aria-current={active === item.href.slice(1) ? "location" : undefined}
+              className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground transition-colors hover:text-primary aria-[current]:text-foreground"
             >
               {t(item.key)}
             </a>
           ))}
+          <span
+            ref={inkRef}
+            aria-hidden
+            className="pointer-events-none absolute -bottom-[13px] h-0.5 bg-primary opacity-0 transition-[left,width,opacity] duration-300 ease-out"
+          />
         </nav>
 
         <div className="flex items-center gap-1">

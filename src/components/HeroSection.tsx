@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowDown, ArrowUpRight, Download, Mail } from "lucide-react";
+import { useCountUp } from "@/hooks/use-count-up";
 import { useTranslation } from "@/hooks/useTranslation";
 
 /** Figures come from the trading platform described in the work section. */
@@ -11,13 +12,27 @@ const STATS = [
   { value: "+1.29", unit: "%", key: "hero.statEdge" },
 ] as const;
 
+/** One figure of the metrics band. The sign stays put while the digits count
+ *  up, so "+1.29" never reads as "1.29" mid-animation. */
+function Figure({ value }: { value: string }) {
+  const sign = value.startsWith("+") ? "+" : "";
+  const decimals = (value.split(".")[1] ?? "").length;
+  const ref = useCountUp<HTMLSpanElement>(Math.abs(parseFloat(value)), decimals);
+  return (
+    <>
+      {sign}
+      <span ref={ref}>{value.replace("+", "")}</span>
+    </>
+  );
+}
+
 export default function HeroSection() {
   const { t } = useTranslation();
 
 
   return (
     <section className="grid-ground relative overflow-hidden border-b border-border bg-background">
-      <div className="gutter relative mx-auto max-w-6xl pb-[clamp(3rem,2.2rem+4vw,5rem)] pt-[clamp(5rem,3.5rem+7vw,9rem)]">
+      <div className="rise-in gutter relative mx-auto max-w-6xl pb-[clamp(3rem,2.2rem+4vw,5rem)] pt-[clamp(5rem,3.5rem+7vw,9rem)]">
         <p className="eyebrow">
           {t("hero.eyebrow")}
         </p>
@@ -84,7 +99,7 @@ export default function HeroSection() {
           {STATS.map((s) => (
             <div key={s.key} className="bg-card px-[clamp(0.85rem,0.7rem+0.6vw,1.15rem)] py-[clamp(0.8rem,0.7rem+0.4vw,1.05rem)]">
               <dd className="tabular font-mono text-[clamp(1.3rem,1.15rem+0.7vw,1.65rem)] font-bold leading-none tracking-[-0.02em] text-primary">
-                {s.value}
+                <Figure value={s.value} />
                 <span className="text-lg">{s.unit}</span>
               </dd>
               <dt className="mt-[0.42rem] font-mono text-[clamp(0.6rem,0.58rem+0.1vw,0.66rem)] uppercase leading-[1.35] tracking-[0.09em] text-muted-foreground">
