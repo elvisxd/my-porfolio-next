@@ -1,5 +1,7 @@
 "use client";
 
+import { TechChip } from "@/components/brand-icon";
+import { techBrand } from "@/data/brand-icons";
 import { getExperiences } from "@/data/experiences";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -62,9 +64,16 @@ export default function WorkExperience() {
                   ))}
                 </ul>
 
-                <p className="rule-dotted mt-4 pt-3 font-mono text-[11px] leading-relaxed text-muted-foreground">
-                  {exp.technologies.map((tech) => tech.name).join(" · ")}
-                </p>
+                <ul className="rule-dotted mt-4 flex flex-wrap gap-1.5 pt-3">
+                  {exp.technologies.map((tech) => (
+                    <TechChip
+                      key={tech.name}
+                      name={tech.name}
+                      brand={techBrand(tech.name, tech.color)}
+                      compact
+                    />
+                  ))}
+                </ul>
               </div>
             </article>
           ))}

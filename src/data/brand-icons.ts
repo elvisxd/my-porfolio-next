@@ -81,6 +81,7 @@ const TECH: Record<string, SimpleIcon> = {
   MySQL: siMysql,
   Supabase: siSupabase,
   "Entity Framework": siDotnet,
+  ".NET C#": siDotnet,
   Docker: siDocker,
   Railway: siRailway,
   Vercel: siVercel,

@@ -78,8 +78,8 @@ export default function Projects() {
                     {p.shortDescription ?? p.description}
                   </p>
 
-                  {/* The stack as compact chips with the brand mark; the index
-                      below keeps plain text, where chips would be noise. */}
+                  {/* The stack as compact chips with the brand mark, same as
+                      the index rows below and the experience record. */}
                   <ul className="rule-dotted mt-4 flex flex-wrap gap-1.5 pt-3">
                     {p.technologies.map((tech) => (
                       <TechChip
@@ -133,14 +133,21 @@ export default function Projects() {
           {rest.map((p) => (
             <li
               key={p.id}
-              className="row-hover -mx-2 grid gap-x-6 gap-y-1 border-b border-border px-2 py-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_auto] sm:items-baseline"
+              className="row-hover -mx-2 grid gap-x-6 gap-y-2 border-b border-border px-2 py-3.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_auto] sm:items-center"
             >
               <span className="font-display text-[15px] font-semibold">
                 {p.title}
               </span>
-              <span className="font-mono text-[11px] leading-relaxed text-muted-foreground">
-                {p.technologies.map((tech) => tech.name).join(" · ")}
-              </span>
+              <ul className="flex flex-wrap gap-1">
+                {p.technologies.map((tech) => (
+                  <TechChip
+                    key={tech.name}
+                    name={tech.name}
+                    brand={techBrand(tech.name, tech.color)}
+                    compact
+                  />
+                ))}
+              </ul>
               <span className="flex gap-4">
                 {p.liveLink ? (
                   <a
