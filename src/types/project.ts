@@ -12,6 +12,10 @@ export interface Project {
   description: string;
   shortDescription?: string;
   imageSrc: string;
+  /** Intrinsic size of the image, so the card reserves the right box. Without
+   *  them the card assumes 16:9 and crops to it. */
+  imageWidth?: number;
+  imageHeight?: number;
   technologies: ProjectTechnology[];
   liveLink?: string;
   codeLink?: string;

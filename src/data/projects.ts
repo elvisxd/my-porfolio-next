@@ -1,7 +1,4 @@
-import imageApp1 from "@/assets/foto-app-ios.png";
 import imageCalot from "@/assets/calot.png";
-import imageEcommerceWeb from "@/assets/eccomerce.png";
-import imageFinancepro from "@/assets/financepro-landing-page.png";
 import imageGeminiChat from "@/assets/gemini-chat-app.png";
 import imageNestjsApi from "@/assets/NestJS-API-Railway-Deployment.png";
 import imageQrGenerator from "@/assets/qr-generator.png";
@@ -32,7 +29,9 @@ const projectsData: TranslatableProject[] = [
       en: "A local agent with RAG, a WASM code sandbox and evals. It halts for human approval when untrusted content and code execution meet in one conversation.",
       es: "Un agente local con RAG, sandbox WASM para código y evals. Se detiene a pedir aprobación humana cuando contenido no confiable y ejecución de código coinciden en una conversación.",
     },
-    imageSrc: "/assets/byte-cli.png",
+    imageSrc: "/assets/byte-cli.svg",
+    imageWidth: 1000,
+    imageHeight: 534,
     technologies: [
       { name: "Python", color: "#3776AB" },
       { name: "FastAPI", color: "#009688" },
@@ -64,7 +63,9 @@ const projectsData: TranslatableProject[] = [
       en: "283k lines of TypeScript, and the decision to retire most of it. What ships is what survived permutation tests, thirds and frozen out-of-sample.",
       es: "283k líneas de TypeScript, y la decisión de retirar casi todo. Lo que queda en producción es lo que sobrevivió a permutación, tercios y out-of-sample congelado.",
     },
-    imageSrc: "/assets/spot-market.png",
+    imageSrc: "/assets/spot-market.svg",
+    imageWidth: 1000,
+    imageHeight: 520,
     technologies: [
       { name: "TypeScript", color: "#3178C6" },
       { name: "React 19", color: "#61DAFB" },
@@ -96,7 +97,9 @@ const projectsData: TranslatableProject[] = [
       en: "Eight sports, ~10k lines of statistical engine. Its most valuable feature is refusing to show signals that have not survived out-of-sample data.",
       es: "Ocho deportes y ~10k líneas de motor estadístico. Su mejor función es negarse a enseñar señales que no han sobrevivido al out-of-sample.",
     },
-    imageSrc: "/assets/sports-betting.png",
+    imageSrc: "/assets/sports-betting.svg",
+    imageWidth: 1000,
+    imageHeight: 630,
     technologies: [
       { name: "TypeScript", color: "#3178C6" },
       { name: "React 19", color: "#61DAFB" },
@@ -126,7 +129,9 @@ const projectsData: TranslatableProject[] = [
       en: "Turns an affiliate link into a publish-ready pin, with a measured stance on what to automate and what not to.",
       es: "Convierte un enlace de afiliado en un pin listo para publicar, con un criterio medido sobre qué automatizar y qué no.",
     },
-    imageSrc: "/assets/amazon-pinterest.png",
+    imageSrc: "/assets/amazon-pinterest.svg",
+    imageWidth: 1000,
+    imageHeight: 672,
     technologies: [
       { name: "TypeScript", color: "#3178C6" },
       { name: "React 19", color: "#61DAFB" },
@@ -154,7 +159,9 @@ const projectsData: TranslatableProject[] = [
       en: "A full-stack mobile app with React Native, NestJS backend, and Firebase authentication.",
       es: "Una app móvil full-stack con React Native, backend NestJS y autenticación Firebase.",
     },
-    imageSrc: imageApp1.src as unknown as string,
+    imageSrc: "/assets/go190.svg",
+    imageWidth: 1000,
+    imageHeight: 520,
     technologies: [
       { name: "React Native", color: "#61DAFB" },
       { name: "Expo", color: "#000020" },
@@ -213,7 +220,9 @@ const projectsData: TranslatableProject[] = [
       en: "A modern e-commerce platform with seamless shopping experience and comprehensive management tools.",
       es: "Una plataforma de e-commerce moderna con experiencia de compra fluida y herramientas de gestión integral.",
     },
-    imageSrc: imageEcommerceWeb.src as unknown as string,
+    imageSrc: "/assets/mi-tienda.svg",
+    imageWidth: 1000,
+    imageHeight: 540,
     technologies: [
       { name: "Next.js", color: "#000000" },
       { name: "React", color: "#61DAFB" },
@@ -242,7 +251,9 @@ const projectsData: TranslatableProject[] = [
       en: "A comprehensive financial management platform for tracking income, expenses, and investments.",
       es: "Una plataforma integral de gestión financiera para rastrear ingresos, gastos e inversiones.",
     },
-    imageSrc: imageFinancepro.src as unknown as string,
+    imageSrc: "/assets/financepro.svg",
+    imageWidth: 1000,
+    imageHeight: 524,
     technologies: [
       { name: "Next.js", color: "#000000" },
       { name: "React", color: "#61DAFB" },
