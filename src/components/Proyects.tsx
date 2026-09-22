@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { Github } from "@/components/brand-icons";
+import { TechChip } from "@/components/brand-icon";
+import { techBrand } from "@/data/brand-icons";
 import { getProjects } from "@/data/projects";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -76,9 +78,18 @@ export default function Projects() {
                     {p.shortDescription ?? p.description}
                   </p>
 
-                  <p className="rule-dotted mt-4 pt-3 font-mono text-[11px] leading-relaxed text-muted-foreground">
-                    {p.technologies.map((tech) => tech.name).join(" · ")}
-                  </p>
+                  {/* The stack as compact chips with the brand mark; the index
+                      below keeps plain text, where chips would be noise. */}
+                  <ul className="rule-dotted mt-4 flex flex-wrap gap-1.5 pt-3">
+                    {p.technologies.map((tech) => (
+                      <TechChip
+                        key={tech.name}
+                        name={tech.name}
+                        brand={techBrand(tech.name, tech.color)}
+                        compact
+                      />
+                    ))}
+                  </ul>
 
                   <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
                     {p.liveLink ? (

@@ -1,6 +1,8 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import { IssuerTile } from "@/components/brand-icon";
+import { issuerBrand } from "@/data/brand-icons";
 import { getEducationItems } from "@/data/education";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -33,10 +35,11 @@ export default function StudiesAndCertificates() {
         </h3>
         <div className="mt-4 flex flex-col gap-4">
           {degrees.map((d) => (
-            <div key={d.id} className="reveal grid gap-x-8 gap-y-1 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)]">
-              <span className="font-mono text-[11px] text-muted-foreground">
+            <div key={d.id} className="reveal grid grid-cols-[34px_minmax(0,1fr)] gap-x-4 gap-y-1 sm:grid-cols-[minmax(0,120px)_34px_minmax(0,1fr)] sm:gap-x-6">
+              <span className="col-span-2 font-mono text-[11px] text-muted-foreground sm:col-span-1">
                 {range(d.startDate, d.endDate, d.inProgress)}
               </span>
+              <IssuerTile brand={issuerBrand(d.institution)} label={d.institution} />
               <div>
                 <p className="font-display text-[15px] font-semibold">{d.title}</p>
                 <p className="text-sm text-muted-foreground">
@@ -55,11 +58,12 @@ export default function StudiesAndCertificates() {
           {certs.map((c) => (
             <li
               key={c.id}
-              className="reveal row-hover -mx-2 grid gap-x-8 gap-y-1 border-b border-border px-2 py-3 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto] sm:items-baseline"
+              className="reveal row-hover -mx-2 grid grid-cols-[34px_minmax(0,1fr)] gap-x-4 gap-y-1 border-b border-border px-2 py-3 sm:grid-cols-[minmax(0,120px)_34px_minmax(0,1fr)_auto] sm:items-center sm:gap-x-6"
             >
-              <span className="font-mono text-[11px] text-muted-foreground">
+              <span className="col-span-2 font-mono text-[11px] text-muted-foreground sm:col-span-1">
                 {range(c.startDate, c.endDate, c.inProgress)}
               </span>
+              <IssuerTile brand={issuerBrand(c.institution)} label={c.institution} />
               <div>
                 <p className="text-[15px] font-semibold leading-snug">{c.title}</p>
                 <p className="mt-0.5 font-mono text-[11px] text-muted-foreground">
